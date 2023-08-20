@@ -27,6 +27,7 @@ format:
       buttons: false
    #logo: images/logo.png
     footer: Jan Kirenz
+jupyter: python3
 ---
 
 
