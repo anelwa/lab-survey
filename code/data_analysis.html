@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="de"><head>
 <link href="..//images/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
@@ -9,10 +9,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.268">
+  <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Jan Kirenz">
-  <title>Lab - Title</title>
+  <title>Survey - Umfragedaten analysieren</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -224,8 +224,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -395,8 +394,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Title</h1>
-  <p class="subtitle">Overview</p>
+  <h1 class="title">Umfragedaten analysieren</h1>
+  <p class="subtitle">Survey Teil 2</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -408,75 +407,187 @@ Jan Kirenz
 
 </section><section id="TOC">
 <nav role="doc-toc"> 
-<h2 id="toc-title">Table of contents</h2>
+<h2 id="toc-title">Inhaltsverzeichnis</h2>
 <ul>
-<li class="fragment"><a href="#/h1" id="/toc-h1">H1</a></li>
+<li class="fragment"><a href="#/setup" id="/toc-setup">Setup</a></li>
+<li class="fragment"><a href="#/daten" id="/toc-daten">Daten</a></li>
+<li class="fragment"><a href="#/deskriptive-analyse" id="/toc-deskriptive-analyse">Deskriptive Analyse</a></li>
 </ul>
 </nav>
 </section>
-<section>
-<section id="h1" class="title-slide slide level1 center" data-background-image="../images/logo.png">
-<h1>H1</h1>
-
-</section>
-<section id="text" class="slide level2">
-<h2>Text</h2>
-<ul>
-<li class="fragment"><p>a 🤖</p>
-<ul>
-<li class="fragment">abc</li>
-</ul></li>
-</ul>
-<div class="fragment">
-<ul>
-<li class="fragment"><p>b</p></li>
-<li class="fragment"><p>c<sup>1</sup></p></li>
-</ul>
-<p>📚 Required reading: <a href="link">A &amp; B (2023)</a></p>
-<p><a href="https://arxiv.org/pdf/2303.12712.pdf" class="uri">https://arxiv.org/pdf/2303.12712.pdf</a></p>
+<section id="setup" class="title-slide slide level1 center">
+<h1>Setup</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Russell &amp; Norvig, 2009</p></li></ol></aside></section>
-<section id="image" class="slide level2">
-<h2>Image</h2>
+</section>
 
-<img data-src="../images/hdm.png" class="r-stretch"></section>
-<section id="video" class="slide level2">
-<h2>Video</h2>
-<iframe data-external="1" src="https://www.youtube.com/embed/KpedmJdrTpY" width="1920" height="1080" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-<!-- Video about Protein -->
+<section>
+<section id="daten" class="title-slide slide level1 center">
+<h1>Daten</h1>
+
 </section>
-<section id="a-lot-of-text" class="slide level2 smaller">
-<h2>A lot of text</h2>
-<p>Smaller heading</p>
+<section id="daten-importieren" class="slide level2">
+<h2>Daten importieren</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../data/clean_mr_ss23.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
 </section>
-<section id="background-image" class="slide level2" data-background-image="../images/hdm.png">
-<h2>Background image</h2>
-<p>abc</p>
+<section id="variablen-liste-für-bereinigung" class="slide level2">
+<h2>Variablen-Liste für Bereinigung</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Liste mit den noch enthaltenen Original-Spalten erstellen</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>list_drop <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'_orig'</span>, axis<span class="op">=</span><span class="dv">1</span>).columns.tolist()</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>list_drop</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>list_drop.append(<span class="st">'zeit'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>list_drop</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</div>
 </section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
-<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource python code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a><span class="bu">print</span>(<span class="st">'Hello World'</span>)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2"></a><span class="cf">for</span> i <span class="kw">in</span> LIST:</span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3"></a>  df[i] <span class="op">=</span> df[i].astype(<span class="st">'cat'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt class="fragment" data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
-<dd class="fragment">
-<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Print Hello World, and then,</span>
-</dd>
-<dt class="fragment" data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
-<dd class="fragment">
-<span data-code-cell="annotated-cell-1" data-code-lines="2,3" data-code-annotation="2">transform all columns in the LIST element to categorical variables</span>
-</dd>
-</dl>
+<section id="variablen-löschen" class="slide level2">
+<h2>Variablen löschen</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Wir entfernen die Original-Spalten und die Variable zeit</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>list_drop)</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
 </section>
-<section id="end" class="slide level2">
-<h2>End</h2>
+<section id="liste-mit-dummy-variablen" class="slide level2">
+<h2>Liste mit Dummy-Variablen</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Liste mit Dummy-Variablen erstellen</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>list_dummy <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'__'</span>, axis<span class="op">=</span><span class="dv">1</span>).columns</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>list_dummy</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</section>
+<section id="dummy-variablen-anpassen" class="slide level2">
+<h2>Dummy-Variablen anpassen</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Dummy-Variablen als Objekt-Daten speichern</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_dummy:</span>
+<span id="cb7-3"><a href="#cb7-3"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"object"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</section>
+<section id="liste-mit-numerischen-variablen" class="slide level2">
+<h2>Liste mit numerischen Variablen</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Liste für metrische Daten</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>list_metric <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[np.number]).columns.tolist()</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a>list_metric</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</section>
+<section id="liste-mit-kategorialen-variablen" class="slide level2">
+<h2>Liste mit kategorialen Variablen</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Liste für kategoriale Daten</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>list_cat <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>]).columns.tolist()</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>list_cat</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</section>
+<section id="kategoriale-variablen-anpassen" class="slide level2">
+<h2>Kategoriale Variablen anpassen</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Kategoriale Daten formatieren</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_cat:</span>
+<span id="cb10-3"><a href="#cb10-3"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"category"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</section>
+<section id="datenüberblick" class="slide level2">
+<h2>Datenüberblick</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</div>
+</section></section>
+<section>
+<section id="deskriptive-analyse" class="title-slide slide level1 center">
+<h1>Deskriptive Analyse</h1>
+
+</section>
+<section id="statistische-daten-für-kategoriale-variablen" class="slide level2">
+<h2>Statistische Daten für kategoriale Variablen</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df[list_cat].describe().T</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</section>
+<section id="anzahl-der-ausprägungen" class="slide level2">
+<h2>Anzahl der Ausprägungen</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_cat:</span>
+<span id="cb14-2"><a href="#cb14-2"></a>    <span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">30</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a>    <span class="bu">print</span>(i, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, df[i].value_counts())</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</section>
+<section id="numerische-variablen" class="slide level2">
+<h2>Numerische Variablen</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df[list_metric].describe().<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
 
 <div class="footer footer-default">
 <p>Jan Kirenz</p>
 </div>
 </section></section>
-
     </div>
   </div>
 
@@ -504,6 +615,7 @@ Jan Kirenz
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': true,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -740,12 +852,12 @@ Jan Kirenz
         // flash "checked"
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
+        button.setAttribute("title", "Kopiert");
         let tooltip;
         if (window.bootstrap) {
           button.setAttribute("data-bs-toggle", "tooltip");
           button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
+          button.setAttribute("data-bs-title", "Kopiert");
           tooltip = new bootstrap.Tooltip(button, 
             { trigger: "manual", 
               customClass: "code-copy-button-tooltip",
@@ -765,9 +877,10 @@ Jan Kirenz
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -777,17 +890,8 @@ Jan Kirenz
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
