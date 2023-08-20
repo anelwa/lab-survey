@@ -1,0 +1,513 @@
+---
+title: Umfragedaten vorbereiten
+lang: de
+subtitle: Survey Teil 1
+author: Jan Kirenz
+execute:
+  eval: true
+  echo: true
+highlight-style: github
+format:
+  revealjs: 
+    toc: true
+    toc-depth: 1
+    embed-resources: false
+    theme: [dark, ../custom.scss]  
+    incremental: true
+    transition: slide
+    background-transition: fade
+    transition-speed: slow
+    code-copy: true
+    code-line-numbers: true
+    smaller: false
+    scrollable: true
+    slide-number: c
+    preview-links: auto
+    chalkboard: 
+      buttons: false
+   #logo: images/logo.png
+    footer: Jan Kirenz
+---
+
+
+# Setup 
+
+```{python}
+import numpy as np
+import pandas as pd
+from pandas.api.types import CategoricalDtype
+
+
+```
+
+# Daten
+
+## Daten importieren
+
+```{python}
+# | output-location: fragment
+
+df = pd.read_csv("../data/raw_mr_ss23.csv")
+```
+
+## DataFrame anzeigen
+
+```{python}
+# | output-location: fragment
+df
+```
+
+## Datentypen anzeigen
+
+
+```{python}
+# | output-location: fragment
+df.dtypes
+```
+
+## Info
+
+```{python}
+# | output-location: fragment
+df.info()
+```
+
+
+# Daten anpassen
+
+## Spaltennamen
+
+```{python}
+# | output-location: fragment
+# Spaltennamen umbenennen
+df = df.rename(columns={
+    "Zeitstempel": "zeit",
+    "Ich bin sportlich": "sport",
+    "Ich bin fleißig.": "fleissig",
+    "Von Rückschlägen lasse ich mich nicht entmutigen.": "entmutigen",
+    "Meine Fähigkeiten und Talente sind vorgegeben und ich kann daran nicht viel ändern.": 'talente',
+    "1990 lebten 58 % der Weltbevölkerung in Ländern mit niedrigem Einkommen. Wie hoch ist der Anteil heute? Geben Sie eine Zahl ein (z. B. 9, 37 oder 61)": "einkommen",
+    "Wie viel der weltweit verbrauchten Energie stammt aus Erdgas, Kohle und Öl?": "energie",
+    "Welcher Anteil der Weltbevölkerung lebt in Megacitys (Städte mit mindestens 10 Millionen Einwohnern)?": "megacity",
+    "Wie viele Geleebohnen befinden sich in diesem sechseckigen Glas?": "geleebohnen",
+    "Wie viele Minuten verbringen Sie an einem typischen Tag in sozialen Medien (Facebook, Instagram, Snapchat, etc.)?": "soziale_medien",
+    "Wie viele Minuten investieren Sie ca. pro Tag in Ihr Studium (abgesehen von Lehrveranstaltungen)?": "studium",
+    "Lesen Sie zur Zeit ein Buch?": "buch",
+    "Wie alt sind Sie?": "alter",
+    "Sie sind ...": "geschlecht"
+}, errors="raise")
+```
+
+## Info
+
+```{python}
+# | output-location: fragment
+df.info()
+```
+
+# Nominale Variablen
+
+## Liste erstellen 
+
+```{python}
+# | output-location: fragment
+# Liste mit nominalen Variablen erstellen
+list_nominal = ["buch", "geschlecht"]
+```
+
+## Variablen anpassen
+
+
+```{python}
+# | output-location: fragment
+# Nominale Variablen als kategorial formatieren (category)
+for i in list_nominal:
+    df[i] = df[i].astype("category")
+
+df[list_nominal].info()
+```
+
+## Variablen anzeigen
+
+
+```{python}
+# | output-location: fragment
+df[list_nominal].head()
+```
+
+- Beide nominalen Variablen enthalten Text in den Zeilen (mit jeweils zwei möglichen Ausprägungen). 
+
+
+- Dies kann bei späteren Analysen zu Problemen führen, weshalb wir zusätzlich so genannte "Dummy-Variablen" erzeugen, die nur die Werte 1 und 0 enthalten. 
+
+
+## Dummy Variablen erstellen
+
+```{python}
+# | output-location: fragment
+dummy_nominal = pd.get_dummies(
+    df[list_nominal],  prefix_sep='__').astype('category')
+
+dummy_nominal
+```
+
+## Dummy Variablen zu Daten hinzufügen
+
+
+```{python}
+# | output-location: fragment
+# Dummy-Variablen hinzufügen
+df = df.join(dummy_nominal)
+
+df.head()
+```
+
+
+## Liste um Dummy Variablen ergänzen
+
+
+```{python}
+# Liste um die neuen Variablen erweitern
+dummy_nominal_name = dummy_nominal.columns.tolist()
+
+list_nominal.extend(dummy_nominal_name)
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+list_nominal
+```
+
+
+# Likert-Skala, Ordinal und Quasi-Metrisch
+
+## Variablen {.smaller}
+
+- Die Variablen `sport`,`fleissig`, `talente` und `entmutigen` wurden mit Hilfe einer so genannten [Likert-Skala](https://de.wikipedia.org/wiki/Likert-Skala) erhoben. 
+
+- Die Antwortmöglichkeiten reichen bei der Likertskala typischerweise von „trifft überhaupt nicht zu“ bis "trifft völlig zu“
+
+- Eine gerade Zahl der Antwortmöglichkeiten ist ebenso gebräuchlich wie eine ungerade Anzahl. 
+
+
+## Antwortmöglichkeiten  {.smaller}
+
+- Es ist jedoch sinnvoll, in einem Fragebogen nur eine der beiden Varianten zu verwenden. 
+
+- Zudem sollte die Reihenfolge der Antwortmöglichkeiten immer identisch sein.
+
+- Eine **ungerade Anzahl** wird verwendet, wenn eine mittlere Ausprägung (bspw. "teils teils") sinnvoll ist. 
+
+- Eine **gerade Anzahl** zwingt dagegen zur Entscheidung zu einer Seite (tendenzielle Zustimmung oder Ablehnung).
+
+## Ordinal vs quasi-metrisch {.smaller}
+
+- Da wir nicht davon ausgehen können, dass eine befragte Person die Abstände der einzelnen Antwortmöglichkeiten als gleich weit entfernt wahrnimmt (äquidistant), handelt es sich streng genommen um ein **ordinales** Skalenniveau. 
+
+- Um bei der späteren Auswertung die erhobenen Daten aber dennoch wie intervallskalierte Daten behandeln zu können, behandelt man die Variablen oftmals als "**quais-metrisch**" und unterstellt somit (zumindest annäherungsweise) äquidistante Abstände. 
+
+## Ordinal vs quasimetrisch {.smaller}
+
+- Wir behandeln in Folgenden zwei unterschiedliche Optionen zum Umgang mit den Variablen:
+
+  - *Option 1*: Wir behandeln die Variablen als **ordinale** Variablen (wird im Anschluss gezeigt).
+
+  - *Option 2*: Wir behandeln die Variablen als "**quasimetrische**" Variablen - d.h. wie numerische Daten (diese Option wird in dem Abschnitt "Quasi-metrische Variablen" behandelt).
+
+
+# Skalierung der Variablen anpassen
+
+## Text vs. numerische Werte {.smaller}
+
+- In den Fragen wurde "`sport`", "`fleissig`", "`talente`" mit Hilfe von Text-Bezeichnungen wie "trifft überhaupt nicht zu" erhoben
+
+- "`entmutigen`" wurde mit Hilfe von *numerischen Werten* (1 bis 5) erfasst. 
+
+- Da wir besser mit einheitlich skalierten Werten umgehen können, wird zunächst die Variable "`entmutigen`" in das gleiche Format überführt.
+
+## Variable im Original speichern
+
+- Da wir die Variable `entmutigen` nicht versehentlich durch Datentransformationen fehlerhaft verändern möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als `entmutigen_orig`). 
+
+```{python}
+# | output-location: fragment
+df['entmutigen_orig'] = df['entmutigen']
+```
+
+## Liste für Anpassung erzeugen
+
+- Erzeugung der Listen für die Veränderung der Variable (in der korrekten Reihenfolge):
+
+```{python}
+# | output-location: fragment
+werte = [1, 2, 3, 4, 5]
+
+likert = ["trifft überhaupt nicht zu",
+          "trifft eher nicht zu",
+          "teils teils",
+          "trifft eher zu",
+          "trifft völlig zu"]
+```
+
+
+## Variable anpassen
+
+```{python}
+# | output-location: fragment
+df['entmutigen'].replace(werte, likert, inplace=True)
+
+df['entmutigen'].head()
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+df['entmutigen_orig'].head()
+```
+
+
+# Ordinale Variablen
+
+## Liste erstellen 
+
+- Erstellung einer Liste:
+
+```{python}
+# | output-location: fragment
+list_ordinal = ["sport", "fleissig", "talente", "entmutigen"]
+```
+
+## Verwendung von pandas CategoricalDtype
+
+```{python}
+# | output-location: fragment
+cat_type = CategoricalDtype(categories=likert, ordered=True)
+
+cat_type
+```
+
+
+## Ordinale Variablen anpassen
+
+```{python}
+df[list_ordinal] = df[list_ordinal].astype(cat_type)
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+df["sport"]
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+# Anzeige der Ausprägungen
+df['sport'].cat.categories
+```
+
+## Liste der kategorialen Variablen erstellen
+
+```{python}
+# | output-location: fragment
+list_cat = list_nominal + list_ordinal
+```
+
+# Numerische Variablen
+
+## Übersicht 
+
+- Wir behandeln zunächst die "eindeutig" numerischen Variablen (d.h. wir ignorieren die quasi-metrischen). diese wären:
+
+- einkommen
+- energie
+- megacity
+- geleebohnen
+- soziale_medien
+- studium
+- alter
+
+## Liste erstellen
+
+```{python}
+# | output-location: fragment
+list_num = ['einkommen', 'energie', 'megacity', 'geleebohnen',
+            'soziale_medien', 'studium', 'alter']
+
+df[list_num].info()
+```
+
+## Erkenntnisse
+
+- Wir können mit `df.info()` erkennen, dass abgesehen von `energie` bereits alle Variablen korrrekt als "int64" vorliegen
+
+- Siehe zur Bedeutung von `int64` diesen [Stackoverflow-Beitrag](https://stackoverflow.com/questions/9696660/what-is-the-difference-between-int-int16-int32-and-int64)) 
+
+
+## Untersuchung von Problemen
+
+```{python}
+# | output-location: fragment
+df['energie'].head()
+```
+
+- In den Antwortmöglichkeiten der Variable waren neben numerischen Werten auch Buchstaben und ein Sonderzeichen enthalen: "ca." und "%". 
+
+- Damit wir sinnvoll mit der Variable arbeiten können, müssen diese entfernt werden. 
+
+## Variable im Original speichern {.smaller}
+
+- Da wir die Variable nicht versehentlich durch Datentransformationen korrumpieren möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als `energie_orig`). 
+
+- Um die numerischen Werte leichter extrahieren zu können, nutzen wir das Format "String".
+
+```{python}
+# | output-location: fragment
+df['energie_orig'] = df['energie'].astype("string")
+```
+
+## Regular Expressions {.smaller}
+
+- Im nächsten Schritt nutzen wir einen [regulärer Ausdruck](https://www.w3schools.com/python/python_regex.asp) (englisch regular expression, Abkürzung RegExp oder Regex) um die Zahl aus dem String zu extrahieren. 
+
+|Ausdruck|Bedeutung|Beschreibung|
+|:----|:----|:----|
+|\d|digit|eine Ziffer, also [0-9] (und evtl. auch weitere Zahlzeichen in Unicode, z. B. bengalische Ziffern)|
+|\D|no digit|ein Zeichen, das keine Ziffer ist, also [^\d]|
+|\w|word character|ein Buchstabe, eine Ziffer oder der Unterstrich, also [a-zA-Z_0-9] (und evtl. auch nicht-lateinische Buchstaben, z. B. Umlaute)|
+|\W|no word character|ein Zeichen, das weder Buchstabe noch Zahl noch Unterstrich ist, also [^\w]|
+|\s|whitespace|meist zumindest das Leerzeichen und die Klasse der Steuerzeichen \f, \n, \r, \t und \v|
+|\S|no whitespace|ein Zeichen, das kein Whitespace ist, also [^\s]|
+
+## Anpassung der Variable
+
+- Falls mehr als ein einzelnes Zeichen extrahiert werden soll, muss am Ende des Ausdrucks ein `+` hinzugefügt werden.
+
+- Wir nutzen regular expressions und überschreiben die alte Variable `energie` mit dem neuen Eintrag. 
+
+- Zudem speichern wir sie als integer.
+
+## Anpassung der Variable
+
+. . .
+
+```{python}
+df['energie'] = df['energie_orig'].str.extract('(\d+)').astype(int)
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+df[['energie_orig', 'energie']].head()
+```
+
+# Quasi-metrische Variablen
+
+## Kontext
+
+- Variablen `sport`,`fleissig`, und `talente` wurden mit Hilfe einer  [Likert-Skala](https://de.wikipedia.org/wiki/Likert-Skala) erhoben und könnten somit auch als "quasi-metrisch" behandelt werden (anstelle von ordinal).
+
+- Dabei muss jedoch beachtet werden, dass bspw. der Mittelwert aufgrund der Art der Messung (insbesondere wenn eine neutrale mittlere Ausprägung verwendet wird) an Aussagekraft verlieren.
+
+
+## Originaldaten sichern {.smaller}
+
+- Damit wir die Originaldaten nicht "verlieren", erzeugen wir neue Variablen. 
+
+- Dafür kopieren wir die Daten und fügen diesen die Endung "qm" (für quasimetrisch) hinzu. 
+
+. . .
+
+```{python}
+for i in list_ordinal:
+    df[i + "_qm"] = df[i]
+```
+
+## Liste erzeugen
+
+
+```{python}
+# | output-location: fragment
+# Erstellung der Liste mit Hilfe von filter und regular expressions
+list_qm = df.filter(regex='_qm').columns.to_list()
+list_qm
+```
+
+
+## Info
+
+```{python}
+# | output-location: fragment
+df[list_qm].info()
+```
+
+## Skalierung anpassen
+
+- Wir nutzen nun ein ähnliches Vorgehen wie bei der Anpassung der Variable "entmutigen"
+
+. . .
+
+```{python}
+# | output-location: fragment
+for i in list_qm:
+    df[i].replace(likert, werte, inplace=True)
+    df[i] = df[i].astype("int")
+```
+
+## Daten anzeigen
+
+```{python}
+# | output-location: fragment
+df[list_qm].head()
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+df[list_qm].info()
+```
+
+## Liste für metrische Variablen
+
+
+```{python}
+# | output-location: fragment
+list_metric = list_num + list_qm
+```
+
+# Daten speichern
+
+## Daten als CSV speichern
+
+Speichern als CSV:
+
+```{python}
+# | output-location: fragment
+PATH = "../data/"
+FILE = "clean_ws22"
+FORMAT_CSV = ".csv"
+```
+
+```{python}
+# | output-location: fragment
+df.to_csv(PATH + FILE + FORMAT_CSV, index=False)
+```
+
+## Daten als Excel speichern
+
+Speichern als Excel-Datei:
+
+```{python}
+# | output-location: fragment
+FORMAT_EXCEL = ".xlsx"
+
+df.to_excel(PATH + FILE + FORMAT_EXCEL, index=False)
+```
+

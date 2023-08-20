@@ -1,0 +1,173 @@
+---
+title: Umfragedaten analysieren
+lang: de
+subtitle: Survey Teil 2
+author: Jan Kirenz
+execute:
+  eval: true
+  echo: true
+highlight-style: github
+format:
+  revealjs: 
+    toc: true
+    toc-depth: 1
+    embed-resources: false
+    theme: [dark, ../custom.scss]  
+    incremental: true
+    transition: slide
+    background-transition: fade
+    transition-speed: slow
+    code-copy: true
+    code-line-numbers: true
+    smaller: false
+    scrollable: true
+    slide-number: c
+    preview-links: auto
+    chalkboard: 
+      buttons: false
+   #logo: images/logo.png
+    footer: Jan Kirenz
+---
+
+
+# Setup 
+
+```{python}
+import numpy as np
+import pandas as pd
+```
+
+
+# Daten
+
+## Daten importieren
+
+```{python}
+# | output-location: fragment
+df = pd.read_csv("../data/clean_mr_ss23.csv")
+
+df.head()
+```
+
+## Variablen-Liste für Bereinigung 
+
+```{python}
+# | output-location: fragment
+# Liste mit den noch enthaltenen Original-Spalten erstellen
+list_drop = df.filter(like='_orig', axis=1).columns.tolist()
+
+list_drop
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+list_drop.append('zeit')
+
+list_drop
+```
+
+
+## Variablen löschen
+
+```{python}
+# | output-location: fragment
+# Wir entfernen die Original-Spalten und die Variable zeit
+df = df.drop(columns=list_drop)
+
+df.head()
+```
+
+## Liste mit Dummy-Variablen
+
+```{python}
+# | output-location: fragment
+# Liste mit Dummy-Variablen erstellen
+list_dummy = df.filter(like='__', axis=1).columns
+
+list_dummy
+```
+
+## Dummy-Variablen anpassen
+
+```{python}
+# | output-location: fragment
+# Dummy-Variablen als Objekt-Daten speichern
+for i in list_dummy:
+    df[i] = df[i].astype("object")
+```
+
+
+## Liste mit numerischen Variablen 
+
+```{python}
+# | output-location: fragment
+# Liste für metrische Daten
+list_metric = df.select_dtypes(include=[np.number]).columns.tolist()
+
+list_metric
+```
+
+
+## Liste mit kategorialen Variablen 
+
+```{python}
+# | output-location: fragment
+# Liste für kategoriale Daten
+list_cat = df.select_dtypes(include=['object']).columns.tolist()
+
+list_cat
+```
+
+
+## Kategoriale Variablen anpassen
+
+```{python}
+# | output-location: fragment
+# Kategoriale Daten formatieren
+for i in list_cat:
+    df[i] = df[i].astype("category")
+
+df.info()
+```
+
+## Datenüberblick
+
+```{python}
+# | output-location: fragment
+df
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.info()
+```
+
+# Deskriptive Analyse
+
+## Statistische Daten für kategoriale Variablen
+
+```{python}
+# | output-location: fragment
+df[list_cat].describe().T
+```
+
+## Anzahl der Ausprägungen
+
+```{python}
+# | output-location: fragment
+for i in list_cat:
+    print("-"*30)
+    print(i, "\n", df[i].value_counts())
+```
+
+## Numerische Variablen
+
+```{python}
+# | output-location: fragment
+df[list_metric].describe().round(2).T
+```
+
