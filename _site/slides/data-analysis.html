@@ -421,7 +421,7 @@ Jan Kirenz
 </section>
 <section id="setup" class="title-slide slide level1 center">
 <h1>Setup</h1>
-<div id="0c856d41" class="cell" data-execution_count="1">
+<div id="a83b609b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -434,10 +434,13 @@ Jan Kirenz
 </section>
 <section id="daten-importieren" class="slide level2">
 <h2>Daten importieren</h2>
-<div id="175ed8f8" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../data/clean_mr_ss23.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7276152a" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>DATA <span class="op">=</span> <span class="st">"clean_mr_ss23.csv"</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>df <span class="op">=</span> pd.read_csv(PATH <span class="op">+</span> DATA)</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -614,7 +617,7 @@ Jan Kirenz
 </section>
 <section id="variablen-liste-für-bereinigung" class="slide level2">
 <h2>Variablen-Liste für Bereinigung</h2>
-<div id="1c0a4082" class="cell" data-execution_count="3">
+<div id="5d05b86a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Liste mit den noch enthaltenen Original-Spalten erstellen</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>list_drop <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'_orig'</span>, axis<span class="op">=</span><span class="dv">1</span>).columns.tolist()</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -626,7 +629,7 @@ Jan Kirenz
 </div>
 </div>
 <div class="fragment">
-<div id="40f0f054" class="cell" data-execution_count="4">
+<div id="43b3f75e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>list_drop.append(<span class="st">'zeit'</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
 <span id="cb5-3"><a href="#cb5-3"></a>list_drop</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -640,7 +643,7 @@ Jan Kirenz
 </section>
 <section id="variablen-löschen" class="slide level2">
 <h2>Variablen löschen</h2>
-<div id="0d3e0ffd" class="cell" data-execution_count="5">
+<div id="c56f2577" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Wir entfernen die Original-Spalten und die Variable zeit</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>list_drop)</span>
 <span id="cb7-3"><a href="#cb7-3"></a></span>
@@ -821,7 +824,7 @@ Jan Kirenz
 </section>
 <section id="liste-mit-dummy-variablen" class="slide level2">
 <h2>Liste mit Dummy-Variablen</h2>
-<div id="00c93983" class="cell" data-execution_count="6">
+<div id="e299026e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Liste mit Dummy-Variablen erstellen</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>list_dummy <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'__'</span>, axis<span class="op">=</span><span class="dv">1</span>).columns</span>
 <span id="cb8-3"><a href="#cb8-3"></a></span>
@@ -837,7 +840,7 @@ Jan Kirenz
 </section>
 <section id="dummy-variablen-anpassen" class="slide level2">
 <h2>Dummy-Variablen anpassen</h2>
-<div id="35489953" class="cell" data-execution_count="7">
+<div id="1bdd09ef" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Dummy-Variablen als Objekt-Daten speichern</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_dummy:</span>
 <span id="cb10-3"><a href="#cb10-3"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"object"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -848,7 +851,7 @@ Jan Kirenz
 </section>
 <section id="liste-mit-numerischen-variablen" class="slide level2">
 <h2>Liste mit numerischen Variablen</h2>
-<div id="0630fca3" class="cell" data-execution_count="8">
+<div id="4c479b43" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Liste für metrische Daten</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>list_metric <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[np.number]).columns.tolist()</span>
 <span id="cb11-3"><a href="#cb11-3"></a></span>
@@ -871,7 +874,7 @@ Jan Kirenz
 </section>
 <section id="liste-mit-kategorialen-variablen" class="slide level2">
 <h2>Liste mit kategorialen Variablen</h2>
-<div id="ffe98568" class="cell" data-execution_count="9">
+<div id="1ecf4561" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Liste für kategoriale Daten</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>list_cat <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>]).columns.tolist()</span>
 <span id="cb13-3"><a href="#cb13-3"></a></span>
@@ -895,7 +898,7 @@ Jan Kirenz
 </section>
 <section id="kategoriale-variablen-anpassen" class="slide level2">
 <h2>Kategoriale Variablen anpassen</h2>
-<div id="eaafd3dc" class="cell" data-execution_count="10">
+<div id="1b8b2b68" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Kategoriale Daten formatieren</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_cat:</span>
 <span id="cb15-3"><a href="#cb15-3"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"category"</span>)</span>
@@ -937,7 +940,7 @@ memory usage: 5.8 KB</code></pre>
 </section>
 <section id="datenüberblick" class="slide level2">
 <h2>Datenüberblick</h2>
-<div id="2141ed5f" class="cell" data-execution_count="11">
+<div id="a8aa6c05" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
@@ -1905,7 +1908,7 @@ memory usage: 5.8 KB</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="5f8477f5" class="cell" data-execution_count="12">
+<div id="c7782e89" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="12">
@@ -1949,7 +1952,7 @@ memory usage: 5.8 KB</code></pre>
 </section>
 <section id="statistische-daten-für-kategoriale-variablen" class="slide level2">
 <h2>Statistische Daten für kategoriale Variablen</h2>
-<div id="2deeab88" class="cell" data-execution_count="13">
+<div id="a02ce249" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df[list_cat].describe().T</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="13">
@@ -2066,7 +2069,7 @@ memory usage: 5.8 KB</code></pre>
 </section>
 <section id="anzahl-der-ausprägungen" class="slide level2">
 <h2>Anzahl der Ausprägungen</h2>
-<div id="00bf4827" class="cell" data-execution_count="14">
+<div id="96ce19ad" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_cat:</span>
 <span id="cb21-2"><a href="#cb21-2"></a>    <span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">30</span>)</span>
 <span id="cb21-3"><a href="#cb21-3"></a>    <span class="bu">print</span>(i, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, df[i].value_counts())</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2162,7 +2165,7 @@ Name: geschlecht__Weiblich, dtype: int64</code></pre>
 </section>
 <section id="numerische-variablen" class="slide level2">
 <h2>Numerische Variablen</h2>
-<div id="b73a1fe0" class="cell" data-execution_count="15">
+<div id="9dedb4c2" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df[list_metric].describe().<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="15">

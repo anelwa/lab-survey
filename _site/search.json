@@ -109,7 +109,7 @@
     "href": "slides/data-preparation.html#daten-importieren",
     "title": "Umfragedaten vorbereiten",
     "section": "Daten importieren",
-    "text": "Daten importieren\n\ndf = pd.read_csv(\"../data/raw_mr_ss23.csv\")"
+    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"raw_mr_ss23.csv\"\n\ndf = pd.read_csv(PATH + DATA)"
   },
   {
     "objectID": "slides/data-preparation.html#dataframe-anzeigen",
@@ -396,7 +396,7 @@
     "href": "slides/data-analysis.html#daten-importieren",
     "title": "Umfragedaten analysieren",
     "section": "Daten importieren",
-    "text": "Daten importieren\n\ndf = pd.read_csv(\"../data/clean_mr_ss23.csv\")\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nzeit\nsport\nfleissig\nentmutigen\ntalente\neinkommen\nenergie\nmegacity\ngeleebohnen\nsoziale_medien\n...\nbuch__Ja\nbuch__Nein\ngeschlecht__Männlich\ngeschlecht__Weiblich\nentmutigen_orig\nenergie_orig\nsport_qm\nfleissig_qm\ntalente_qm\nentmutigen_qm\n\n\n\n\n0\n2022/09/14 8:21:58 PM OEZ\nteils teils\ntrifft eher zu\ntrifft eher zu\ntrifft überhaupt nicht zu\n9\n42\n4\n3000\n34\n...\n1\n0\n1\n0\n4\nca. 42%\n3\n4\n1\n4\n\n\n1\n2022/09/17 6:10:24 PM OEZ\ntrifft eher nicht zu\ntrifft eher nicht zu\ntrifft eher nicht zu\ntrifft eher zu\n45\n62\n3\n400\n34\n...\n0\n1\n0\n1\n2\nca. 62%\n2\n2\n4\n2\n\n\n2\n2022/09/17 6:11:20 PM OEZ\nteils teils\ntrifft eher nicht zu\nteils teils\ntrifft eher zu\n34\n82\n5\n4000\n23\n...\n1\n0\n1\n0\n3\nca. 82%\n3\n2\n4\n3\n\n\n3\n2022/10/11 3:18:26 PM OEZ\ntrifft völlig zu\ntrifft eher zu\ntrifft eher zu\ntrifft eher nicht zu\n61\n62\n3\n586\n180\n...\n1\n0\n0\n1\n4\nca. 62%\n5\n4\n2\n4\n\n\n4\n2022/10/11 3:19:05 PM OEZ\ntrifft eher nicht zu\ntrifft völlig zu\ntrifft eher nicht zu\ntrifft eher nicht zu\n43\n62\n2\n350\n120\n...\n1\n0\n0\n1\n2\nca. 62%\n2\n5\n2\n2\n\n\n\n\n5 rows × 24 columns"
+    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"clean_mr_ss23.csv\"\n\ndf = pd.read_csv(PATH + DATA)\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nzeit\nsport\nfleissig\nentmutigen\ntalente\neinkommen\nenergie\nmegacity\ngeleebohnen\nsoziale_medien\n...\nbuch__Ja\nbuch__Nein\ngeschlecht__Männlich\ngeschlecht__Weiblich\nentmutigen_orig\nenergie_orig\nsport_qm\nfleissig_qm\ntalente_qm\nentmutigen_qm\n\n\n\n\n0\n2022/09/14 8:21:58 PM OEZ\nteils teils\ntrifft eher zu\ntrifft eher zu\ntrifft überhaupt nicht zu\n9\n42\n4\n3000\n34\n...\n1\n0\n1\n0\n4\nca. 42%\n3\n4\n1\n4\n\n\n1\n2022/09/17 6:10:24 PM OEZ\ntrifft eher nicht zu\ntrifft eher nicht zu\ntrifft eher nicht zu\ntrifft eher zu\n45\n62\n3\n400\n34\n...\n0\n1\n0\n1\n2\nca. 62%\n2\n2\n4\n2\n\n\n2\n2022/09/17 6:11:20 PM OEZ\nteils teils\ntrifft eher nicht zu\nteils teils\ntrifft eher zu\n34\n82\n5\n4000\n23\n...\n1\n0\n1\n0\n3\nca. 82%\n3\n2\n4\n3\n\n\n3\n2022/10/11 3:18:26 PM OEZ\ntrifft völlig zu\ntrifft eher zu\ntrifft eher zu\ntrifft eher nicht zu\n61\n62\n3\n586\n180\n...\n1\n0\n0\n1\n4\nca. 62%\n5\n4\n2\n4\n\n\n4\n2022/10/11 3:19:05 PM OEZ\ntrifft eher nicht zu\ntrifft völlig zu\ntrifft eher nicht zu\ntrifft eher nicht zu\n43\n62\n2\n350\n120\n...\n1\n0\n0\n1\n2\nca. 62%\n2\n5\n2\n2\n\n\n\n\n5 rows × 24 columns"
   },
   {
     "objectID": "slides/data-analysis.html#variablen-liste-für-bereinigung",
