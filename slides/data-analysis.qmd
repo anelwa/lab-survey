@@ -44,7 +44,10 @@ import pandas as pd
 
 ```{python}
 # | output-location: fragment
-df = pd.read_csv("../data/clean_mr_ss23.csv")
+PATH = "../data/"
+DATA = "clean_mr_ss23.csv"
+
+df = pd.read_csv(PATH + DATA)
 
 df.head()
 ```
