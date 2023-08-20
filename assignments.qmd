@@ -2,4 +2,25 @@
 title: "Assignments"
 ---
 
-This is a Quarto slidedeck. 
+## Google Forms survey
+
+- Fill out this short [Google Forms survey (🇩🇪)](https://forms.gle/jkviF4pTXrqyV1Qc9)
+
+## Data preparation
+
+- Create two new folders in your local folder "survey": "data" and "code"
+- Download the survey response data and save it in "data": [raw_data.csv](https://raw.githubusercontent.com/kirenz/lab-survey/main/data/raw_data.csv)
+- Download the Jupyter Notebook and save it in the folder "code": 
+- [Jupyter Notebook Data preparation (🇩🇪)](/code/data_preparation.ipynb)
+
+Important:
+
+- Use *raw_data.csv* instead of the example data *raw_mr_ss23.csv*. This means you have to change to code where you import the file.
+- Also change the name of the CSV-file when you save the data (call it *clean_data.csv*)
+
+
+## Data analysis
+
+- Use your prepared data (*clean_data.csv*) and not the example data (*clean_mr_ss23.csv*)
+
+- [Jupyter Notebook Data analysis (🇩🇪)](/code/data_analysis.ipynb)
