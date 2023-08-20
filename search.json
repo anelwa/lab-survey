@@ -4,21 +4,49 @@
     "href": "assignments.html",
     "title": "Assignments",
     "section": "",
-    "text": "This is a Quarto slidedeck."
+    "text": "Fill out this short Google Forms survey (🇩🇪)"
+  },
+  {
+    "objectID": "assignments.html#google-forms-survey",
+    "href": "assignments.html#google-forms-survey",
+    "title": "Assignments",
+    "section": "",
+    "text": "Fill out this short Google Forms survey (🇩🇪)"
+  },
+  {
+    "objectID": "assignments.html#data-preparation",
+    "href": "assignments.html#data-preparation",
+    "title": "Assignments",
+    "section": "Data preparation",
+    "text": "Data preparation\n\nCreate two new folders in your local folder “survey”: “data” and “code”\nDownload the survey response data and save it in “data”: raw_data.csv\nDownload the Jupyter Notebook and save it in the folder “code”:\n\nJupyter Notebook Data preparation (🇩🇪)\n\n\nImportant:\n\nUse raw_data.csv instead of the example data raw_mr_ss23.csv. This means you have to change to code where you import the file.\nAlso change the name of the CSV-file when you save the data (call it clean_data.csv)"
+  },
+  {
+    "objectID": "assignments.html#data-analysis",
+    "href": "assignments.html#data-analysis",
+    "title": "Assignments",
+    "section": "Data analysis",
+    "text": "Data analysis\n\nUse your prepared data (clean_data.csv) and not the example data (clean_mr_ss23.csv)\nDownload the Jupyter Notebook and save it in the folder “code”:\n\nJupyter Notebook Data analysis (🇩🇪)"
+  },
+  {
+    "objectID": "code/data_analysis.html",
+    "href": "code/data_analysis.html",
+    "title": "Umfragedaten analysieren",
+    "section": "",
+    "text": "import numpy as np\nimport pandas as pd"
   },
   {
     "objectID": "code/data_analysis.html#daten-importieren",
     "href": "code/data_analysis.html#daten-importieren",
     "title": "Umfragedaten analysieren",
     "section": "Daten importieren",
-    "text": "Daten importieren\n\ndf = pd.read_csv(\"../data/clean_mr_ss23.csv\")\n\ndf.head()"
+    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"clean_mr_ss23.csv\"\n\ndf = pd.read_csv(PATH + DATA)\n\ndf.head()"
   },
   {
     "objectID": "code/data_analysis.html#variablen-liste-für-bereinigung",
     "href": "code/data_analysis.html#variablen-liste-für-bereinigung",
     "title": "Umfragedaten analysieren",
     "section": "Variablen-Liste für Bereinigung",
-    "text": "Variablen-Liste für Bereinigung\n\n# Liste mit den noch enthaltenen Original-Spalten erstellen\nlist_drop = df.filter(like='_orig', axis=1).columns.tolist()\n\nlist_drop\n\n\n\n\n\n\nlist_drop.append('zeit')\n\nlist_drop"
+    "text": "Variablen-Liste für Bereinigung\n\n# Liste mit den noch enthaltenen Original-Spalten erstellen\nlist_drop = df.filter(like='_orig', axis=1).columns.tolist()\n\nlist_drop\n\n. . .\n\nlist_drop.append('zeit')\n\nlist_drop"
   },
   {
     "objectID": "code/data_analysis.html#variablen-löschen",
@@ -67,7 +95,7 @@
     "href": "code/data_analysis.html#datenüberblick",
     "title": "Umfragedaten analysieren",
     "section": "Datenüberblick",
-    "text": "Datenüberblick\n\ndf\n\n\n\n\n\n\ndf.info()"
+    "text": "Datenüberblick\n\ndf\n\n. . .\n\ndf.info()"
   },
   {
     "objectID": "code/data_analysis.html#statistische-daten-für-kategoriale-variablen",
@@ -88,14 +116,14 @@
     "href": "code/data_analysis.html#numerische-variablen",
     "title": "Umfragedaten analysieren",
     "section": "Numerische Variablen",
-    "text": "Numerische Variablen\n\ndf[list_metric].describe().round(2).T\n\n\n\n\n\n\nJan Kirenz"
+    "text": "Numerische Variablen\n\ndf[list_metric].describe().round(2).T"
   },
   {
     "objectID": "slides/data-analysis.html#daten-importieren",
     "href": "slides/data-analysis.html#daten-importieren",
     "title": "Umfragedaten analysieren",
     "section": "Daten importieren",
-    "text": "Daten importieren\n\ndf = pd.read_csv(\"../data/clean_mr_ss23.csv\")\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nzeit\nsport\nfleissig\nentmutigen\ntalente\neinkommen\nenergie\nmegacity\ngeleebohnen\nsoziale_medien\n...\nbuch__Ja\nbuch__Nein\ngeschlecht__Männlich\ngeschlecht__Weiblich\nentmutigen_orig\nenergie_orig\nsport_qm\nfleissig_qm\ntalente_qm\nentmutigen_qm\n\n\n\n\n0\n2022/09/14 8:21:58 PM OEZ\nteils teils\ntrifft eher zu\ntrifft eher zu\ntrifft überhaupt nicht zu\n9\n42\n4\n3000\n34\n...\n1\n0\n1\n0\n4\nca. 42%\n3\n4\n1\n4\n\n\n1\n2022/09/17 6:10:24 PM OEZ\ntrifft eher nicht zu\ntrifft eher nicht zu\ntrifft eher nicht zu\ntrifft eher zu\n45\n62\n3\n400\n34\n...\n0\n1\n0\n1\n2\nca. 62%\n2\n2\n4\n2\n\n\n2\n2022/09/17 6:11:20 PM OEZ\nteils teils\ntrifft eher nicht zu\nteils teils\ntrifft eher zu\n34\n82\n5\n4000\n23\n...\n1\n0\n1\n0\n3\nca. 82%\n3\n2\n4\n3\n\n\n3\n2022/10/11 3:18:26 PM OEZ\ntrifft völlig zu\ntrifft eher zu\ntrifft eher zu\ntrifft eher nicht zu\n61\n62\n3\n586\n180\n...\n1\n0\n0\n1\n4\nca. 62%\n5\n4\n2\n4\n\n\n4\n2022/10/11 3:19:05 PM OEZ\ntrifft eher nicht zu\ntrifft völlig zu\ntrifft eher nicht zu\ntrifft eher nicht zu\n43\n62\n2\n350\n120\n...\n1\n0\n0\n1\n2\nca. 62%\n2\n5\n2\n2\n\n\n\n\n5 rows × 24 columns"
+    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"clean_mr_ss23.csv\"\n\ndf = pd.read_csv(PATH + DATA)\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nzeit\nsport\nfleissig\nentmutigen\ntalente\neinkommen\nenergie\nmegacity\ngeleebohnen\nsoziale_medien\n...\nbuch__Ja\nbuch__Nein\ngeschlecht__Männlich\ngeschlecht__Weiblich\nentmutigen_orig\nenergie_orig\nsport_qm\nfleissig_qm\ntalente_qm\nentmutigen_qm\n\n\n\n\n0\n2022/09/14 8:21:58 PM OEZ\nteils teils\ntrifft eher zu\ntrifft eher zu\ntrifft überhaupt nicht zu\n9\n42\n4\n3000\n34\n...\n1\n0\n1\n0\n4\nca. 42%\n3\n4\n1\n4\n\n\n1\n2022/09/17 6:10:24 PM OEZ\ntrifft eher nicht zu\ntrifft eher nicht zu\ntrifft eher nicht zu\ntrifft eher zu\n45\n62\n3\n400\n34\n...\n0\n1\n0\n1\n2\nca. 62%\n2\n2\n4\n2\n\n\n2\n2022/09/17 6:11:20 PM OEZ\nteils teils\ntrifft eher nicht zu\nteils teils\ntrifft eher zu\n34\n82\n5\n4000\n23\n...\n1\n0\n1\n0\n3\nca. 82%\n3\n2\n4\n3\n\n\n3\n2022/10/11 3:18:26 PM OEZ\ntrifft völlig zu\ntrifft eher zu\ntrifft eher zu\ntrifft eher nicht zu\n61\n62\n3\n586\n180\n...\n1\n0\n0\n1\n4\nca. 62%\n5\n4\n2\n4\n\n\n4\n2022/10/11 3:19:05 PM OEZ\ntrifft eher nicht zu\ntrifft völlig zu\ntrifft eher nicht zu\ntrifft eher nicht zu\n43\n62\n2\n350\n120\n...\n1\n0\n0\n1\n2\nca. 62%\n2\n5\n2\n2\n\n\n\n\n5 rows × 24 columns"
   },
   {
     "objectID": "slides/data-analysis.html#variablen-liste-für-bereinigung",
@@ -179,21 +207,42 @@
     "href": "index.html",
     "title": "Welcome 👋",
     "section": "",
-    "text": "Lab “Survey” (📁 survey)\nIn this lab you will learn how to prepare and analyze data from a Google Forms survey.\n\n\n\n\n\n\nImportant\n\n\n\nMake sure you meet all the requirements and have read the lecture slides before you start with the assignments\n\n\nWhat you will learn in this lab:\n\nHow to prepare data\nHow to analyze"
+    "text": "Lab “Survey” (📁 survey)\n\nIn this lab you will learn how to prepare and analyze data from a Google Forms survey.\n\n\n\n\n\n\nImportant\n\n\n\nMake sure you meet all the requirements and have read the lecture slides before you start with the assignments\n\n\nWhat you will learn in this lab:\n\nHow to use Google Forms to create a survey\nData preparation for different data types using pandas\nData analysis with pandas"
   },
   {
     "objectID": "slide.html",
     "href": "slide.html",
     "title": "Slides",
     "section": "",
-    "text": "This is a Quarto slidedeck.\n\n\n\n\n\n\nTake a look at the slides tutorial to learn how to use all slide options"
+    "text": "Google Forms is a survey administration software included as part of the free, web-based Google Docs Editors suite offered by Google. Google Forms is only available as a web application.\nThe app allows us to create and edit surveys online while collaborating with other users in real-time. We use this service in our course."
+  },
+  {
+    "objectID": "slide.html#google-forms",
+    "href": "slide.html#google-forms",
+    "title": "Slides",
+    "section": "",
+    "text": "Google Forms is a survey administration software included as part of the free, web-based Google Docs Editors suite offered by Google. Google Forms is only available as a web application.\nThe app allows us to create and edit surveys online while collaborating with other users in real-time. We use this service in our course."
+  },
+  {
+    "objectID": "slide.html#data-preparation",
+    "href": "slide.html#data-preparation",
+    "title": "Slides",
+    "section": "Data preparation",
+    "text": "Data preparation\nLearn how to prepare data which was downloaded from a Google Forms survey (as CSV):\n\n🖥️ Data preparation (🇩🇪)"
+  },
+  {
+    "objectID": "slide.html#data-analysis",
+    "href": "slide.html#data-analysis",
+    "title": "Slides",
+    "section": "Data Analysis",
+    "text": "Data Analysis\nAnalyse the survey responses using your prepared data:\n\n🖥️ Data analysis (🇩🇪)\n\n\n\n\n\n\n\n\nTake a look at the slides tutorial to learn how to use all slide options"
   },
   {
     "objectID": "slides/data-preparation.html#daten-importieren",
     "href": "slides/data-preparation.html#daten-importieren",
     "title": "Umfragedaten vorbereiten",
     "section": "Daten importieren",
-    "text": "Daten importieren\n\ndf = pd.read_csv(\"../data/raw_mr_ss23.csv\")"
+    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"raw_mr_ss23.csv\"\n\ndf = pd.read_csv(PATH + DATA)"
   },
   {
     "objectID": "slides/data-preparation.html#dataframe-anzeigen",
@@ -480,14 +529,14 @@
     "href": "requirements.html",
     "title": "Requirements",
     "section": "",
-    "text": "To start this lab, you’ll need the following environments:\n\nSQL: MySQL, MySQL Workbench and a database called db_data\nPython: Anaconda, Anaconda Environment lab and Visual Studio Code\nWorking environment: A folder on your machine called competitive and an environment file with your MySQL password\n\n\n\n\n\n\n\nImportant\n\n\n\nVisit the “Programming Toolkit-webpage” to learn how to set up the environments."
+    "text": "To start this lab, you’ll need the following environments:\n\nPython: Anaconda, Anaconda Environment lab and Visual Studio Code\nWorking environment: A folder on your machine called survey with two subfolders in it: data and code\n\n\n\n\n\n\n\nImportant\n\n\n\nVisit the “Programming Toolkit-webpage” to learn how to set up the environments.\n\n\nYou also need a Google Account if you want to learn how to use Google Forms."
   },
   {
     "objectID": "code/data_preparation.html#daten-importieren",
     "href": "code/data_preparation.html#daten-importieren",
     "title": "Umfragedaten vorbereiten",
     "section": "Daten importieren",
-    "text": "Daten importieren\n\ndf = pd.read_csv(\"../data/raw_mr_ss23.csv\")"
+    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"raw_mr_ss23.csv\"\n\ndf = pd.read_csv(PATH + DATA)"
   },
   {
     "objectID": "code/data_preparation.html#dataframe-anzeigen",

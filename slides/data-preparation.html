@@ -427,7 +427,7 @@ Jan Kirenz
 </section>
 <section id="setup" class="title-slide slide level1 center">
 <h1>Setup</h1>
-<div id="6a117d45" class="cell" data-execution_count="1">
+<div id="0ae618e5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> pandas.api.types <span class="im">import</span> CategoricalDtype</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -441,8 +441,11 @@ Jan Kirenz
 </section>
 <section id="daten-importieren" class="slide level2">
 <h2>Daten importieren</h2>
-<div id="4259b5db" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../data/raw_mr_ss23.csv"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="44c1506b" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>DATA <span class="op">=</span> <span class="st">"raw_mr_ss23.csv"</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>df <span class="op">=</span> pd.read_csv(PATH <span class="op">+</span> DATA)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
 
@@ -450,7 +453,7 @@ Jan Kirenz
 </section>
 <section id="dataframe-anzeigen" class="slide level2">
 <h2>DataFrame anzeigen</h2>
-<div id="c93d1343" class="cell" data-execution_count="3">
+<div id="22e56d85" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
@@ -1146,7 +1149,7 @@ Jan Kirenz
 </section>
 <section id="datentypen-anzeigen" class="slide level2">
 <h2>Datentypen anzeigen</h2>
-<div id="d76dc643" class="cell" data-execution_count="4">
+<div id="6d8275c4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df.dtypes</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
@@ -1171,7 +1174,7 @@ dtype: object</code></pre>
 </section>
 <section id="info" class="slide level2">
 <h2>Info</h2>
-<div id="0b5ee7ff" class="cell" data-execution_count="5">
+<div id="97977133" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
@@ -1207,7 +1210,7 @@ memory usage: 4.3+ KB</code></pre>
 </section>
 <section id="spaltennamen" class="slide level2">
 <h2>Spaltennamen</h2>
-<div id="1666f7e5" class="cell" data-execution_count="6">
+<div id="3bb6cd2f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Spaltennamen umbenennen</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{</span>
 <span id="cb8-3"><a href="#cb8-3"></a>    <span class="st">"Zeitstempel"</span>: <span class="st">"zeit"</span>,</span>
@@ -1232,7 +1235,7 @@ memory usage: 4.3+ KB</code></pre>
 </section>
 <section id="info-1" class="slide level2">
 <h2>Info</h2>
-<div id="20760d6b" class="cell" data-execution_count="7">
+<div id="7322fd1d" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
@@ -1268,7 +1271,7 @@ memory usage: 4.3+ KB</code></pre>
 </section>
 <section id="liste-erstellen" class="slide level2">
 <h2>Liste erstellen</h2>
-<div id="7990473a" class="cell" data-execution_count="8">
+<div id="552aade7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Liste mit nominalen Variablen erstellen</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>list_nominal <span class="op">=</span> [<span class="st">"buch"</span>, <span class="st">"geschlecht"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1278,7 +1281,7 @@ memory usage: 4.3+ KB</code></pre>
 </section>
 <section id="variablen-anpassen" class="slide level2">
 <h2>Variablen anpassen</h2>
-<div id="22384477" class="cell" data-execution_count="9">
+<div id="aa14489e" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Nominale Variablen als kategorial formatieren (category)</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_nominal:</span>
 <span id="cb12-3"><a href="#cb12-3"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"category"</span>)</span>
@@ -1301,7 +1304,7 @@ memory usage: 456.0 bytes</code></pre>
 </section>
 <section id="variablen-anzeigen" class="slide level2">
 <h2>Variablen anzeigen</h2>
-<div id="0589b300" class="cell" data-execution_count="10">
+<div id="f6feb029" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df[list_nominal].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
@@ -1368,7 +1371,7 @@ memory usage: 456.0 bytes</code></pre>
 </section>
 <section id="dummy-variablen-erstellen" class="slide level2">
 <h2>Dummy Variablen erstellen</h2>
-<div id="f1f6f54d" class="cell" data-execution_count="11">
+<div id="bb54e557" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>dummy_nominal <span class="op">=</span> pd.get_dummies(</span>
 <span id="cb15-2"><a href="#cb15-2"></a>    df[list_nominal],  prefix_sep<span class="op">=</span><span class="st">'__'</span>).astype(<span class="st">'category'</span>)</span>
 <span id="cb15-3"><a href="#cb15-3"></a></span>
@@ -1677,7 +1680,7 @@ memory usage: 456.0 bytes</code></pre>
 </section>
 <section id="dummy-variablen-zu-daten-hinzufügen" class="slide level2">
 <h2>Dummy Variablen zu Daten hinzufügen</h2>
-<div id="fb2b8f36" class="cell" data-execution_count="12">
+<div id="2cdab823" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Dummy-Variablen hinzufügen</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>df <span class="op">=</span> df.join(dummy_nominal)</span>
 <span id="cb16-3"><a href="#cb16-3"></a></span>
@@ -1839,14 +1842,14 @@ memory usage: 456.0 bytes</code></pre>
 </section>
 <section id="liste-um-dummy-variablen-ergänzen" class="slide level2">
 <h2>Liste um Dummy Variablen ergänzen</h2>
-<div id="b294a2ee" class="cell" data-execution_count="13">
+<div id="d4102426" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Liste um die neuen Variablen erweitern</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>dummy_nominal_name <span class="op">=</span> dummy_nominal.columns.tolist()</span>
 <span id="cb17-3"><a href="#cb17-3"></a></span>
 <span id="cb17-4"><a href="#cb17-4"></a>list_nominal.extend(dummy_nominal_name)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div id="b03e6cd7" class="cell" data-execution_count="14">
+<div id="7ad37032" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>list_nominal</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="14">
@@ -1918,7 +1921,7 @@ memory usage: 456.0 bytes</code></pre>
 <ul>
 <li class="fragment">Da wir die Variable <code>entmutigen</code> nicht versehentlich durch Datentransformationen fehlerhaft verändern möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als <code>entmutigen_orig</code>).</li>
 </ul>
-<div id="ba05a7e8" class="cell" data-execution_count="15">
+<div id="80ab89ab" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df[<span class="st">'entmutigen_orig'</span>] <span class="op">=</span> df[<span class="st">'entmutigen'</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="15">
@@ -1930,7 +1933,7 @@ memory usage: 456.0 bytes</code></pre>
 <ul>
 <li class="fragment">Erzeugung der Listen für die Veränderung der Variable (in der korrekten Reihenfolge):</li>
 </ul>
-<div id="67e70cce" class="cell" data-execution_count="16">
+<div id="0c7642a2" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>werte <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb21-2"><a href="#cb21-2"></a></span>
 <span id="cb21-3"><a href="#cb21-3"></a>likert <span class="op">=</span> [<span class="st">"trifft überhaupt nicht zu"</span>,</span>
@@ -1945,7 +1948,7 @@ memory usage: 456.0 bytes</code></pre>
 </section>
 <section id="variable-anpassen" class="slide level2">
 <h2>Variable anpassen</h2>
-<div id="83440e6a" class="cell" data-execution_count="17">
+<div id="3c50e382" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df[<span class="st">'entmutigen'</span>].replace(werte, likert, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb22-2"><a href="#cb22-2"></a></span>
 <span id="cb22-3"><a href="#cb22-3"></a>df[<span class="st">'entmutigen'</span>].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1961,7 +1964,7 @@ Name: entmutigen, dtype: object</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="7dc8ba2d" class="cell" data-execution_count="18">
+<div id="7d57d033" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df[<span class="st">'entmutigen_orig'</span>].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="18">
@@ -1986,7 +1989,7 @@ Name: entmutigen_orig, dtype: int64</code></pre>
 <ul>
 <li class="fragment">Erstellung einer Liste:</li>
 </ul>
-<div id="604d5226" class="cell" data-execution_count="19">
+<div id="e4d0fb0c" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>list_ordinal <span class="op">=</span> [<span class="st">"sport"</span>, <span class="st">"fleissig"</span>, <span class="st">"talente"</span>, <span class="st">"entmutigen"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="19">
@@ -1995,7 +1998,7 @@ Name: entmutigen_orig, dtype: int64</code></pre>
 </section>
 <section id="verwendung-von-pandas-categoricaldtype" class="slide level2">
 <h2>Verwendung von pandas CategoricalDtype</h2>
-<div id="9c4e6daa" class="cell" data-execution_count="20">
+<div id="b7b751ab" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>cat_type <span class="op">=</span> CategoricalDtype(categories<span class="op">=</span>likert, ordered<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb27-2"><a href="#cb27-2"></a></span>
 <span id="cb27-3"><a href="#cb27-3"></a>cat_type</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2010,11 +2013,11 @@ Name: entmutigen_orig, dtype: int64</code></pre>
 </section>
 <section id="ordinale-variablen-anpassen" class="slide level2">
 <h2>Ordinale Variablen anpassen</h2>
-<div id="81387d6b" class="cell" data-execution_count="21">
+<div id="f80354df" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>df[list_ordinal] <span class="op">=</span> df[list_ordinal].astype(cat_type)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div id="f3c2f79c" class="cell" data-execution_count="22">
+<div id="3ea55e43" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>df[<span class="st">"sport"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="22">
@@ -2063,7 +2066,7 @@ Categories (5, object): ['trifft überhaupt nicht zu' &lt; 'trifft eher nicht zu
 </div>
 </div>
 <div class="fragment">
-<div id="033d0d27" class="cell" data-execution_count="23">
+<div id="c1ed2af6" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Anzeige der Ausprägungen</span></span>
 <span id="cb32-2"><a href="#cb32-2"></a>df[<span class="st">'sport'</span>].cat.categories</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2078,7 +2081,7 @@ Categories (5, object): ['trifft überhaupt nicht zu' &lt; 'trifft eher nicht zu
 </section>
 <section id="liste-der-kategorialen-variablen-erstellen" class="slide level2">
 <h2>Liste der kategorialen Variablen erstellen</h2>
-<div id="aeec550b" class="cell" data-execution_count="24">
+<div id="fb777eb4" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>list_cat <span class="op">=</span> list_nominal <span class="op">+</span> list_ordinal</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="24">
@@ -2105,7 +2108,7 @@ Categories (5, object): ['trifft überhaupt nicht zu' &lt; 'trifft eher nicht zu
 </section>
 <section id="liste-erstellen-2" class="slide level2">
 <h2>Liste erstellen</h2>
-<div id="d58cfc6c" class="cell" data-execution_count="25">
+<div id="a44f6c9e" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>list_num <span class="op">=</span> [<span class="st">'einkommen'</span>, <span class="st">'energie'</span>, <span class="st">'megacity'</span>, <span class="st">'geleebohnen'</span>,</span>
 <span id="cb35-2"><a href="#cb35-2"></a>            <span class="st">'soziale_medien'</span>, <span class="st">'studium'</span>, <span class="st">'alter'</span>]</span>
 <span id="cb35-3"><a href="#cb35-3"></a></span>
@@ -2139,7 +2142,7 @@ memory usage: 2.2+ KB</code></pre>
 </section>
 <section id="untersuchung-von-problemen" class="slide level2">
 <h2>Untersuchung von Problemen</h2>
-<div id="675eb46d" class="cell" data-execution_count="26">
+<div id="2e1ad664" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>df[<span class="st">'energie'</span>].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="26">
@@ -2163,7 +2166,7 @@ Name: energie, dtype: object</code></pre>
 <li class="fragment"><p>Da wir die Variable nicht versehentlich durch Datentransformationen korrumpieren möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als <code>energie_orig</code>).</p></li>
 <li class="fragment"><p>Um die numerischen Werte leichter extrahieren zu können, nutzen wir das Format “String”.</p></li>
 </ul>
-<div id="4d6a0de8" class="cell" data-execution_count="27">
+<div id="eda70adb" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>df[<span class="st">'energie_orig'</span>] <span class="op">=</span> df[<span class="st">'energie'</span>].astype(<span class="st">"string"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="27">
@@ -2233,12 +2236,12 @@ Name: energie, dtype: object</code></pre>
 <section id="anpassung-der-variable-1" class="slide level2">
 <h2>Anpassung der Variable</h2>
 <div class="fragment">
-<div id="643571a8" class="cell" data-execution_count="28">
+<div id="e9e85726" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>df[<span class="st">'energie'</span>] <span class="op">=</span> df[<span class="st">'energie_orig'</span>].<span class="bu">str</span>.extract(<span class="st">'(\d+)'</span>).astype(<span class="bu">int</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div id="6ae383fd" class="cell" data-execution_count="29">
+<div id="a1ef38d8" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>df[[<span class="st">'energie_orig'</span>, <span class="st">'energie'</span>]].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="29">
@@ -2319,7 +2322,7 @@ Name: energie, dtype: object</code></pre>
 <li class="fragment"><p>Dafür kopieren wir die Daten und fügen diesen die Endung “qm” (für quasimetrisch) hinzu.</p></li>
 </ul>
 <div class="fragment">
-<div id="1b5fae5c" class="cell" data-execution_count="30">
+<div id="66ccf422" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_ordinal:</span>
 <span id="cb42-2"><a href="#cb42-2"></a>    df[i <span class="op">+</span> <span class="st">"_qm"</span>] <span class="op">=</span> df[i]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2327,7 +2330,7 @@ Name: energie, dtype: object</code></pre>
 </section>
 <section id="liste-erzeugen" class="slide level2">
 <h2>Liste erzeugen</h2>
-<div id="3f0961f0" class="cell" data-execution_count="31">
+<div id="ade35e49" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Erstellung der Liste mit Hilfe von filter und regular expressions</span></span>
 <span id="cb43-2"><a href="#cb43-2"></a>list_qm <span class="op">=</span> df.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">'_qm'</span>).columns.to_list()</span>
 <span id="cb43-3"><a href="#cb43-3"></a>list_qm</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2340,7 +2343,7 @@ Name: energie, dtype: object</code></pre>
 </section>
 <section id="info-2" class="slide level2">
 <h2>Info</h2>
-<div id="b342c558" class="cell" data-execution_count="32">
+<div id="a405d3eb" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>df[list_qm].info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="32">
@@ -2365,7 +2368,7 @@ memory usage: 1.1 KB</code></pre>
 <li class="fragment">Wir nutzen nun ein ähnliches Vorgehen wie bei der Anpassung der Variable “entmutigen”</li>
 </ul>
 <div class="fragment">
-<div id="85df8d8a" class="cell" data-execution_count="33">
+<div id="eb7e54e8" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_qm:</span>
 <span id="cb47-2"><a href="#cb47-2"></a>    df[i].replace(likert, werte, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb47-3"><a href="#cb47-3"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"int"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2377,7 +2380,7 @@ memory usage: 1.1 KB</code></pre>
 </section>
 <section id="daten-anzeigen" class="slide level2">
 <h2>Daten anzeigen</h2>
-<div id="ceb7e842" class="cell" data-execution_count="34">
+<div id="d2ac04c7" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>df[list_qm].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="34">
@@ -2450,7 +2453,7 @@ memory usage: 1.1 KB</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="459ca6b8" class="cell" data-execution_count="35">
+<div id="97d2d6e0" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>df[list_qm].info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="35">
@@ -2472,7 +2475,7 @@ memory usage: 1.3 KB</code></pre>
 </section>
 <section id="liste-für-metrische-variablen" class="slide level2">
 <h2>Liste für metrische Variablen</h2>
-<div id="7a4ae0d2" class="cell" data-execution_count="36">
+<div id="a0edf151" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>list_metric <span class="op">=</span> list_num <span class="op">+</span> list_qm</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="36">
@@ -2487,7 +2490,7 @@ memory usage: 1.3 KB</code></pre>
 <section id="daten-als-csv-speichern" class="slide level2">
 <h2>Daten als CSV speichern</h2>
 <p>Speichern als CSV:</p>
-<div id="37bc2efd" class="cell" data-execution_count="37">
+<div id="d55c5477" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
 <span id="cb52-2"><a href="#cb52-2"></a>FILE <span class="op">=</span> <span class="st">"clean_ws22"</span></span>
 <span id="cb52-3"><a href="#cb52-3"></a>FORMAT_CSV <span class="op">=</span> <span class="st">".csv"</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2495,7 +2498,7 @@ memory usage: 1.3 KB</code></pre>
 <div class="cell fragment" data-execution_count="37">
 
 </div>
-<div id="32965309" class="cell" data-execution_count="38">
+<div id="b087331b" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>df.to_csv(PATH <span class="op">+</span> FILE <span class="op">+</span> FORMAT_CSV, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="38">
@@ -2505,7 +2508,7 @@ memory usage: 1.3 KB</code></pre>
 <section id="daten-als-excel-speichern" class="slide level2">
 <h2>Daten als Excel speichern</h2>
 <p>Speichern als Excel-Datei:</p>
-<div id="9ab3bbd8" class="cell" data-execution_count="39">
+<div id="e30ac898" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>FORMAT_EXCEL <span class="op">=</span> <span class="st">".xlsx"</span></span>
 <span id="cb54-2"><a href="#cb54-2"></a></span>
 <span id="cb54-3"><a href="#cb54-3"></a>df.to_excel(PATH <span class="op">+</span> FILE <span class="op">+</span> FORMAT_EXCEL, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
