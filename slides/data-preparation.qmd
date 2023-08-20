@@ -46,8 +46,10 @@ from pandas.api.types import CategoricalDtype
 
 ```{python}
 # | output-location: fragment
+PATH = "../data/"
+DATA = "raw_mr_ss23.csv"
 
-df = pd.read_csv("../data/raw_mr_ss23.csv")
+df = pd.read_csv(PATH + DATA)
 ```
 
 ## DataFrame anzeigen
