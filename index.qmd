@@ -4,7 +4,7 @@ title: "Welcome 👋"
 
 *Lab "Survey" (📁 survey)* 
 
-In this lab you will learn how to prepare and analyze data from a Google Forms survey.
+In this lab you will learn how to prepare and analyze data from a *Google Forms* survey.
 
 ::: {.callout-important}
 Make sure you meet all the [requirements](/requirements.qmd) and have read the lecture [slides](/slide.qmd) before you start with the [assignments](/assignments.qmd) 
@@ -12,5 +12,6 @@ Make sure you meet all the [requirements](/requirements.qmd) and have read the l
 
 What you will learn in this lab:
 
-1. How to prepare data
-2. How to analyze
+1. How to use Google Forms to create a survey
+2. Data preparation for different data types using pandas
+3. Data analysis with pandas
