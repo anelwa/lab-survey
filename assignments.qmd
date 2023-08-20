@@ -11,7 +11,7 @@ title: "Assignments"
 - Create two new folders in your local folder "survey": "data" and "code"
 - Download the survey response data and save it in "data": [raw_data.csv](https://raw.githubusercontent.com/kirenz/lab-survey/main/data/raw_data.csv)
 - Download the Jupyter Notebook and save it in the folder "code": 
-- [Jupyter Notebook Data preparation (🇩🇪)](/code/data_preparation.ipynb)
+  - [Jupyter Notebook Data preparation (🇩🇪)](/code/data_preparation.ipynb)
 
 Important:
 
@@ -22,5 +22,5 @@ Important:
 ## Data analysis
 
 - Use your prepared data (*clean_data.csv*) and not the example data (*clean_mr_ss23.csv*)
-
-- [Jupyter Notebook Data analysis (🇩🇪)](/code/data_analysis.ipynb)
+- Download the Jupyter Notebook and save it in the folder "code": 
+  - [Jupyter Notebook Data analysis (🇩🇪)](/code/data_analysis.ipynb)
