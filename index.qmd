@@ -4,6 +4,8 @@ title: "Welcome 👋"
 
 *Lab "Survey" (📁 survey)* 
 
+![](/images/logo.png){width="60%"}
+
 In this lab you will learn how to prepare and analyze data from a *Google Forms* survey.
 
 ::: {.callout-important}
