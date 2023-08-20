@@ -2,7 +2,7 @@
 title: "Welcome 👋"
 ---
 
-*Lab "Survey" (📁 survey)* 
+Welcome to the lab *"survey"*!
 
 ![](/images/logo.png){width="60%"}
 
