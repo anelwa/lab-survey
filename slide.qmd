@@ -1,33 +1,44 @@
 ---
 title: "Slides"
+number-sections: true
 ---
 
 
 ::: {.callout-note appearance="simple"}
-Take a look at the [slides tutorial](https://kirenz.github.io/lab-toolkit/slides/slides.html#/title-slide) to learn how to use all slide options 
+Take a look at the [slides tutorial](https://kirenz.github.io/lab-toolkit/slides/slides.html#/title-slide) to learn how to use all slide options. 
 
+To download Jupyter Notebooks: Go to the Colab menu and choose "File" > "Download" > "Download .ipynb"
 :::
 
-## Google Forms
+
+# Google Forms
 
 [Google Forms](https://www.google.com/forms/about/) is a survey administration software included as part of the free, web-based Google Docs Editors suite offered by Google. Google Forms is only available as a web application. 
 
 The app allows us to create and edit surveys online while collaborating with other users in real-time. We use this service in our course.
 
-## Data preparation
+# Data preparation
 
 Learn how to prepare data which was downloaded from a Google Forms survey (as CSV):
 
-- [🖥️ Data preparation (🇩🇪)](/slides/data-preparation.qmd)
+
+::: {.callout-tip appearance="simple" icon=false}
+- [🖥️ Presentation (🇩🇪)](/slides/data-preparation.qmd)
+- [💻 Jupyter Notebook](https://colab.research.google.com/github/kirenz/lab-survey/blob/main/code/data-preparation.ipynb)
+:::
 
 
 
-## Data Analysis
+# Data Analysis
 
 Analyse the survey responses using your prepared data:
 
-- [🖥️ Data analysis (🇩🇪)](/slides/data-analysis.qmd)
+::: {.callout-tip appearance="simple" icon=false}
+- [🖥️ Presentation (🇩🇪)](/slides/data-analysis.qmd)
+- [💻 Jupyter Notebook](https://colab.research.google.com/github/kirenz/lab-survey/blob/main/code/data-analysis.ipynb)
+:::
 
 
----
+
+
 
