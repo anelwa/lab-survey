@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/kirenz/lab-survey/assignments.html</loc>
-    <lastmod>2023-09-19T14:54:20.862Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/kirenz/lab-survey/code/data_preparation.html</loc>
-    <lastmod>2023-09-19T14:54:20.154Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/kirenz/lab-survey/code/data_analysis.html</loc>
-    <lastmod>2023-09-19T14:54:18.750Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/kirenz/lab-survey/slides/data-preparation.html</loc>
-    <lastmod>2023-09-19T14:54:14.010Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/kirenz/lab-survey/requirements.html</loc>
-    <lastmod>2023-09-19T14:54:09.258Z</lastmod>
+    <lastmod>2023-10-26T07:18:02.377Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-survey/index.html</loc>
-    <lastmod>2023-09-19T14:54:08.558Z</lastmod>
+    <lastmod>2023-10-26T07:18:01.249Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/kirenz/lab-survey/slide.html</loc>
-    <lastmod>2023-09-19T14:54:09.878Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/kirenz/lab-survey/slides/data-analysis.html</loc>
-    <lastmod>2023-09-19T14:54:17.978Z</lastmod>
+    <loc>https://github.com/kirenz/lab-survey/slides/data-preparation.html</loc>
+    <lastmod>2023-10-26T07:17:59.941Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-survey/code/data-preparation.html</loc>
-    <lastmod>2023-09-19T14:54:19.446Z</lastmod>
+    <lastmod>2023-10-26T07:17:48.268Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/kirenz/lab-survey/code/data_preparation.html</loc>
+    <lastmod>2023-10-26T07:17:46.984Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/kirenz/lab-survey/code/data_analysis.html</loc>
+    <lastmod>2023-10-26T07:17:45.696Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-survey/code/data-analysis.html</loc>
-    <lastmod>2023-09-19T14:54:20.502Z</lastmod>
+    <lastmod>2023-10-26T07:17:47.444Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/kirenz/lab-survey/slides/data-analysis.html</loc>
+    <lastmod>2023-10-26T07:17:55.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/kirenz/lab-survey/requirements.html</loc>
+    <lastmod>2023-10-26T07:18:00.817Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/kirenz/lab-survey/slide.html</loc>
+    <lastmod>2023-10-26T07:18:01.917Z</lastmod>
   </url>
 </urlset>
