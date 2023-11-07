@@ -249,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="daten-importieren">Daten importieren</h2>
 <div class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>DATA <span class="op">=</span> <span class="st">"raw_mr_ss23.csv"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>DATA <span class="op">=</span> <span class="st">"raw_mr_ws2324.csv"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(PATH <span class="op">+</span> DATA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -514,7 +514,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="erkenntnisse">Erkenntnisse</h2>
 <ul>
 <li><p>Wir können mit <code>df.info()</code> erkennen, dass abgesehen von <code>energie</code> bereits alle Variablen korrrekt als “int64” vorliegen</p></li>
-<li><p>Siehe zur Bedeutung von <code>int64</code> diesen <a href="https://stackoverflow.com/questions/9696660/what-is-the-difference-between-int-int16-int32-and-int64">Stackoverflow-Beitrag</a>)</p></li>
+<li><p>Siehe zur Bedeutung von <code>Int64</code> diesen <a href="https://stackoverflow.com/questions/9696660/what-is-the-difference-between-int-int16-int32-and-int64">Stackoverflow-Beitrag</a>)</p></li>
 </ul>
 </section>
 <section id="untersuchung-von-problemen" class="level2">
@@ -675,7 +675,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Speichern als CSV:</p>
 <div class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>FILE <span class="op">=</span> <span class="st">"clean_ws22"</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>FILE <span class="op">=</span> <span class="st">"clean_ws2324"</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>FORMAT_CSV <span class="op">=</span> <span class="st">".csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-output-location="fragment">
