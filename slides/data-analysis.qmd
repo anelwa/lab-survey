@@ -46,7 +46,7 @@ import pandas as pd
 ```{python}
 # | output-location: fragment
 PATH = "../data/"
-DATA = "clean_mr_ss23.csv"
+DATA = "clean_ws2324.csv"
 
 df = pd.read_csv(PATH + DATA)
 
