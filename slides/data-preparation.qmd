@@ -48,7 +48,7 @@ from pandas.api.types import CategoricalDtype
 ```{python}
 # | output-location: fragment
 PATH = "../data/"
-DATA = "raw_mr_ss23.csv"
+DATA = "raw_mr_ws2324.csv"
 
 df = pd.read_csv(PATH + DATA)
 ```
@@ -349,7 +349,7 @@ df[list_num].info()
 
 - Wir können mit `df.info()` erkennen, dass abgesehen von `energie` bereits alle Variablen korrrekt als "int64" vorliegen
 
-- Siehe zur Bedeutung von `int64` diesen [Stackoverflow-Beitrag](https://stackoverflow.com/questions/9696660/what-is-the-difference-between-int-int16-int32-and-int64)) 
+- Siehe zur Bedeutung von `Int64` diesen [Stackoverflow-Beitrag](https://stackoverflow.com/questions/9696660/what-is-the-difference-between-int-int16-int32-and-int64)) 
 
 
 ## Untersuchung von Problemen
@@ -494,7 +494,7 @@ Speichern als CSV:
 ```{python}
 # | output-location: fragment
 PATH = "../data/"
-FILE = "clean_ws22"
+FILE = "clean_ws2324"
 FORMAT_CSV = ".csv"
 ```
 
