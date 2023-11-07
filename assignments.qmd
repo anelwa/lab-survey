@@ -8,22 +8,15 @@ title: "Assignments"
 
 ## Data preparation
 
-- Create two new folders in your local folder "survey": "data" and "code"
-- Download the survey response data and save it in "data": [raw_data.csv](https://raw.githubusercontent.com/kirenz/lab-survey/main/data/raw_data.csv)
-- Download the Jupyter Notebook and save it in the folder "code": 
-  - [Jupyter Notebook Data preparation (🇩🇪)](/code/data_preparation.ipynb)
+- Create a folder called "lab-survey".
+- In this folder, create two new subfolders: "data" and "code"
+- Download the raw survey response data of your semester (e.g. raw_mr_ws2324.csv) and save it in your "data" folder: [Data](https://github.com/kirenz/lab-survey/tree/main/data)
+- Download the Jupyter Notebook and save it in the folder "code": [Jupyter Notebook Data preparation (🇩🇪)](/code/data_preparation.ipynb)
 - Prepare your data
-
-
-Important:
-
-- Use *raw_data.csv* instead of the example data *raw_mr_ss23.csv*. This means you have to change to code where you import the file.
-- Also change the name of the CSV-file when you save the data (call it *clean_data.csv*)
 
 
 ## Data analysis
 
-- Use your prepared data (*clean_data.csv*) and not the example data (*clean_mr_ss23.csv*)
-- Download the Jupyter Notebook and save it in the folder "code": 
-  - [Jupyter Notebook Data analysis (🇩🇪)](/code/data_analysis.ipynb)
-- Analyze your data
+- Download the Jupyter Notebook and save it in the folder "code": [Jupyter Notebook Data analysis (🇩🇪)](/code/data_analysis.ipynb)
+- Analyze the data you have prepared
+- Use Altair to create data visualizations 
