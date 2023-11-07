@@ -18,14 +18,14 @@
     "href": "assignments.html#data-preparation",
     "title": "Assignments",
     "section": "Data preparation",
-    "text": "Data preparation\n\nCreate two new folders in your local folder “survey”: “data” and “code”\nDownload the survey response data and save it in “data”: raw_data.csv\nDownload the Jupyter Notebook and save it in the folder “code”:\n\nJupyter Notebook Data preparation (🇩🇪)\n\nPrepare your data\n\nImportant:\n\nUse raw_data.csv instead of the example data raw_mr_ss23.csv. This means you have to change to code where you import the file.\nAlso change the name of the CSV-file when you save the data (call it clean_data.csv)"
+    "text": "Data preparation\n\nCreate a folder called “lab-survey”.\nIn this folder, create two new subfolders: “data” and “code”\nDownload the raw survey response data of your semester (e.g. raw_mr_ws2324.csv) and save it in your “data” folder: Data\nDownload the Jupyter Notebook and save it in the folder “code”: Jupyter Notebook Data preparation (🇩🇪)\nPrepare your data"
   },
   {
     "objectID": "assignments.html#data-analysis",
     "href": "assignments.html#data-analysis",
     "title": "Assignments",
     "section": "Data analysis",
-    "text": "Data analysis\n\nUse your prepared data (clean_data.csv) and not the example data (clean_mr_ss23.csv)\nDownload the Jupyter Notebook and save it in the folder “code”:\n\nJupyter Notebook Data analysis (🇩🇪)\n\nAnalyze your data"
+    "text": "Data analysis\n\nDownload the Jupyter Notebook and save it in the folder “code”: Jupyter Notebook Data analysis (🇩🇪)\nAnalyze the data you have prepared\nUse Altair to create data visualizations"
   },
   {
     "objectID": "slides/data-preparation.html#daten-importieren",
