@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kirenz.github.io/lab-survey/assignments.html</loc>
-    <lastmod>2024-05-12T13:24:32.396Z</lastmod>
+    <lastmod>2024-05-12T17:25:35.677Z</lastmod>
   </url>
   <url>
     <loc>https://kirenz.github.io/lab-survey/slides/data-preparation.html</loc>
-    <lastmod>2024-05-12T13:24:32.404Z</lastmod>
+    <lastmod>2024-05-12T17:25:35.685Z</lastmod>
   </url>
   <url>
-    <loc>https://kirenz.github.io/lab-survey/code/data_analysis.html</loc>
-    <lastmod>2024-05-12T13:24:32.396Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kirenz.github.io/lab-survey/code/data-preparation.html</loc>
-    <lastmod>2024-05-12T13:24:32.396Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kirenz.github.io/lab-survey/requirements.html</loc>
-    <lastmod>2024-05-12T13:24:32.400Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kirenz.github.io/lab-survey/slide.html</loc>
-    <lastmod>2024-05-12T13:24:32.404Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kirenz.github.io/lab-survey/code/data_preparation.html</loc>
-    <lastmod>2024-05-12T13:24:32.396Z</lastmod>
+    <loc>https://kirenz.github.io/lab-survey/code/data-preparation-chatgpt.html</loc>
+    <lastmod>2024-05-12T17:25:35.681Z</lastmod>
   </url>
   <url>
     <loc>https://kirenz.github.io/lab-survey/code/data-analysis.html</loc>
-    <lastmod>2024-05-12T13:24:32.396Z</lastmod>
+    <lastmod>2024-05-12T17:25:35.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kirenz.github.io/lab-survey/code/data_preparation.html</loc>
+    <lastmod>2024-05-12T17:25:35.681Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kirenz.github.io/lab-survey/slide.html</loc>
+    <lastmod>2024-05-12T17:25:35.685Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kirenz.github.io/lab-survey/requirements.html</loc>
+    <lastmod>2024-05-12T17:25:35.685Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kirenz.github.io/lab-survey/code/data-preparation.html</loc>
+    <lastmod>2024-05-12T17:25:35.681Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kirenz.github.io/lab-survey/code/data_analysis.html</loc>
+    <lastmod>2024-05-12T17:25:35.681Z</lastmod>
   </url>
   <url>
     <loc>https://kirenz.github.io/lab-survey/index.html</loc>
-    <lastmod>2024-05-12T13:24:32.400Z</lastmod>
+    <lastmod>2024-05-12T17:25:35.681Z</lastmod>
   </url>
   <url>
     <loc>https://kirenz.github.io/lab-survey/slides/data-analysis.html</loc>
-    <lastmod>2024-05-12T13:24:32.404Z</lastmod>
+    <lastmod>2024-05-12T17:25:35.685Z</lastmod>
   </url>
 </urlset>

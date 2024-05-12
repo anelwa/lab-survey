@@ -315,74 +315,389 @@
     "text": "Daten als Excel speichern\nSpeichern als Excel-Datei:\n\n#FORMAT_EXCEL = \".xlsx\"\n\n#df.to_excel(PATH + FILE + FORMAT_EXCEL, index=False)\n\n\n\n\n\n\n\nJan Kirenz"
   },
   {
-    "objectID": "code/data_analysis.html#daten-importieren",
-    "href": "code/data_analysis.html#daten-importieren",
-    "title": "Umfragedaten analysieren",
-    "section": "Daten importieren",
-    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"clean_ss24.csv\"\n\ndf = pd.read_csv(PATH + DATA)\n\ndf.head()"
+    "objectID": "code/data-preparation-chatgpt.html",
+    "href": "code/data-preparation-chatgpt.html",
+    "title": "ChatGPT",
+    "section": "",
+    "text": "import pandas as pd\nimport altair as alt\n\n# Step 1: Load the data and rename columns\ndata = pd.read_csv('../data/raw_mr_ss24.csv')\ndata.columns = ['Timestamp', 'Sportlich', 'Fleißig', 'Rückschläge', 'Fähigkeiten', 'Weltbevölkerung_1990', \n                'Energieverbrauch', 'Megacitys', 'Geleebohnen', 'Soziale_Medien', 'Studium', 'Buch', 'Alter', 'Geschlecht']\n\n# Step 2: Remove duplicates\ndata = data.drop_duplicates()\n\n# Step 3: Clean the data\n# Convert all columns to string before cleaning\ndata = data.applymap(str)\n\n# Cleaning specific columns\ndata['Weltbevölkerung_1990'] = data['Weltbevölkerung_1990'].str.replace('ca. ', '').str.replace('%', '')\ndata['Energieverbrauch'] = data['Energieverbrauch'].str.replace('ca. ', '').str.replace('%', '')\ndata['Soziale_Medien'] = data['Soziale_Medien'].str.replace(' ', '').str.replace('ca.', '')\ndata['Studium'] = data['Studium'].str.replace(' ', '')\ndata['Geschlecht'] = data['Geschlecht'].str.capitalize()\n\n# Step 4: Convert columns to appropriate data formats\ndata['Timestamp'] = pd.to_datetime(data['Timestamp'])\ndata['Weltbevölkerung_1990'] = pd.to_numeric(data['Weltbevölkerung_1990'])\ndata['Energieverbrauch'] = pd.to_numeric(data['Energieverbrauch'])\ndata['Soziale_Medien'] = pd.to_numeric(data['Soziale_Medien'])\ndata['Studium'] = pd.to_numeric(data['Studium'])\ndata['Alter'] = pd.to_numeric(data['Alter'])\n\n# Step 5: Create lists of categorical and numerical columns\ncategorical_cols = ['Sportlich', 'Fleißig', 'Rückschläge', 'Fähigkeiten', 'Buch', 'Geschlecht']\nnumerical_cols = ['Weltbevölkerung_1990', 'Energieverbrauch', 'Megacitys', 'Geleebohnen', 'Soziale_Medien', 'Studium', 'Alter']\n\n# Step 6: Save the cleaned data\ndata.to_csv('../data/clean_data_chatgpt.csv', index=False)\n\n# Step 7: Analyze the data\n# Descriptive statistics for numerical columns\nprint(data[numerical_cols].describe())\n\n# Correlation matrix for numerical columns\ncorrelation_matrix = data[numerical_cols].corr()\n\n# Altair plot for correlation matrix\nheatmap = alt.Chart(correlation_matrix.reset_index().melt(id_vars='index')).mark_rect().encode(\n    x='index:O',\n    y='variable:O',\n    color=alt.Color('value:Q', scale=alt.Scale(scheme='viridis'))\n).properties(\n    title='Correlation Matrix of Numerical Variables'\n)\n\n# Display the Altair plot\nheatmap.display()\n\n       Weltbevölkerung_1990  Energieverbrauch  Soziale_Medien     Studium  \\\ncount             31.000000         31.000000       31.000000   31.000000   \nmean              51.806452         70.387097      171.129032   76.741935   \nstd               18.140965         11.283254      190.496149   54.696720   \nmin                9.000000         42.000000        3.000000    2.000000   \n25%               38.500000         62.000000       90.000000   30.000000   \n50%               60.000000         62.000000      120.000000   90.000000   \n75%               65.000000         82.000000      213.500000  110.000000   \nmax               80.000000         82.000000     1000.000000  240.000000   \n\n           Alter  \ncount  31.000000  \nmean   21.548387  \nstd     2.126636  \nmin    19.000000  \n25%    20.000000  \n50%    21.000000  \n75%    22.000000  \nmax    27.000000  \n\n\n/var/folders/xv/mfzfdtz93_n7615m5ks0tm2m0000gn/T/ipykernel_42768/4209135326.py:14: FutureWarning: DataFrame.applymap has been deprecated. Use DataFrame.map instead.\n  data = data.applymap(str)\n/var/folders/xv/mfzfdtz93_n7615m5ks0tm2m0000gn/T/ipykernel_42768/4209135326.py:24: FutureWarning: Parsed string \"2024/04/16 10:49:54 AM OEZ\" included an un-recognized timezone \"OEZ\". Dropping unrecognized timezones is deprecated; in a future version this will raise. Instead pass the string without the timezone, then use .tz_localize to convert to a recognized timezone.\n  data['Timestamp'] = pd.to_datetime(data['Timestamp'])"
   },
   {
-    "objectID": "code/data_analysis.html#variablen-liste-für-bereinigung",
-    "href": "code/data_analysis.html#variablen-liste-für-bereinigung",
-    "title": "Umfragedaten analysieren",
+    "objectID": "code/data-analysis.html",
+    "href": "code/data-analysis.html",
+    "title": "Setup",
+    "section": "",
+    "text": "import numpy as np\nimport pandas as pd"
+  },
+  {
+    "objectID": "code/data-analysis.html#daten-importieren",
+    "href": "code/data-analysis.html#daten-importieren",
+    "title": "Setup",
+    "section": "Daten importieren",
+    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"raw_mr_ss24.csv\"\n\ndf = pd.read_csv(PATH + DATA)\n\ndf.head()"
+  },
+  {
+    "objectID": "code/data-analysis.html#variablen-liste-für-bereinigung",
+    "href": "code/data-analysis.html#variablen-liste-für-bereinigung",
+    "title": "Setup",
     "section": "Variablen-Liste für Bereinigung",
     "text": "Variablen-Liste für Bereinigung\n\n# Liste mit den noch enthaltenen Original-Spalten erstellen\nlist_drop = df.filter(like='_orig', axis=1).columns.tolist()\n\nlist_drop\n\n\nlist_drop.append('zeit')\n\nlist_drop"
   },
   {
-    "objectID": "code/data_analysis.html#variablen-löschen",
-    "href": "code/data_analysis.html#variablen-löschen",
-    "title": "Umfragedaten analysieren",
+    "objectID": "code/data-analysis.html#variablen-löschen",
+    "href": "code/data-analysis.html#variablen-löschen",
+    "title": "Setup",
     "section": "Variablen löschen",
     "text": "Variablen löschen\n\n# Wir entfernen die Original-Spalten und die Variable zeit\ndf = df.drop(columns=list_drop)\n\ndf.head()"
   },
   {
-    "objectID": "code/data_analysis.html#liste-mit-dummy-variablen",
-    "href": "code/data_analysis.html#liste-mit-dummy-variablen",
-    "title": "Umfragedaten analysieren",
+    "objectID": "code/data-analysis.html#liste-mit-dummy-variablen",
+    "href": "code/data-analysis.html#liste-mit-dummy-variablen",
+    "title": "Setup",
     "section": "Liste mit Dummy-Variablen",
     "text": "Liste mit Dummy-Variablen\n\n# Liste mit Dummy-Variablen erstellen\nlist_dummy = df.filter(like='__', axis=1).columns\n\nlist_dummy"
   },
   {
-    "objectID": "code/data_analysis.html#dummy-variablen-anpassen",
-    "href": "code/data_analysis.html#dummy-variablen-anpassen",
-    "title": "Umfragedaten analysieren",
+    "objectID": "code/data-analysis.html#dummy-variablen-anpassen",
+    "href": "code/data-analysis.html#dummy-variablen-anpassen",
+    "title": "Setup",
     "section": "Dummy-Variablen anpassen",
     "text": "Dummy-Variablen anpassen\n\n# Dummy-Variablen als Objekt-Daten speichern\nfor i in list_dummy:\n    df[i] = df[i].astype(\"object\")"
   },
   {
-    "objectID": "code/data_analysis.html#liste-mit-numerischen-variablen",
-    "href": "code/data_analysis.html#liste-mit-numerischen-variablen",
-    "title": "Umfragedaten analysieren",
+    "objectID": "code/data-analysis.html#liste-mit-numerischen-variablen",
+    "href": "code/data-analysis.html#liste-mit-numerischen-variablen",
+    "title": "Setup",
     "section": "Liste mit numerischen Variablen",
     "text": "Liste mit numerischen Variablen\n\n# Liste für metrische Daten\nlist_metric = df.select_dtypes(include=[np.number]).columns.tolist()\n\nlist_metric"
   },
   {
-    "objectID": "code/data_analysis.html#liste-mit-kategorialen-variablen",
-    "href": "code/data_analysis.html#liste-mit-kategorialen-variablen",
-    "title": "Umfragedaten analysieren",
+    "objectID": "code/data-analysis.html#liste-mit-kategorialen-variablen",
+    "href": "code/data-analysis.html#liste-mit-kategorialen-variablen",
+    "title": "Setup",
     "section": "Liste mit kategorialen Variablen",
     "text": "Liste mit kategorialen Variablen\n\n# Liste für kategoriale Daten\nlist_cat = df.select_dtypes(include=['object']).columns.tolist()\n\nlist_cat"
   },
   {
-    "objectID": "code/data_analysis.html#kategoriale-variablen-anpassen",
-    "href": "code/data_analysis.html#kategoriale-variablen-anpassen",
-    "title": "Umfragedaten analysieren",
+    "objectID": "code/data-analysis.html#kategoriale-variablen-anpassen",
+    "href": "code/data-analysis.html#kategoriale-variablen-anpassen",
+    "title": "Setup",
     "section": "Kategoriale Variablen anpassen",
     "text": "Kategoriale Variablen anpassen\n\n# Kategoriale Daten formatieren\nfor i in list_cat:\n    df[i] = df[i].astype(\"category\")\n\ndf.info()"
   },
   {
-    "objectID": "code/data_analysis.html#datenüberblick",
-    "href": "code/data_analysis.html#datenüberblick",
-    "title": "Umfragedaten analysieren",
+    "objectID": "code/data-analysis.html#datenüberblick",
+    "href": "code/data-analysis.html#datenüberblick",
+    "title": "Setup",
     "section": "Datenüberblick",
     "text": "Datenüberblick\n\ndf\n\n\ndf.info()"
   },
   {
-    "objectID": "code/data_analysis.html#statistische-daten-für-kategoriale-variablen",
-    "href": "code/data_analysis.html#statistische-daten-für-kategoriale-variablen",
-    "title": "Umfragedaten analysieren",
+    "objectID": "code/data-analysis.html#statistische-daten-für-kategoriale-variablen",
+    "href": "code/data-analysis.html#statistische-daten-für-kategoriale-variablen",
+    "title": "Setup",
     "section": "Statistische Daten für kategoriale Variablen",
-    "text": "Statistische Daten für kategoriale Variablen\n\ndf[list_cat].describe().T\n\n\nfor i in list_cat:\n    print(\"-\"*30)\n    print(i, \"\\n\", df[i].value_counts())\n\n\ndf[list_metric].describe().round(2).T"
+    "text": "Statistische Daten für kategoriale Variablen\n\ndf[list_cat].describe().T"
+  },
+  {
+    "objectID": "code/data-analysis.html#anzahl-der-ausprägungen",
+    "href": "code/data-analysis.html#anzahl-der-ausprägungen",
+    "title": "Setup",
+    "section": "Anzahl der Ausprägungen",
+    "text": "Anzahl der Ausprägungen\n\nfor i in list_cat:\n    print(\"-\"*30)\n    print(i, \"\\n\", df[i].value_counts())\n\n\ndf[list_metric].describe().round(2).T"
+  },
+  {
+    "objectID": "code/data_preparation.html",
+    "href": "code/data_preparation.html",
+    "title": "Setup",
+    "section": "",
+    "text": "import numpy as np\nimport pandas as pd\nfrom pandas.api.types import CategoricalDtype"
+  },
+  {
+    "objectID": "code/data_preparation.html#daten-importieren",
+    "href": "code/data_preparation.html#daten-importieren",
+    "title": "Setup",
+    "section": "Daten importieren",
+    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"raw_mr_ss24.csv\"\n\ndf = pd.read_csv(PATH + DATA)"
+  },
+  {
+    "objectID": "code/data_preparation.html#dataframe-anzeigen",
+    "href": "code/data_preparation.html#dataframe-anzeigen",
+    "title": "Setup",
+    "section": "DataFrame anzeigen",
+    "text": "DataFrame anzeigen\n\ndf"
+  },
+  {
+    "objectID": "code/data_preparation.html#datentypen-anzeigen",
+    "href": "code/data_preparation.html#datentypen-anzeigen",
+    "title": "Setup",
+    "section": "Datentypen anzeigen",
+    "text": "Datentypen anzeigen\n\ndf.dtypes"
+  },
+  {
+    "objectID": "code/data_preparation.html#info",
+    "href": "code/data_preparation.html#info",
+    "title": "Setup",
+    "section": "Info",
+    "text": "Info\n\ndf.info()"
+  },
+  {
+    "objectID": "code/data_preparation.html#spaltennamen",
+    "href": "code/data_preparation.html#spaltennamen",
+    "title": "Setup",
+    "section": "Spaltennamen",
+    "text": "Spaltennamen\n\n# Spaltennamen umbenennen\ndf = df.rename(columns={\n    \"Zeitstempel\": \"zeit\",\n    \"Ich bin sportlich\": \"sport\",\n    \"Ich bin fleißig.\": \"fleissig\",\n    \"Von Rückschlägen lasse ich mich nicht entmutigen.\": \"entmutigen\",\n    \"Meine Fähigkeiten und Talente sind vorgegeben und ich kann daran nicht viel ändern.\": 'talente',\n    \"1990 lebten 58 % der Weltbevölkerung in Ländern mit niedrigem Einkommen. Wie hoch ist der Anteil heute? Geben Sie eine Zahl ein (z. B. 9, 37 oder 61)\": \"einkommen\",\n    \"Wie viel der weltweit verbrauchten Energie stammt aus Erdgas, Kohle und Öl?\": \"energie\",\n    \"Welcher Anteil der Weltbevölkerung lebt in Megacitys (Städte mit mindestens 10 Millionen Einwohnern)?\": \"megacity\",\n    \"Wie viele Geleebohnen befinden sich in diesem sechseckigen Glas?\": \"geleebohnen\",\n    \"Wie viele Minuten verbringen Sie an einem typischen Tag in sozialen Medien (Facebook, Instagram, Snapchat, etc.)?\": \"soziale_medien\",\n    \"Wie viele Minuten investieren Sie ca. pro Tag in Ihr Studium (abgesehen von Lehrveranstaltungen)?\": \"studium\",\n    \"Lesen Sie zur Zeit ein Buch?\": \"buch\",\n    \"Wie alt sind Sie?\": \"alter\",\n    \"Sie sind ...\": \"geschlecht\"\n}, errors=\"raise\")"
+  },
+  {
+    "objectID": "code/data_preparation.html#info-1",
+    "href": "code/data_preparation.html#info-1",
+    "title": "Setup",
+    "section": "Info",
+    "text": "Info\n\ndf.info()"
+  },
+  {
+    "objectID": "code/data_preparation.html#liste-erstellen",
+    "href": "code/data_preparation.html#liste-erstellen",
+    "title": "Setup",
+    "section": "Liste erstellen",
+    "text": "Liste erstellen\n\n# Liste mit nominalen Variablen erstellen\nlist_nominal = [\"buch\", \"geschlecht\"]"
+  },
+  {
+    "objectID": "code/data_preparation.html#variablen-anpassen",
+    "href": "code/data_preparation.html#variablen-anpassen",
+    "title": "Setup",
+    "section": "Variablen anpassen",
+    "text": "Variablen anpassen\n\n# Nominale Variablen als kategorial formatieren (category)\nfor i in list_nominal:\n    df[i] = df[i].astype(\"category\")\n\ndf[list_nominal].info()"
+  },
+  {
+    "objectID": "code/data_preparation.html#variablen-anzeigen",
+    "href": "code/data_preparation.html#variablen-anzeigen",
+    "title": "Setup",
+    "section": "Variablen anzeigen",
+    "text": "Variablen anzeigen\n\ndf[list_nominal].head()\n\n\nBeide nominalen Variablen enthalten Text in den Zeilen (mit jeweils zwei möglichen Ausprägungen).\nDies kann bei späteren Analysen zu Problemen führen, weshalb wir zusätzlich so genannte “Dummy-Variablen” erzeugen, die nur die Werte 1 und 0 enthalten."
+  },
+  {
+    "objectID": "code/data_preparation.html#dummy-variablen-erstellen",
+    "href": "code/data_preparation.html#dummy-variablen-erstellen",
+    "title": "Setup",
+    "section": "Dummy Variablen erstellen",
+    "text": "Dummy Variablen erstellen\n\ndummy_nominal = pd.get_dummies(\n    df[list_nominal],  prefix_sep='__').astype('category')\n\ndummy_nominal"
+  },
+  {
+    "objectID": "code/data_preparation.html#dummy-variablen-zu-daten-hinzufügen",
+    "href": "code/data_preparation.html#dummy-variablen-zu-daten-hinzufügen",
+    "title": "Setup",
+    "section": "Dummy Variablen zu Daten hinzufügen",
+    "text": "Dummy Variablen zu Daten hinzufügen\n\n# Dummy-Variablen hinzufügen\ndf = df.join(dummy_nominal)\n\ndf.head()"
+  },
+  {
+    "objectID": "code/data_preparation.html#liste-um-dummy-variablen-ergänzen",
+    "href": "code/data_preparation.html#liste-um-dummy-variablen-ergänzen",
+    "title": "Setup",
+    "section": "Liste um Dummy Variablen ergänzen",
+    "text": "Liste um Dummy Variablen ergänzen\n\n# Liste um die neuen Variablen erweitern\ndummy_nominal_name = dummy_nominal.columns.tolist()\n\nlist_nominal.extend(dummy_nominal_name)\n\n\nlist_nominal"
+  },
+  {
+    "objectID": "code/data_preparation.html#variablen",
+    "href": "code/data_preparation.html#variablen",
+    "title": "Setup",
+    "section": "Variablen",
+    "text": "Variablen\n\nDie Variablen sport,fleissig, talente und entmutigen wurden mit Hilfe einer so genannten Likert-Skala erhoben.\nDie Antwortmöglichkeiten reichen bei der Likertskala typischerweise von „trifft überhaupt nicht zu“ bis “trifft völlig zu“\nEine gerade Zahl der Antwortmöglichkeiten ist ebenso gebräuchlich wie eine ungerade Anzahl."
+  },
+  {
+    "objectID": "code/data_preparation.html#antwortmöglichkeiten",
+    "href": "code/data_preparation.html#antwortmöglichkeiten",
+    "title": "Setup",
+    "section": "Antwortmöglichkeiten",
+    "text": "Antwortmöglichkeiten\n\nEs ist jedoch sinnvoll, in einem Fragebogen nur eine der beiden Varianten zu verwenden.\nZudem sollte die Reihenfolge der Antwortmöglichkeiten immer identisch sein.\nEine ungerade Anzahl wird verwendet, wenn eine mittlere Ausprägung (bspw. “teils teils”) sinnvoll ist.\nEine gerade Anzahl zwingt dagegen zur Entscheidung zu einer Seite (tendenzielle Zustimmung oder Ablehnung)."
+  },
+  {
+    "objectID": "code/data_preparation.html#ordinal-vs-quasi-metrisch",
+    "href": "code/data_preparation.html#ordinal-vs-quasi-metrisch",
+    "title": "Setup",
+    "section": "Ordinal vs quasi-metrisch",
+    "text": "Ordinal vs quasi-metrisch\n\nDa wir nicht davon ausgehen können, dass eine befragte Person die Abstände der einzelnen Antwortmöglichkeiten als gleich weit entfernt wahrnimmt (äquidistant), handelt es sich streng genommen um ein ordinales Skalenniveau.\nUm bei der späteren Auswertung die erhobenen Daten aber dennoch wie intervallskalierte Daten behandeln zu können, behandelt man die Variablen oftmals als “quais-metrisch” und unterstellt somit (zumindest annäherungsweise) äquidistante Abstände."
+  },
+  {
+    "objectID": "code/data_preparation.html#ordinal-vs-quasimetrisch",
+    "href": "code/data_preparation.html#ordinal-vs-quasimetrisch",
+    "title": "Setup",
+    "section": "Ordinal vs quasimetrisch",
+    "text": "Ordinal vs quasimetrisch\n\nWir behandeln in Folgenden zwei unterschiedliche Optionen zum Umgang mit den Variablen:\n\nOption 1: Wir behandeln die Variablen als ordinale Variablen (wird im Anschluss gezeigt).\nOption 2: Wir behandeln die Variablen als “quasimetrische” Variablen - d.h. wie numerische Daten (diese Option wird in dem Abschnitt “Quasi-metrische Variablen” behandelt)."
+  },
+  {
+    "objectID": "code/data_preparation.html#text-vs.-numerische-werte",
+    "href": "code/data_preparation.html#text-vs.-numerische-werte",
+    "title": "Setup",
+    "section": "Text vs. numerische Werte",
+    "text": "Text vs. numerische Werte\n\nIn den Fragen wurde “sport”, “fleissig”, “talente” mit Hilfe von Text-Bezeichnungen wie “trifft überhaupt nicht zu” erhoben\n“entmutigen” wurde mit Hilfe von numerischen Werten (1 bis 5) erfasst.\nDa wir besser mit einheitlich skalierten Werten umgehen können, wird zunächst die Variable “entmutigen” in das gleiche Format überführt."
+  },
+  {
+    "objectID": "code/data_preparation.html#variable-im-original-speichern",
+    "href": "code/data_preparation.html#variable-im-original-speichern",
+    "title": "Setup",
+    "section": "Variable im Original speichern",
+    "text": "Variable im Original speichern\n\nDa wir die Variable entmutigen nicht versehentlich durch Datentransformationen fehlerhaft verändern möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als entmutigen_orig).\n\n\ndf['entmutigen_orig'] = df['entmutigen']"
+  },
+  {
+    "objectID": "code/data_preparation.html#liste-für-anpassung-erzeugen",
+    "href": "code/data_preparation.html#liste-für-anpassung-erzeugen",
+    "title": "Setup",
+    "section": "Liste für Anpassung erzeugen",
+    "text": "Liste für Anpassung erzeugen\n\nErzeugung der Listen für die Veränderung der Variable (in der korrekten Reihenfolge):\n\n\nwerte = [1, 2, 3, 4, 5]\n\nlikert = [\"trifft überhaupt nicht zu\",\n          \"trifft eher nicht zu\",\n          \"teils teils\",\n          \"trifft eher zu\",\n          \"trifft völlig zu\"]"
+  },
+  {
+    "objectID": "code/data_preparation.html#variable-anpassen",
+    "href": "code/data_preparation.html#variable-anpassen",
+    "title": "Setup",
+    "section": "Variable anpassen",
+    "text": "Variable anpassen\n\ndf['entmutigen'].replace(werte, likert, inplace=True)\n\ndf['entmutigen'].head()\n\n\ndf['entmutigen_orig'].head()"
+  },
+  {
+    "objectID": "code/data_preparation.html#liste-erstellen-1",
+    "href": "code/data_preparation.html#liste-erstellen-1",
+    "title": "Setup",
+    "section": "Liste erstellen",
+    "text": "Liste erstellen\n\nErstellung einer Liste:\n\n\nlist_ordinal = [\"sport\", \"fleissig\", \"talente\", \"entmutigen\"]"
+  },
+  {
+    "objectID": "code/data_preparation.html#verwendung-von-pandas-categoricaldtype",
+    "href": "code/data_preparation.html#verwendung-von-pandas-categoricaldtype",
+    "title": "Setup",
+    "section": "Verwendung von pandas CategoricalDtype",
+    "text": "Verwendung von pandas CategoricalDtype\n\ncat_type = CategoricalDtype(categories=likert, ordered=True)\n\ncat_type"
+  },
+  {
+    "objectID": "code/data_preparation.html#ordinale-variablen-anpassen",
+    "href": "code/data_preparation.html#ordinale-variablen-anpassen",
+    "title": "Setup",
+    "section": "Ordinale Variablen anpassen",
+    "text": "Ordinale Variablen anpassen\n\ndf[list_ordinal] = df[list_ordinal].astype(cat_type)\n\n\ndf[\"sport\"]\n\n\n# Anzeige der Ausprägungen\ndf['sport'].cat.categories"
+  },
+  {
+    "objectID": "code/data_preparation.html#liste-der-kategorialen-variablen-erstellen",
+    "href": "code/data_preparation.html#liste-der-kategorialen-variablen-erstellen",
+    "title": "Setup",
+    "section": "Liste der kategorialen Variablen erstellen",
+    "text": "Liste der kategorialen Variablen erstellen\n\nlist_cat = list_nominal + list_ordinal"
+  },
+  {
+    "objectID": "code/data_preparation.html#übersicht",
+    "href": "code/data_preparation.html#übersicht",
+    "title": "Setup",
+    "section": "Übersicht",
+    "text": "Übersicht\n\nWir behandeln zunächst die “eindeutig” numerischen Variablen (d.h. wir ignorieren die quasi-metrischen). diese wären:\neinkommen\nenergie\nmegacity\ngeleebohnen\nsoziale_medien\nstudium\nalter"
+  },
+  {
+    "objectID": "code/data_preparation.html#liste-erstellen-2",
+    "href": "code/data_preparation.html#liste-erstellen-2",
+    "title": "Setup",
+    "section": "Liste erstellen",
+    "text": "Liste erstellen\n\nlist_num = ['einkommen', 'energie', 'megacity', 'geleebohnen',\n            'soziale_medien', 'studium', 'alter']\n\ndf[list_num].info()"
+  },
+  {
+    "objectID": "code/data_preparation.html#erkenntnisse",
+    "href": "code/data_preparation.html#erkenntnisse",
+    "title": "Setup",
+    "section": "Erkenntnisse",
+    "text": "Erkenntnisse\n\nWir können mit df.info() erkennen, dass abgesehen von energie bereits alle Variablen korrrekt als “int64” vorliegen\nSiehe zur Bedeutung von int64 diesen Stackoverflow-Beitrag)"
+  },
+  {
+    "objectID": "code/data_preparation.html#untersuchung-von-problemen",
+    "href": "code/data_preparation.html#untersuchung-von-problemen",
+    "title": "Setup",
+    "section": "Untersuchung von Problemen",
+    "text": "Untersuchung von Problemen\n\ndf['energie'].head()\n\n\nIn den Antwortmöglichkeiten der Variable waren neben numerischen Werten auch Buchstaben und ein Sonderzeichen enthalen: “ca.” und “%”.\nDamit wir sinnvoll mit der Variable arbeiten können, müssen diese entfernt werden."
+  },
+  {
+    "objectID": "code/data_preparation.html#variable-im-original-speichern-1",
+    "href": "code/data_preparation.html#variable-im-original-speichern-1",
+    "title": "Setup",
+    "section": "Variable im Original speichern",
+    "text": "Variable im Original speichern\n\nDa wir die Variable nicht versehentlich durch Datentransformationen korrumpieren möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als energie_orig).\nUm die numerischen Werte leichter extrahieren zu können, nutzen wir das Format “String”.\n\n\ndf['energie_orig'] = df['energie'].astype(\"string\")"
+  },
+  {
+    "objectID": "code/data_preparation.html#regular-expressions",
+    "href": "code/data_preparation.html#regular-expressions",
+    "title": "Setup",
+    "section": "Regular Expressions",
+    "text": "Regular Expressions\n\nIm nächsten Schritt nutzen wir einen regulärer Ausdruck (englisch regular expression, Abkürzung RegExp oder Regex) um die Zahl aus dem String zu extrahieren.\n\n\n\n\n\n\n\n\n\nAusdruck\nBedeutung\nBeschreibung\n\n\n\n\ndigit\neine Ziffer, also [0-9] (und evtl. auch weitere Zahlzeichen in Unicode, z. B. bengalische Ziffern)\n\n\n\n\nno digit\nein Zeichen, das keine Ziffer ist, also [^\\d]\n\n\n\nword character\nein Buchstabe, eine Ziffer oder der Unterstrich, also [a-zA-Z_0-9] (und evtl. auch nicht-lateinische Buchstaben, z. B. Umlaute)\n\n\n\nno word character\nein Zeichen, das weder Buchstabe noch Zahl noch Unterstrich ist, also [^\\w]\n\n\n\nwhitespace\nmeist zumindest das Leerzeichen und die Klasse der Steuerzeichen  ,  und \n\n\n\nno whitespace\nein Zeichen, das kein Whitespace ist, also [^\\s]"
+  },
+  {
+    "objectID": "code/data_preparation.html#anpassung-der-variable",
+    "href": "code/data_preparation.html#anpassung-der-variable",
+    "title": "Setup",
+    "section": "Anpassung der Variable",
+    "text": "Anpassung der Variable\n\nFalls mehr als ein einzelnes Zeichen extrahiert werden soll, muss am Ende des Ausdrucks ein + hinzugefügt werden.\nWir nutzen regular expressions und überschreiben die alte Variable energie mit dem neuen Eintrag.\nZudem speichern wir sie als integer."
+  },
+  {
+    "objectID": "code/data_preparation.html#anpassung-der-variable-1",
+    "href": "code/data_preparation.html#anpassung-der-variable-1",
+    "title": "Setup",
+    "section": "Anpassung der Variable",
+    "text": "Anpassung der Variable\n\ndf['energie'] = df['energie_orig'].str.extract('(\\d+)').astype(int)\n\n\ndf[['energie_orig', 'energie']].head()"
+  },
+  {
+    "objectID": "code/data_preparation.html#kontext",
+    "href": "code/data_preparation.html#kontext",
+    "title": "Setup",
+    "section": "Kontext",
+    "text": "Kontext\n\nVariablen sport,fleissig, und talente wurden mit Hilfe einer Likert-Skala erhoben und könnten somit auch als “quasi-metrisch” behandelt werden (anstelle von ordinal).\nDabei muss jedoch beachtet werden, dass bspw. der Mittelwert aufgrund der Art der Messung (insbesondere wenn eine neutrale mittlere Ausprägung verwendet wird) an Aussagekraft verlieren."
+  },
+  {
+    "objectID": "code/data_preparation.html#originaldaten-sichern",
+    "href": "code/data_preparation.html#originaldaten-sichern",
+    "title": "Setup",
+    "section": "Originaldaten sichern",
+    "text": "Originaldaten sichern\n\nDamit wir die Originaldaten nicht “verlieren”, erzeugen wir neue Variablen.\nDafür kopieren wir die Daten und fügen diesen die Endung “qm” (für quasimetrisch) hinzu.\n\n\nfor i in list_ordinal:\n    df[i + \"_qm\"] = df[i]"
+  },
+  {
+    "objectID": "code/data_preparation.html#liste-erzeugen",
+    "href": "code/data_preparation.html#liste-erzeugen",
+    "title": "Setup",
+    "section": "Liste erzeugen",
+    "text": "Liste erzeugen\n\n# Erstellung der Liste mit Hilfe von filter und regular expressions\nlist_qm = df.filter(regex='_qm').columns.to_list()\nlist_qm"
+  },
+  {
+    "objectID": "code/data_preparation.html#info-2",
+    "href": "code/data_preparation.html#info-2",
+    "title": "Setup",
+    "section": "Info",
+    "text": "Info\n\ndf[list_qm].info()"
+  },
+  {
+    "objectID": "code/data_preparation.html#skalierung-anpassen",
+    "href": "code/data_preparation.html#skalierung-anpassen",
+    "title": "Setup",
+    "section": "Skalierung anpassen",
+    "text": "Skalierung anpassen\n\nWir nutzen nun ein ähnliches Vorgehen wie bei der Anpassung der Variable “entmutigen”\n\n\nfor i in list_qm:\n    df[i].replace(likert, werte, inplace=True)\n    df[i] = df[i].astype(\"int\")"
+  },
+  {
+    "objectID": "code/data_preparation.html#daten-anzeigen",
+    "href": "code/data_preparation.html#daten-anzeigen",
+    "title": "Setup",
+    "section": "Daten anzeigen",
+    "text": "Daten anzeigen\n\ndf[list_qm].head()\n\n\ndf[list_qm].info()"
+  },
+  {
+    "objectID": "code/data_preparation.html#liste-für-metrische-variablen",
+    "href": "code/data_preparation.html#liste-für-metrische-variablen",
+    "title": "Setup",
+    "section": "Liste für metrische Variablen",
+    "text": "Liste für metrische Variablen\n\nlist_metric = list_num + list_qm\n\n\nPATH = \"../data/\"\nFILE = \"clean_data\"\nFORMAT_CSV = \".csv\"\n\n\ndf.to_csv(PATH + FILE + FORMAT_CSV, index=False)\n\n\n#FORMAT_EXCEL = \".xlsx\"\n\n#df.to_excel(PATH + FILE + FORMAT_EXCEL, index=False)"
+  },
+  {
+    "objectID": "slide.html",
+    "href": "slide.html",
+    "title": "Slides",
+    "section": "",
+    "text": "Take a look at the slides tutorial to learn how to use all slide options.\nTo download Jupyter Notebooks: Go to the Colab menu and choose “File” &gt; “Download” &gt; “Download .ipynb”\n\n\n\n\n1 Google Forms\nGoogle Forms is a survey administration software included as part of the free, web-based Google Docs Editors suite offered by Google. Google Forms is only available as a web application.\nThe app allows us to create and edit surveys online while collaborating with other users in real-time. We use this service in our course.\n\n\n2 Data preparation\nLearn how to prepare data which was downloaded from a Google Forms survey (as CSV):\n\n\n\n\n\n\n\n🖥️ Presentation (🇩🇪)\n💻 Jupyter Notebook\n\n\n\n\n\n\n3 Data Analysis\nAnalyse the survey responses using your prepared data:\n\n\n\n\n\n\n\n🖥️ Presentation (🇩🇪)\n💻 Jupyter Notebook"
+  },
+  {
+    "objectID": "requirements.html",
+    "href": "requirements.html",
+    "title": "Requirements",
+    "section": "",
+    "text": "To start this lab, you’ll need the following environments:\n\nPython: Anaconda, Anaconda Environment lab and Visual Studio Code\nWorking environment: A folder on your machine called survey with two subfolders in it: data and code\n\n\n\n\n\n\n\nImportant\n\n\n\nVisit the “Programming Toolkit-webpage” to learn how to set up the environments.\n\n\nYou also need a Google Account if you want to learn how to use Google Forms."
   },
   {
     "objectID": "code/data-preparation.html",
@@ -672,382 +987,74 @@
     "text": "Daten als CSV speichern\nSpeichern als CSV:\n\nPATH = \"../data/\"\nFILE = \"clean_data\"\nFORMAT_CSV = \".csv\"\n\n\ndf.to_csv(PATH + FILE + FORMAT_CSV, index=False)\n\n\n#FORMAT_EXCEL = \".xlsx\"\n\n#df.to_excel(PATH + FILE + FORMAT_EXCEL, index=False)"
   },
   {
-    "objectID": "requirements.html",
-    "href": "requirements.html",
-    "title": "Requirements",
-    "section": "",
-    "text": "To start this lab, you’ll need the following environments:\n\nPython: Anaconda, Anaconda Environment lab and Visual Studio Code\nWorking environment: A folder on your machine called survey with two subfolders in it: data and code\n\n\n\n\n\n\n\nImportant\n\n\n\nVisit the “Programming Toolkit-webpage” to learn how to set up the environments.\n\n\nYou also need a Google Account if you want to learn how to use Google Forms."
-  },
-  {
-    "objectID": "slide.html",
-    "href": "slide.html",
-    "title": "Slides",
-    "section": "",
-    "text": "Take a look at the slides tutorial to learn how to use all slide options.\nTo download Jupyter Notebooks: Go to the Colab menu and choose “File” &gt; “Download” &gt; “Download .ipynb”\n\n\n\n\n1 Google Forms\nGoogle Forms is a survey administration software included as part of the free, web-based Google Docs Editors suite offered by Google. Google Forms is only available as a web application.\nThe app allows us to create and edit surveys online while collaborating with other users in real-time. We use this service in our course.\n\n\n2 Data preparation\nLearn how to prepare data which was downloaded from a Google Forms survey (as CSV):\n\n\n\n\n\n\n\n🖥️ Presentation (🇩🇪)\n💻 Jupyter Notebook\n\n\n\n\n\n\n3 Data Analysis\nAnalyse the survey responses using your prepared data:\n\n\n\n\n\n\n\n🖥️ Presentation (🇩🇪)\n💻 Jupyter Notebook"
-  },
-  {
-    "objectID": "code/data_preparation.html",
-    "href": "code/data_preparation.html",
-    "title": "Setup",
-    "section": "",
-    "text": "import numpy as np\nimport pandas as pd\nfrom pandas.api.types import CategoricalDtype"
-  },
-  {
-    "objectID": "code/data_preparation.html#daten-importieren",
-    "href": "code/data_preparation.html#daten-importieren",
-    "title": "Setup",
+    "objectID": "code/data_analysis.html#daten-importieren",
+    "href": "code/data_analysis.html#daten-importieren",
+    "title": "Umfragedaten analysieren",
     "section": "Daten importieren",
-    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"raw_mr_ss24.csv\"\n\ndf = pd.read_csv(PATH + DATA)"
+    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"clean_ss24.csv\"\n\ndf = pd.read_csv(PATH + DATA)\n\ndf.head()"
   },
   {
-    "objectID": "code/data_preparation.html#dataframe-anzeigen",
-    "href": "code/data_preparation.html#dataframe-anzeigen",
-    "title": "Setup",
-    "section": "DataFrame anzeigen",
-    "text": "DataFrame anzeigen\n\ndf"
-  },
-  {
-    "objectID": "code/data_preparation.html#datentypen-anzeigen",
-    "href": "code/data_preparation.html#datentypen-anzeigen",
-    "title": "Setup",
-    "section": "Datentypen anzeigen",
-    "text": "Datentypen anzeigen\n\ndf.dtypes"
-  },
-  {
-    "objectID": "code/data_preparation.html#info",
-    "href": "code/data_preparation.html#info",
-    "title": "Setup",
-    "section": "Info",
-    "text": "Info\n\ndf.info()"
-  },
-  {
-    "objectID": "code/data_preparation.html#spaltennamen",
-    "href": "code/data_preparation.html#spaltennamen",
-    "title": "Setup",
-    "section": "Spaltennamen",
-    "text": "Spaltennamen\n\n# Spaltennamen umbenennen\ndf = df.rename(columns={\n    \"Zeitstempel\": \"zeit\",\n    \"Ich bin sportlich\": \"sport\",\n    \"Ich bin fleißig.\": \"fleissig\",\n    \"Von Rückschlägen lasse ich mich nicht entmutigen.\": \"entmutigen\",\n    \"Meine Fähigkeiten und Talente sind vorgegeben und ich kann daran nicht viel ändern.\": 'talente',\n    \"1990 lebten 58 % der Weltbevölkerung in Ländern mit niedrigem Einkommen. Wie hoch ist der Anteil heute? Geben Sie eine Zahl ein (z. B. 9, 37 oder 61)\": \"einkommen\",\n    \"Wie viel der weltweit verbrauchten Energie stammt aus Erdgas, Kohle und Öl?\": \"energie\",\n    \"Welcher Anteil der Weltbevölkerung lebt in Megacitys (Städte mit mindestens 10 Millionen Einwohnern)?\": \"megacity\",\n    \"Wie viele Geleebohnen befinden sich in diesem sechseckigen Glas?\": \"geleebohnen\",\n    \"Wie viele Minuten verbringen Sie an einem typischen Tag in sozialen Medien (Facebook, Instagram, Snapchat, etc.)?\": \"soziale_medien\",\n    \"Wie viele Minuten investieren Sie ca. pro Tag in Ihr Studium (abgesehen von Lehrveranstaltungen)?\": \"studium\",\n    \"Lesen Sie zur Zeit ein Buch?\": \"buch\",\n    \"Wie alt sind Sie?\": \"alter\",\n    \"Sie sind ...\": \"geschlecht\"\n}, errors=\"raise\")"
-  },
-  {
-    "objectID": "code/data_preparation.html#info-1",
-    "href": "code/data_preparation.html#info-1",
-    "title": "Setup",
-    "section": "Info",
-    "text": "Info\n\ndf.info()"
-  },
-  {
-    "objectID": "code/data_preparation.html#liste-erstellen",
-    "href": "code/data_preparation.html#liste-erstellen",
-    "title": "Setup",
-    "section": "Liste erstellen",
-    "text": "Liste erstellen\n\n# Liste mit nominalen Variablen erstellen\nlist_nominal = [\"buch\", \"geschlecht\"]"
-  },
-  {
-    "objectID": "code/data_preparation.html#variablen-anpassen",
-    "href": "code/data_preparation.html#variablen-anpassen",
-    "title": "Setup",
-    "section": "Variablen anpassen",
-    "text": "Variablen anpassen\n\n# Nominale Variablen als kategorial formatieren (category)\nfor i in list_nominal:\n    df[i] = df[i].astype(\"category\")\n\ndf[list_nominal].info()"
-  },
-  {
-    "objectID": "code/data_preparation.html#variablen-anzeigen",
-    "href": "code/data_preparation.html#variablen-anzeigen",
-    "title": "Setup",
-    "section": "Variablen anzeigen",
-    "text": "Variablen anzeigen\n\ndf[list_nominal].head()\n\n\nBeide nominalen Variablen enthalten Text in den Zeilen (mit jeweils zwei möglichen Ausprägungen).\nDies kann bei späteren Analysen zu Problemen führen, weshalb wir zusätzlich so genannte “Dummy-Variablen” erzeugen, die nur die Werte 1 und 0 enthalten."
-  },
-  {
-    "objectID": "code/data_preparation.html#dummy-variablen-erstellen",
-    "href": "code/data_preparation.html#dummy-variablen-erstellen",
-    "title": "Setup",
-    "section": "Dummy Variablen erstellen",
-    "text": "Dummy Variablen erstellen\n\ndummy_nominal = pd.get_dummies(\n    df[list_nominal],  prefix_sep='__').astype('category')\n\ndummy_nominal"
-  },
-  {
-    "objectID": "code/data_preparation.html#dummy-variablen-zu-daten-hinzufügen",
-    "href": "code/data_preparation.html#dummy-variablen-zu-daten-hinzufügen",
-    "title": "Setup",
-    "section": "Dummy Variablen zu Daten hinzufügen",
-    "text": "Dummy Variablen zu Daten hinzufügen\n\n# Dummy-Variablen hinzufügen\ndf = df.join(dummy_nominal)\n\ndf.head()"
-  },
-  {
-    "objectID": "code/data_preparation.html#liste-um-dummy-variablen-ergänzen",
-    "href": "code/data_preparation.html#liste-um-dummy-variablen-ergänzen",
-    "title": "Setup",
-    "section": "Liste um Dummy Variablen ergänzen",
-    "text": "Liste um Dummy Variablen ergänzen\n\n# Liste um die neuen Variablen erweitern\ndummy_nominal_name = dummy_nominal.columns.tolist()\n\nlist_nominal.extend(dummy_nominal_name)\n\n\nlist_nominal"
-  },
-  {
-    "objectID": "code/data_preparation.html#variablen",
-    "href": "code/data_preparation.html#variablen",
-    "title": "Setup",
-    "section": "Variablen",
-    "text": "Variablen\n\nDie Variablen sport,fleissig, talente und entmutigen wurden mit Hilfe einer so genannten Likert-Skala erhoben.\nDie Antwortmöglichkeiten reichen bei der Likertskala typischerweise von „trifft überhaupt nicht zu“ bis “trifft völlig zu“\nEine gerade Zahl der Antwortmöglichkeiten ist ebenso gebräuchlich wie eine ungerade Anzahl."
-  },
-  {
-    "objectID": "code/data_preparation.html#antwortmöglichkeiten",
-    "href": "code/data_preparation.html#antwortmöglichkeiten",
-    "title": "Setup",
-    "section": "Antwortmöglichkeiten",
-    "text": "Antwortmöglichkeiten\n\nEs ist jedoch sinnvoll, in einem Fragebogen nur eine der beiden Varianten zu verwenden.\nZudem sollte die Reihenfolge der Antwortmöglichkeiten immer identisch sein.\nEine ungerade Anzahl wird verwendet, wenn eine mittlere Ausprägung (bspw. “teils teils”) sinnvoll ist.\nEine gerade Anzahl zwingt dagegen zur Entscheidung zu einer Seite (tendenzielle Zustimmung oder Ablehnung)."
-  },
-  {
-    "objectID": "code/data_preparation.html#ordinal-vs-quasi-metrisch",
-    "href": "code/data_preparation.html#ordinal-vs-quasi-metrisch",
-    "title": "Setup",
-    "section": "Ordinal vs quasi-metrisch",
-    "text": "Ordinal vs quasi-metrisch\n\nDa wir nicht davon ausgehen können, dass eine befragte Person die Abstände der einzelnen Antwortmöglichkeiten als gleich weit entfernt wahrnimmt (äquidistant), handelt es sich streng genommen um ein ordinales Skalenniveau.\nUm bei der späteren Auswertung die erhobenen Daten aber dennoch wie intervallskalierte Daten behandeln zu können, behandelt man die Variablen oftmals als “quais-metrisch” und unterstellt somit (zumindest annäherungsweise) äquidistante Abstände."
-  },
-  {
-    "objectID": "code/data_preparation.html#ordinal-vs-quasimetrisch",
-    "href": "code/data_preparation.html#ordinal-vs-quasimetrisch",
-    "title": "Setup",
-    "section": "Ordinal vs quasimetrisch",
-    "text": "Ordinal vs quasimetrisch\n\nWir behandeln in Folgenden zwei unterschiedliche Optionen zum Umgang mit den Variablen:\n\nOption 1: Wir behandeln die Variablen als ordinale Variablen (wird im Anschluss gezeigt).\nOption 2: Wir behandeln die Variablen als “quasimetrische” Variablen - d.h. wie numerische Daten (diese Option wird in dem Abschnitt “Quasi-metrische Variablen” behandelt)."
-  },
-  {
-    "objectID": "code/data_preparation.html#text-vs.-numerische-werte",
-    "href": "code/data_preparation.html#text-vs.-numerische-werte",
-    "title": "Setup",
-    "section": "Text vs. numerische Werte",
-    "text": "Text vs. numerische Werte\n\nIn den Fragen wurde “sport”, “fleissig”, “talente” mit Hilfe von Text-Bezeichnungen wie “trifft überhaupt nicht zu” erhoben\n“entmutigen” wurde mit Hilfe von numerischen Werten (1 bis 5) erfasst.\nDa wir besser mit einheitlich skalierten Werten umgehen können, wird zunächst die Variable “entmutigen” in das gleiche Format überführt."
-  },
-  {
-    "objectID": "code/data_preparation.html#variable-im-original-speichern",
-    "href": "code/data_preparation.html#variable-im-original-speichern",
-    "title": "Setup",
-    "section": "Variable im Original speichern",
-    "text": "Variable im Original speichern\n\nDa wir die Variable entmutigen nicht versehentlich durch Datentransformationen fehlerhaft verändern möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als entmutigen_orig).\n\n\ndf['entmutigen_orig'] = df['entmutigen']"
-  },
-  {
-    "objectID": "code/data_preparation.html#liste-für-anpassung-erzeugen",
-    "href": "code/data_preparation.html#liste-für-anpassung-erzeugen",
-    "title": "Setup",
-    "section": "Liste für Anpassung erzeugen",
-    "text": "Liste für Anpassung erzeugen\n\nErzeugung der Listen für die Veränderung der Variable (in der korrekten Reihenfolge):\n\n\nwerte = [1, 2, 3, 4, 5]\n\nlikert = [\"trifft überhaupt nicht zu\",\n          \"trifft eher nicht zu\",\n          \"teils teils\",\n          \"trifft eher zu\",\n          \"trifft völlig zu\"]"
-  },
-  {
-    "objectID": "code/data_preparation.html#variable-anpassen",
-    "href": "code/data_preparation.html#variable-anpassen",
-    "title": "Setup",
-    "section": "Variable anpassen",
-    "text": "Variable anpassen\n\ndf['entmutigen'].replace(werte, likert, inplace=True)\n\ndf['entmutigen'].head()\n\n\ndf['entmutigen_orig'].head()"
-  },
-  {
-    "objectID": "code/data_preparation.html#liste-erstellen-1",
-    "href": "code/data_preparation.html#liste-erstellen-1",
-    "title": "Setup",
-    "section": "Liste erstellen",
-    "text": "Liste erstellen\n\nErstellung einer Liste:\n\n\nlist_ordinal = [\"sport\", \"fleissig\", \"talente\", \"entmutigen\"]"
-  },
-  {
-    "objectID": "code/data_preparation.html#verwendung-von-pandas-categoricaldtype",
-    "href": "code/data_preparation.html#verwendung-von-pandas-categoricaldtype",
-    "title": "Setup",
-    "section": "Verwendung von pandas CategoricalDtype",
-    "text": "Verwendung von pandas CategoricalDtype\n\ncat_type = CategoricalDtype(categories=likert, ordered=True)\n\ncat_type"
-  },
-  {
-    "objectID": "code/data_preparation.html#ordinale-variablen-anpassen",
-    "href": "code/data_preparation.html#ordinale-variablen-anpassen",
-    "title": "Setup",
-    "section": "Ordinale Variablen anpassen",
-    "text": "Ordinale Variablen anpassen\n\ndf[list_ordinal] = df[list_ordinal].astype(cat_type)\n\n\ndf[\"sport\"]\n\n\n# Anzeige der Ausprägungen\ndf['sport'].cat.categories"
-  },
-  {
-    "objectID": "code/data_preparation.html#liste-der-kategorialen-variablen-erstellen",
-    "href": "code/data_preparation.html#liste-der-kategorialen-variablen-erstellen",
-    "title": "Setup",
-    "section": "Liste der kategorialen Variablen erstellen",
-    "text": "Liste der kategorialen Variablen erstellen\n\nlist_cat = list_nominal + list_ordinal"
-  },
-  {
-    "objectID": "code/data_preparation.html#übersicht",
-    "href": "code/data_preparation.html#übersicht",
-    "title": "Setup",
-    "section": "Übersicht",
-    "text": "Übersicht\n\nWir behandeln zunächst die “eindeutig” numerischen Variablen (d.h. wir ignorieren die quasi-metrischen). diese wären:\neinkommen\nenergie\nmegacity\ngeleebohnen\nsoziale_medien\nstudium\nalter"
-  },
-  {
-    "objectID": "code/data_preparation.html#liste-erstellen-2",
-    "href": "code/data_preparation.html#liste-erstellen-2",
-    "title": "Setup",
-    "section": "Liste erstellen",
-    "text": "Liste erstellen\n\nlist_num = ['einkommen', 'energie', 'megacity', 'geleebohnen',\n            'soziale_medien', 'studium', 'alter']\n\ndf[list_num].info()"
-  },
-  {
-    "objectID": "code/data_preparation.html#erkenntnisse",
-    "href": "code/data_preparation.html#erkenntnisse",
-    "title": "Setup",
-    "section": "Erkenntnisse",
-    "text": "Erkenntnisse\n\nWir können mit df.info() erkennen, dass abgesehen von energie bereits alle Variablen korrrekt als “int64” vorliegen\nSiehe zur Bedeutung von int64 diesen Stackoverflow-Beitrag)"
-  },
-  {
-    "objectID": "code/data_preparation.html#untersuchung-von-problemen",
-    "href": "code/data_preparation.html#untersuchung-von-problemen",
-    "title": "Setup",
-    "section": "Untersuchung von Problemen",
-    "text": "Untersuchung von Problemen\n\ndf['energie'].head()\n\n\nIn den Antwortmöglichkeiten der Variable waren neben numerischen Werten auch Buchstaben und ein Sonderzeichen enthalen: “ca.” und “%”.\nDamit wir sinnvoll mit der Variable arbeiten können, müssen diese entfernt werden."
-  },
-  {
-    "objectID": "code/data_preparation.html#variable-im-original-speichern-1",
-    "href": "code/data_preparation.html#variable-im-original-speichern-1",
-    "title": "Setup",
-    "section": "Variable im Original speichern",
-    "text": "Variable im Original speichern\n\nDa wir die Variable nicht versehentlich durch Datentransformationen korrumpieren möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als energie_orig).\nUm die numerischen Werte leichter extrahieren zu können, nutzen wir das Format “String”.\n\n\ndf['energie_orig'] = df['energie'].astype(\"string\")"
-  },
-  {
-    "objectID": "code/data_preparation.html#regular-expressions",
-    "href": "code/data_preparation.html#regular-expressions",
-    "title": "Setup",
-    "section": "Regular Expressions",
-    "text": "Regular Expressions\n\nIm nächsten Schritt nutzen wir einen regulärer Ausdruck (englisch regular expression, Abkürzung RegExp oder Regex) um die Zahl aus dem String zu extrahieren.\n\n\n\n\n\n\n\n\n\nAusdruck\nBedeutung\nBeschreibung\n\n\n\n\ndigit\neine Ziffer, also [0-9] (und evtl. auch weitere Zahlzeichen in Unicode, z. B. bengalische Ziffern)\n\n\n\n\nno digit\nein Zeichen, das keine Ziffer ist, also [^\\d]\n\n\n\nword character\nein Buchstabe, eine Ziffer oder der Unterstrich, also [a-zA-Z_0-9] (und evtl. auch nicht-lateinische Buchstaben, z. B. Umlaute)\n\n\n\nno word character\nein Zeichen, das weder Buchstabe noch Zahl noch Unterstrich ist, also [^\\w]\n\n\n\nwhitespace\nmeist zumindest das Leerzeichen und die Klasse der Steuerzeichen  ,  und \n\n\n\nno whitespace\nein Zeichen, das kein Whitespace ist, also [^\\s]"
-  },
-  {
-    "objectID": "code/data_preparation.html#anpassung-der-variable",
-    "href": "code/data_preparation.html#anpassung-der-variable",
-    "title": "Setup",
-    "section": "Anpassung der Variable",
-    "text": "Anpassung der Variable\n\nFalls mehr als ein einzelnes Zeichen extrahiert werden soll, muss am Ende des Ausdrucks ein + hinzugefügt werden.\nWir nutzen regular expressions und überschreiben die alte Variable energie mit dem neuen Eintrag.\nZudem speichern wir sie als integer."
-  },
-  {
-    "objectID": "code/data_preparation.html#anpassung-der-variable-1",
-    "href": "code/data_preparation.html#anpassung-der-variable-1",
-    "title": "Setup",
-    "section": "Anpassung der Variable",
-    "text": "Anpassung der Variable\n\ndf['energie'] = df['energie_orig'].str.extract('(\\d+)').astype(int)\n\n\ndf[['energie_orig', 'energie']].head()"
-  },
-  {
-    "objectID": "code/data_preparation.html#kontext",
-    "href": "code/data_preparation.html#kontext",
-    "title": "Setup",
-    "section": "Kontext",
-    "text": "Kontext\n\nVariablen sport,fleissig, und talente wurden mit Hilfe einer Likert-Skala erhoben und könnten somit auch als “quasi-metrisch” behandelt werden (anstelle von ordinal).\nDabei muss jedoch beachtet werden, dass bspw. der Mittelwert aufgrund der Art der Messung (insbesondere wenn eine neutrale mittlere Ausprägung verwendet wird) an Aussagekraft verlieren."
-  },
-  {
-    "objectID": "code/data_preparation.html#originaldaten-sichern",
-    "href": "code/data_preparation.html#originaldaten-sichern",
-    "title": "Setup",
-    "section": "Originaldaten sichern",
-    "text": "Originaldaten sichern\n\nDamit wir die Originaldaten nicht “verlieren”, erzeugen wir neue Variablen.\nDafür kopieren wir die Daten und fügen diesen die Endung “qm” (für quasimetrisch) hinzu.\n\n\nfor i in list_ordinal:\n    df[i + \"_qm\"] = df[i]"
-  },
-  {
-    "objectID": "code/data_preparation.html#liste-erzeugen",
-    "href": "code/data_preparation.html#liste-erzeugen",
-    "title": "Setup",
-    "section": "Liste erzeugen",
-    "text": "Liste erzeugen\n\n# Erstellung der Liste mit Hilfe von filter und regular expressions\nlist_qm = df.filter(regex='_qm').columns.to_list()\nlist_qm"
-  },
-  {
-    "objectID": "code/data_preparation.html#info-2",
-    "href": "code/data_preparation.html#info-2",
-    "title": "Setup",
-    "section": "Info",
-    "text": "Info\n\ndf[list_qm].info()"
-  },
-  {
-    "objectID": "code/data_preparation.html#skalierung-anpassen",
-    "href": "code/data_preparation.html#skalierung-anpassen",
-    "title": "Setup",
-    "section": "Skalierung anpassen",
-    "text": "Skalierung anpassen\n\nWir nutzen nun ein ähnliches Vorgehen wie bei der Anpassung der Variable “entmutigen”\n\n\nfor i in list_qm:\n    df[i].replace(likert, werte, inplace=True)\n    df[i] = df[i].astype(\"int\")"
-  },
-  {
-    "objectID": "code/data_preparation.html#daten-anzeigen",
-    "href": "code/data_preparation.html#daten-anzeigen",
-    "title": "Setup",
-    "section": "Daten anzeigen",
-    "text": "Daten anzeigen\n\ndf[list_qm].head()\n\n\ndf[list_qm].info()"
-  },
-  {
-    "objectID": "code/data_preparation.html#liste-für-metrische-variablen",
-    "href": "code/data_preparation.html#liste-für-metrische-variablen",
-    "title": "Setup",
-    "section": "Liste für metrische Variablen",
-    "text": "Liste für metrische Variablen\n\nlist_metric = list_num + list_qm\n\n\nPATH = \"../data/\"\nFILE = \"clean_data\"\nFORMAT_CSV = \".csv\"\n\n\ndf.to_csv(PATH + FILE + FORMAT_CSV, index=False)\n\n\n#FORMAT_EXCEL = \".xlsx\"\n\n#df.to_excel(PATH + FILE + FORMAT_EXCEL, index=False)"
-  },
-  {
-    "objectID": "code/data-analysis.html",
-    "href": "code/data-analysis.html",
-    "title": "Setup",
-    "section": "",
-    "text": "import numpy as np\nimport pandas as pd"
-  },
-  {
-    "objectID": "code/data-analysis.html#daten-importieren",
-    "href": "code/data-analysis.html#daten-importieren",
-    "title": "Setup",
-    "section": "Daten importieren",
-    "text": "Daten importieren\n\nPATH = \"../data/\"\nDATA = \"raw_mr_ss24.csv\"\n\ndf = pd.read_csv(PATH + DATA)\n\ndf.head()"
-  },
-  {
-    "objectID": "code/data-analysis.html#variablen-liste-für-bereinigung",
-    "href": "code/data-analysis.html#variablen-liste-für-bereinigung",
-    "title": "Setup",
+    "objectID": "code/data_analysis.html#variablen-liste-für-bereinigung",
+    "href": "code/data_analysis.html#variablen-liste-für-bereinigung",
+    "title": "Umfragedaten analysieren",
     "section": "Variablen-Liste für Bereinigung",
     "text": "Variablen-Liste für Bereinigung\n\n# Liste mit den noch enthaltenen Original-Spalten erstellen\nlist_drop = df.filter(like='_orig', axis=1).columns.tolist()\n\nlist_drop\n\n\nlist_drop.append('zeit')\n\nlist_drop"
   },
   {
-    "objectID": "code/data-analysis.html#variablen-löschen",
-    "href": "code/data-analysis.html#variablen-löschen",
-    "title": "Setup",
+    "objectID": "code/data_analysis.html#variablen-löschen",
+    "href": "code/data_analysis.html#variablen-löschen",
+    "title": "Umfragedaten analysieren",
     "section": "Variablen löschen",
     "text": "Variablen löschen\n\n# Wir entfernen die Original-Spalten und die Variable zeit\ndf = df.drop(columns=list_drop)\n\ndf.head()"
   },
   {
-    "objectID": "code/data-analysis.html#liste-mit-dummy-variablen",
-    "href": "code/data-analysis.html#liste-mit-dummy-variablen",
-    "title": "Setup",
+    "objectID": "code/data_analysis.html#liste-mit-dummy-variablen",
+    "href": "code/data_analysis.html#liste-mit-dummy-variablen",
+    "title": "Umfragedaten analysieren",
     "section": "Liste mit Dummy-Variablen",
     "text": "Liste mit Dummy-Variablen\n\n# Liste mit Dummy-Variablen erstellen\nlist_dummy = df.filter(like='__', axis=1).columns\n\nlist_dummy"
   },
   {
-    "objectID": "code/data-analysis.html#dummy-variablen-anpassen",
-    "href": "code/data-analysis.html#dummy-variablen-anpassen",
-    "title": "Setup",
+    "objectID": "code/data_analysis.html#dummy-variablen-anpassen",
+    "href": "code/data_analysis.html#dummy-variablen-anpassen",
+    "title": "Umfragedaten analysieren",
     "section": "Dummy-Variablen anpassen",
     "text": "Dummy-Variablen anpassen\n\n# Dummy-Variablen als Objekt-Daten speichern\nfor i in list_dummy:\n    df[i] = df[i].astype(\"object\")"
   },
   {
-    "objectID": "code/data-analysis.html#liste-mit-numerischen-variablen",
-    "href": "code/data-analysis.html#liste-mit-numerischen-variablen",
-    "title": "Setup",
+    "objectID": "code/data_analysis.html#liste-mit-numerischen-variablen",
+    "href": "code/data_analysis.html#liste-mit-numerischen-variablen",
+    "title": "Umfragedaten analysieren",
     "section": "Liste mit numerischen Variablen",
     "text": "Liste mit numerischen Variablen\n\n# Liste für metrische Daten\nlist_metric = df.select_dtypes(include=[np.number]).columns.tolist()\n\nlist_metric"
   },
   {
-    "objectID": "code/data-analysis.html#liste-mit-kategorialen-variablen",
-    "href": "code/data-analysis.html#liste-mit-kategorialen-variablen",
-    "title": "Setup",
+    "objectID": "code/data_analysis.html#liste-mit-kategorialen-variablen",
+    "href": "code/data_analysis.html#liste-mit-kategorialen-variablen",
+    "title": "Umfragedaten analysieren",
     "section": "Liste mit kategorialen Variablen",
     "text": "Liste mit kategorialen Variablen\n\n# Liste für kategoriale Daten\nlist_cat = df.select_dtypes(include=['object']).columns.tolist()\n\nlist_cat"
   },
   {
-    "objectID": "code/data-analysis.html#kategoriale-variablen-anpassen",
-    "href": "code/data-analysis.html#kategoriale-variablen-anpassen",
-    "title": "Setup",
+    "objectID": "code/data_analysis.html#kategoriale-variablen-anpassen",
+    "href": "code/data_analysis.html#kategoriale-variablen-anpassen",
+    "title": "Umfragedaten analysieren",
     "section": "Kategoriale Variablen anpassen",
     "text": "Kategoriale Variablen anpassen\n\n# Kategoriale Daten formatieren\nfor i in list_cat:\n    df[i] = df[i].astype(\"category\")\n\ndf.info()"
   },
   {
-    "objectID": "code/data-analysis.html#datenüberblick",
-    "href": "code/data-analysis.html#datenüberblick",
-    "title": "Setup",
+    "objectID": "code/data_analysis.html#datenüberblick",
+    "href": "code/data_analysis.html#datenüberblick",
+    "title": "Umfragedaten analysieren",
     "section": "Datenüberblick",
     "text": "Datenüberblick\n\ndf\n\n\ndf.info()"
   },
   {
-    "objectID": "code/data-analysis.html#statistische-daten-für-kategoriale-variablen",
-    "href": "code/data-analysis.html#statistische-daten-für-kategoriale-variablen",
-    "title": "Setup",
+    "objectID": "code/data_analysis.html#statistische-daten-für-kategoriale-variablen",
+    "href": "code/data_analysis.html#statistische-daten-für-kategoriale-variablen",
+    "title": "Umfragedaten analysieren",
     "section": "Statistische Daten für kategoriale Variablen",
-    "text": "Statistische Daten für kategoriale Variablen\n\ndf[list_cat].describe().T"
-  },
-  {
-    "objectID": "code/data-analysis.html#anzahl-der-ausprägungen",
-    "href": "code/data-analysis.html#anzahl-der-ausprägungen",
-    "title": "Setup",
-    "section": "Anzahl der Ausprägungen",
-    "text": "Anzahl der Ausprägungen\n\nfor i in list_cat:\n    print(\"-\"*30)\n    print(i, \"\\n\", df[i].value_counts())\n\n\ndf[list_metric].describe().round(2).T"
+    "text": "Statistische Daten für kategoriale Variablen\n\ndf[list_cat].describe().T\n\n\nfor i in list_cat:\n    print(\"-\"*30)\n    print(i, \"\\n\", df[i].value_counts())\n\n\ndf[list_metric].describe().round(2).T"
   },
   {
     "objectID": "index.html",
