@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Survey - Assignments</title>
+<title>Survey - Setup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href=".//images/logo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//images/logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -78,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Survey</span>
     </a>
   </div>
@@ -89,19 +123,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./slide.html"> 
+    <a class="nav-link" href="../slide.html"> 
 <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./requirements.html"> 
+    <a class="nav-link" href="../requirements.html"> 
 <span class="menu-text">Requirements</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./assignments.html" aria-current="page"> 
+    <a class="nav-link" href="../assignments.html"> 
 <span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
@@ -120,9 +154,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#google-forms-survey" id="toc-google-forms-survey" class="nav-link active" data-scroll-target="#google-forms-survey">Google Forms survey</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data preparation</a></li>
-  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data analysis</a></li>
+  <li><a href="#daten" id="toc-daten" class="nav-link active" data-scroll-target="#daten">Daten</a>
+  <ul class="collapse">
+  <li><a href="#daten-importieren" id="toc-daten-importieren" class="nav-link" data-scroll-target="#daten-importieren">Daten importieren</a></li>
+  <li><a href="#variablen-liste-für-bereinigung" id="toc-variablen-liste-für-bereinigung" class="nav-link" data-scroll-target="#variablen-liste-für-bereinigung">Variablen-Liste für Bereinigung</a></li>
+  <li><a href="#variablen-löschen" id="toc-variablen-löschen" class="nav-link" data-scroll-target="#variablen-löschen">Variablen löschen</a></li>
+  <li><a href="#liste-mit-dummy-variablen" id="toc-liste-mit-dummy-variablen" class="nav-link" data-scroll-target="#liste-mit-dummy-variablen">Liste mit Dummy-Variablen</a></li>
+  <li><a href="#dummy-variablen-anpassen" id="toc-dummy-variablen-anpassen" class="nav-link" data-scroll-target="#dummy-variablen-anpassen">Dummy-Variablen anpassen</a></li>
+  <li><a href="#liste-mit-numerischen-variablen" id="toc-liste-mit-numerischen-variablen" class="nav-link" data-scroll-target="#liste-mit-numerischen-variablen">Liste mit numerischen Variablen</a></li>
+  <li><a href="#liste-mit-kategorialen-variablen" id="toc-liste-mit-kategorialen-variablen" class="nav-link" data-scroll-target="#liste-mit-kategorialen-variablen">Liste mit kategorialen Variablen</a></li>
+  <li><a href="#kategoriale-variablen-anpassen" id="toc-kategoriale-variablen-anpassen" class="nav-link" data-scroll-target="#kategoriale-variablen-anpassen">Kategoriale Variablen anpassen</a></li>
+  <li><a href="#datenüberblick" id="toc-datenüberblick" class="nav-link" data-scroll-target="#datenüberblick">Datenüberblick</a></li>
+  </ul></li>
+  <li><a href="#deskriptive-analyse" id="toc-deskriptive-analyse" class="nav-link" data-scroll-target="#deskriptive-analyse">Deskriptive Analyse</a>
+  <ul class="collapse">
+  <li><a href="#statistische-daten-für-kategoriale-variablen" id="toc-statistische-daten-für-kategoriale-variablen" class="nav-link" data-scroll-target="#statistische-daten-für-kategoriale-variablen">Statistische Daten für kategoriale Variablen</a></li>
+  <li><a href="#anzahl-der-ausprägungen" id="toc-anzahl-der-ausprägungen" class="nav-link" data-scroll-target="#anzahl-der-ausprägungen">Anzahl der Ausprägungen</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -131,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignments</h1>
+<h1 class="title">Setup</h1>
 </div>
 
 
@@ -148,31 +196,122 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="google-forms-survey" class="level2">
-<h2 class="anchored" data-anchor-id="google-forms-survey">Google Forms survey</h2>
-<ul>
-<li>Fill out this short <a href="https://forms.gle/jkviF4pTXrqyV1Qc9">Google Forms survey (🇩🇪)</a></li>
-</ul>
+<div id="cell-2" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="daten" class="level1">
+<h1>Daten</h1>
+<section id="daten-importieren" class="level2">
+<h2 class="anchored" data-anchor-id="daten-importieren">Daten importieren</h2>
+<div id="cell-4" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>DATA <span class="op">=</span> <span class="st">"raw_mr_ss24.csv"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(PATH <span class="op">+</span> DATA)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="data-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
-<ul>
-<li>Create a folder called “lab-survey”.</li>
-<li>In this folder, create two new subfolders: “data” and “code”</li>
-<li>Download the raw survey response data of your semester (e.g.&nbsp;raw_mr_ws2324.csv) and save it in your “data” folder: <a href="https://github.com/kirenz/lab-survey/tree/main/data">Data</a></li>
-<li>Download the Jupyter Notebook and save it in the folder “code”: <a href="https://github.com/kirenz/lab-survey/blob/main/code/data-preparation.ipynb">Jupyter Notebook Data preparation (🇩🇪)</a></li>
-<li>Prepare your data</li>
-</ul>
+<section id="variablen-liste-für-bereinigung" class="level2">
+<h2 class="anchored" data-anchor-id="variablen-liste-für-bereinigung">Variablen-Liste für Bereinigung</h2>
+<div id="cell-6" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Liste mit den noch enthaltenen Original-Spalten erstellen</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>list_drop <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'_orig'</span>, axis<span class="op">=</span><span class="dv">1</span>).columns.tolist()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>list_drop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>list_drop.append(<span class="st">'zeit'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>list_drop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="data-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="data-analysis">Data analysis</h2>
-<ul>
-<li>Download the Jupyter Notebook and save it in the folder “code”: <a href="https://github.com/kirenz/lab-survey/blob/main/code/data-analysis.ipynb">Jupyter Notebook Data analysis (🇩🇪)</a></li>
-<li>Analyze the data you have prepared</li>
-<li>Use Altair to create data visualizations</li>
-</ul>
+<section id="variablen-löschen" class="level2">
+<h2 class="anchored" data-anchor-id="variablen-löschen">Variablen löschen</h2>
+<div id="cell-10" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wir entfernen die Original-Spalten und die Variable zeit</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>list_drop)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="liste-mit-dummy-variablen" class="level2">
+<h2 class="anchored" data-anchor-id="liste-mit-dummy-variablen">Liste mit Dummy-Variablen</h2>
+<div id="cell-12" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Liste mit Dummy-Variablen erstellen</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>list_dummy <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'__'</span>, axis<span class="op">=</span><span class="dv">1</span>).columns</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>list_dummy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dummy-variablen-anpassen" class="level2">
+<h2 class="anchored" data-anchor-id="dummy-variablen-anpassen">Dummy-Variablen anpassen</h2>
+<div id="cell-14" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dummy-Variablen als Objekt-Daten speichern</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_dummy:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"object"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="liste-mit-numerischen-variablen" class="level2">
+<h2 class="anchored" data-anchor-id="liste-mit-numerischen-variablen">Liste mit numerischen Variablen</h2>
+<div id="cell-16" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Liste für metrische Daten</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>list_metric <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[np.number]).columns.tolist()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>list_metric</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="liste-mit-kategorialen-variablen" class="level2">
+<h2 class="anchored" data-anchor-id="liste-mit-kategorialen-variablen">Liste mit kategorialen Variablen</h2>
+<div id="cell-18" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Liste für kategoriale Daten</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>list_cat <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>]).columns.tolist()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>list_cat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="kategoriale-variablen-anpassen" class="level2">
+<h2 class="anchored" data-anchor-id="kategoriale-variablen-anpassen">Kategoriale Variablen anpassen</h2>
+<div id="cell-20" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kategoriale Daten formatieren</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_cat:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"category"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="datenüberblick" class="level2">
+<h2 class="anchored" data-anchor-id="datenüberblick">Datenüberblick</h2>
+<div id="cell-22" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-24" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="deskriptive-analyse" class="level1">
+<h1>Deskriptive Analyse</h1>
+<section id="statistische-daten-für-kategoriale-variablen" class="level2">
+<h2 class="anchored" data-anchor-id="statistische-daten-für-kategoriale-variablen">Statistische Daten für kategoriale Variablen</h2>
+<div id="cell-26" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df[list_cat].describe().T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="anzahl-der-ausprägungen" class="level2">
+<h2 class="anchored" data-anchor-id="anzahl-der-ausprägungen">Anzahl der Ausprägungen</h2>
+<div id="cell-28" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_cat:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">30</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, df[i].value_counts())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-29" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df[list_metric].describe().<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -594,17 +733,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./slide.html">
+    <a class="nav-link" href="../slide.html">
 <p>Slides</p>
 </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="./requirements.html">
+    <a class="nav-link" href="../requirements.html">
 <p>Requirements</p>
 </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="./assignments.html">
+    <a class="nav-link" href="../assignments.html">
 <p>Assignments</p>
 </a>
   </li>  
