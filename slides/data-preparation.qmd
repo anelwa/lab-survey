@@ -509,8 +509,8 @@ Speichern als Excel-Datei:
 
 ```{python}
 # | output-location: fragment
-FORMAT_EXCEL = ".xlsx"
+#FORMAT_EXCEL = ".xlsx"
 
-df.to_excel(PATH + FILE + FORMAT_EXCEL, index=False)
+#df.to_excel(PATH + FILE + FORMAT_EXCEL, index=False)
 ```
 
