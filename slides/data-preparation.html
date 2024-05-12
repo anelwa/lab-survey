@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de"><head>
 <link href="..//images/logo.png" rel="icon" type="image/png">
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.554">
 
   <meta name="author" content="Jan Kirenz">
   <title>Survey - Umfragedaten vorbereiten</title>
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -224,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -389,7 +390,7 @@
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  
   <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-dark">
@@ -427,10 +428,10 @@ Jan Kirenz
 </section>
 <section id="setup" class="title-slide slide level1 center">
 <h1>Setup</h1>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> pandas.api.types <span class="im">import</span> CategoricalDtype</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5e826031" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a></a><span class="im">from</span> pandas.api.types <span class="im">import</span> CategoricalDtype</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -441,11 +442,11 @@ Jan Kirenz
 </section>
 <section id="daten-importieren" class="slide level2">
 <h2>Daten importieren</h2>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>DATA <span class="op">=</span> <span class="st">"raw_mr_ws2324.csv"</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a>df <span class="op">=</span> pd.read_csv(PATH <span class="op">+</span> DATA)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e65b76c4" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
+<span id="cb2-2"><a></a>DATA <span class="op">=</span> <span class="st">"raw_mr_ss24.csv"</span></span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a>df <span class="op">=</span> pd.read_csv(PATH <span class="op">+</span> DATA)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
 
@@ -453,11 +454,12 @@ Jan Kirenz
 </section>
 <section id="dataframe-anzeigen" class="slide level2">
 <h2>DataFrame anzeigen</h2>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8de082fe" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>df</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="3">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -496,631 +498,529 @@ Jan Kirenz
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>2023/10/17 4:37:01 PM OESZ</td>
-<td>trifft eher zu</td>
+<td>2024/04/16 10:49:54 AM OEZ</td>
 <td>trifft völlig zu</td>
-<td>4</td>
-<td>teils teils</td>
-<td>40</td>
-<td>ca. 82%</td>
-<td>4</td>
-<td>800</td>
-<td>5</td>
-<td>3</td>
-<td>Nein</td>
-<td>20</td>
-<td>Weiblich</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>2023/10/17 4:37:16 PM OESZ</td>
 <td>trifft eher zu</td>
-<td>trifft eher nicht zu</td>
-<td>4</td>
-<td>trifft überhaupt nicht zu</td>
-<td>50</td>
-<td>ca. 62%</td>
 <td>2</td>
-<td>375</td>
-<td>200</td>
-<td>15</td>
-<td>Nein</td>
+<td>trifft eher zu</td>
+<td>80</td>
+<td>ca. 82%</td>
+<td>3</td>
+<td>2000.0</td>
+<td>40</td>
+<td>3</td>
+<td>Ja</td>
 <td>21</td>
 <td>Männlich</td>
 </tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2024/04/16 10:50:21 AM OEZ</td>
+<td>trifft eher nicht zu</td>
+<td>trifft eher zu</td>
+<td>2</td>
+<td>trifft überhaupt nicht zu</td>
+<td>23</td>
+<td>ca. 82%</td>
+<td>3</td>
+<td>500.0</td>
+<td>240</td>
+<td>120</td>
+<td>Ja</td>
+<td>24</td>
+<td>Weiblich</td>
+</tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>2023/10/17 4:37:44 PM OESZ</td>
-<td>trifft überhaupt nicht zu</td>
+<td>2024/04/16 10:50:22 AM OEZ</td>
 <td>teils teils</td>
-<td>4</td>
 <td>trifft eher zu</td>
-<td>23</td>
-<td>ca. 62%</td>
 <td>4</td>
-<td>500</td>
-<td>300</td>
-<td>60</td>
-<td>Nein</td>
-<td>20</td>
+<td>trifft eher nicht zu</td>
+<td>37</td>
+<td>ca. 62%</td>
+<td>2</td>
+<td>756.0</td>
+<td>240</td>
+<td>30</td>
+<td>Ja</td>
+<td>19</td>
 <td>Weiblich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>2023/10/17 4:37:51 PM OESZ</td>
+<td>2024/04/16 10:50:24 AM OEZ</td>
+<td>teils teils</td>
 <td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>2</td>
-<td>trifft überhaupt nicht zu</td>
-<td>68</td>
-<td>ca. 82%</td>
 <td>3</td>
-<td>568</td>
-<td>240</td>
-<td>15</td>
+<td>teils teils</td>
+<td>37</td>
+<td>ca. 62%</td>
+<td>3</td>
+<td>1.0</td>
+<td>1000</td>
+<td>60</td>
 <td>Nein</td>
-<td>23</td>
+<td>20</td>
 <td>Männlich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>2023/10/17 4:37:57 PM OESZ</td>
-<td>teils teils</td>
+<td>2024/04/16 10:50:29 AM OEZ</td>
+<td>trifft eher zu</td>
+<td>trifft völlig zu</td>
+<td>2</td>
 <td>trifft eher nicht zu</td>
-<td>4</td>
-<td>trifft überhaupt nicht zu</td>
-<td>14</td>
+<td>65</td>
 <td>ca. 82%</td>
 <td>3</td>
-<td>600</td>
-<td>30</td>
-<td>60</td>
-<td>Nein</td>
-<td>24</td>
-<td>Männlich</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>2023/10/17 4:38:00 PM OESZ</td>
-<td>trifft überhaupt nicht zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>1</td>
-<td>trifft eher nicht zu</td>
+<td>350.0</td>
 <td>90</td>
-<td>ca. 82%</td>
-<td>5</td>
-<td>10000000000</td>
-<td>7</td>
 <td>2</td>
-<td>Ja</td>
-<td>23</td>
-<td>Männlich</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>2023/10/17 4:38:12 PM OESZ</td>
-<td>trifft eher zu</td>
-<td>trifft eher zu</td>
-<td>4</td>
-<td>trifft eher nicht zu</td>
-<td>100</td>
-<td>ca. 62%</td>
-<td>2</td>
-<td>23400</td>
-<td>200</td>
-<td>120</td>
 <td>Ja</td>
 <td>22</td>
 <td>Weiblich</td>
 </tr>
 <tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2024/04/16 10:50:29 AM OEZ</td>
+<td>trifft eher nicht zu</td>
+<td>trifft völlig zu</td>
+<td>4</td>
+<td>teils teils</td>
+<td>61</td>
+<td>ca. 62%</td>
+<td>4</td>
+<td>7832.0</td>
+<td>180</td>
+<td>40</td>
+<td>Ja</td>
+<td>20</td>
+<td>Weiblich</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2024/04/16 10:50:41 AM OEZ</td>
+<td>trifft eher zu</td>
+<td>trifft eher zu</td>
+<td>5</td>
+<td>trifft eher nicht zu</td>
+<td>65</td>
+<td>ca. 62%</td>
+<td>2</td>
+<td>800.0</td>
+<td>130</td>
+<td>30</td>
+<td>Nein</td>
+<td>27</td>
+<td>Männlich</td>
+</tr>
+<tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>2023/10/17 4:38:24 PM OESZ</td>
+<td>2024/04/16 10:50:43 AM OEZ</td>
 <td>trifft eher zu</td>
 <td>trifft eher zu</td>
 <td>3</td>
 <td>trifft eher nicht zu</td>
-<td>20</td>
-<td>ca. 62%</td>
-<td>3</td>
-<td>1000</td>
+<td>50</td>
+<td>ca. 82%</td>
+<td>4</td>
+<td>1000.0</td>
 <td>60</td>
-<td>180</td>
+<td>120</td>
 <td>Ja</td>
-<td>24</td>
+<td>19</td>
 <td>Weiblich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
-<td>2023/10/17 4:38:28 PM OESZ</td>
-<td>trifft völlig zu</td>
+<td>2024/04/16 10:50:59 AM OEZ</td>
+<td>teils teils</td>
 <td>trifft eher zu</td>
-<td>3</td>
-<td>trifft überhaupt nicht zu</td>
-<td>65</td>
-<td>ca. 82%</td>
 <td>2</td>
-<td>670</td>
-<td>180</td>
-<td>80</td>
+<td>trifft überhaupt nicht zu</td>
+<td>70</td>
+<td>ca. 62%</td>
+<td>3</td>
+<td>20000.0</td>
+<td>120</td>
+<td>60</td>
 <td>Ja</td>
-<td>20</td>
-<td>Männlich</td>
+<td>21</td>
+<td>Weiblich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>2023/10/17 4:38:29 PM OESZ</td>
-<td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
+<td>2024/04/16 10:51:11 AM OEZ</td>
+<td>trifft völlig zu</td>
+<td>teils teils</td>
 <td>4</td>
 <td>trifft eher nicht zu</td>
-<td>61</td>
-<td>ca. 62%</td>
-<td>4</td>
-<td>231</td>
-<td>300</td>
-<td>30</td>
-<td>Ja</td>
-<td>25</td>
+<td>70</td>
+<td>ca. 82%</td>
+<td>3</td>
+<td>254.0</td>
+<td>60</td>
+<td>100</td>
+<td>Nein</td>
+<td>20</td>
 <td>Männlich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
-<td>2023/10/17 4:38:30 PM OESZ</td>
+<td>2024/04/16 10:51:18 AM OEZ</td>
 <td>trifft eher zu</td>
 <td>trifft eher zu</td>
 <td>3</td>
-<td>trifft eher nicht zu</td>
-<td>45</td>
+<td>trifft überhaupt nicht zu</td>
+<td>40</td>
 <td>ca. 82%</td>
 <td>3</td>
-<td>400</td>
-<td>140</td>
-<td>60</td>
-<td>Ja</td>
-<td>20</td>
-<td>Weiblich</td>
+<td>900.0</td>
+<td>100</td>
+<td>40</td>
+<td>Nein</td>
+<td>21</td>
+<td>Männlich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
-<td>2023/10/17 4:38:32 PM OESZ</td>
-<td>trifft eher zu</td>
-<td>trifft eher zu</td>
-<td>2</td>
+<td>2024/04/16 10:51:23 AM OEZ</td>
+<td>trifft eher nicht zu</td>
 <td>teils teils</td>
-<td>85</td>
-<td>ca. 62%</td>
+<td>4</td>
+<td>trifft überhaupt nicht zu</td>
+<td>31</td>
+<td>ca. 82%</td>
 <td>2</td>
-<td>1450</td>
-<td>200</td>
+<td>5843.0</td>
+<td>187</td>
 <td>60</td>
-<td>Ja</td>
-<td>20</td>
+<td>Nein</td>
+<td>21</td>
 <td>Männlich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
-<td>2023/10/17 4:38:40 PM OESZ</td>
+<td>2024/04/16 10:51:38 AM OEZ</td>
+<td>trifft eher nicht zu</td>
+<td>trifft völlig zu</td>
+<td>3</td>
 <td>teils teils</td>
-<td>trifft eher zu</td>
-<td>2</td>
-<td>teils teils</td>
-<td>70</td>
+<td>65</td>
 <td>ca. 62%</td>
 <td>2</td>
-<td>1400</td>
-<td>230</td>
-<td>120</td>
-<td>Ja</td>
+<td>1152.0</td>
+<td>240</td>
+<td>30</td>
+<td>Nein</td>
 <td>20</td>
 <td>Weiblich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">13</td>
-<td>2023/10/17 4:38:41 PM OESZ</td>
+<td>2024/04/16 10:51:51 AM OEZ</td>
 <td>trifft eher nicht zu</td>
-<td>trifft völlig zu</td>
-<td>5</td>
-<td>trifft eher nicht zu</td>
-<td>70</td>
-<td>ca. 62%</td>
+<td>trifft eher zu</td>
 <td>3</td>
-<td>777</td>
-<td>240</td>
-<td>120</td>
-<td>Nein</td>
-<td>21</td>
+<td>trifft eher nicht zu</td>
+<td>9</td>
+<td>ca. 82%</td>
+<td>4</td>
+<td>500.0</td>
+<td>250</td>
+<td>100</td>
+<td>Ja</td>
+<td>20</td>
 <td>Weiblich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
-<td>2023/10/17 4:38:42 PM OESZ</td>
-<td>teils teils</td>
-<td>trifft eher zu</td>
+<td>2024/04/16 10:51:55 AM OEZ</td>
+<td>trifft völlig zu</td>
+<td>trifft völlig zu</td>
 <td>4</td>
-<td>trifft überhaupt nicht zu</td>
-<td>48</td>
-<td>ca. 82%</td>
+<td>trifft eher zu</td>
+<td>61</td>
+<td>ca. 62%</td>
 <td>3</td>
-<td>2000</td>
-<td>120</td>
-<td>60</td>
-<td>Ja</td>
-<td>21</td>
-<td>Weiblich</td>
+<td>400.0</td>
+<td>3</td>
+<td>2</td>
+<td>Nein</td>
+<td>26</td>
+<td>Männlich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">15</td>
-<td>2023/10/17 4:38:42 PM OESZ</td>
+<td>2024/04/16 10:52:00 AM OEZ</td>
 <td>trifft eher zu</td>
-<td>trifft eher zu</td>
-<td>2</td>
+<td>trifft völlig zu</td>
+<td>5</td>
 <td>trifft eher nicht zu</td>
-<td>15</td>
-<td>ca. 82%</td>
-<td>2</td>
-<td>5000</td>
+<td>37</td>
+<td>ca. 62%</td>
+<td>3</td>
+<td>1120.0</td>
+<td>120</td>
 <td>100</td>
-<td>150</td>
 <td>Ja</td>
-<td>21</td>
-<td>Männlich</td>
+<td>24</td>
+<td>Weiblich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">16</td>
-<td>2023/10/17 4:38:50 PM OESZ</td>
+<td>2024/04/16 10:52:01 AM OEZ</td>
 <td>trifft eher zu</td>
-<td>trifft eher zu</td>
+<td>teils teils</td>
 <td>4</td>
-<td>trifft eher nicht zu</td>
-<td>75%</td>
+<td>trifft überhaupt nicht zu</td>
+<td>64</td>
 <td>ca. 62%</td>
 <td>3</td>
-<td>873</td>
-<td>80</td>
+<td>850.0</td>
+<td>280</td>
 <td>30</td>
-<td>Ja</td>
-<td>23</td>
-<td>Weiblich</td>
+<td>Nein</td>
+<td>22</td>
+<td>Männlich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">17</td>
-<td>2023/10/17 4:38:52 PM OESZ</td>
+<td>2024/04/16 10:52:08 AM OEZ</td>
 <td>trifft völlig zu</td>
-<td>trifft eher zu</td>
-<td>3</td>
+<td>trifft völlig zu</td>
+<td>4</td>
 <td>trifft eher nicht zu</td>
-<td>65</td>
+<td>48</td>
 <td>ca. 62%</td>
-<td>3</td>
-<td>750</td>
-<td>120</td>
-<td>30</td>
+<td>1</td>
+<td>260.0</td>
+<td>5</td>
+<td>20</td>
 <td>Ja</td>
-<td>22</td>
-<td>Weiblich</td>
+<td>20</td>
+<td>Männlich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">18</td>
-<td>2023/10/17 4:38:56 PM OESZ</td>
-<td>teils teils</td>
+<td>2024/04/16 10:52:08 AM OEZ</td>
 <td>trifft eher zu</td>
-<td>2</td>
+<td>trifft eher zu</td>
+<td>4</td>
 <td>trifft eher nicht zu</td>
 <td>65</td>
-<td>ca. 42%</td>
-<td>4</td>
-<td>350</td>
-<td>170</td>
-<td>20</td>
+<td>ca. 82%</td>
+<td>3</td>
+<td>500.0</td>
+<td>120</td>
+<td>100</td>
 <td>Ja</td>
-<td>21</td>
+<td>19</td>
 <td>Weiblich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">19</td>
-<td>2023/10/17 4:39:12 PM OESZ</td>
-<td>trifft eher nicht zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>2</td>
-<td>trifft eher zu</td>
-<td>43</td>
-<td>ca. 62%</td>
-<td>2</td>
-<td>629</td>
+<td>2024/04/16 10:52:14 AM OEZ</td>
+<td>trifft völlig zu</td>
+<td>teils teils</td>
 <td>4</td>
-<td>23</td>
-<td>Ja</td>
-<td>21</td>
+<td>teils teils</td>
+<td>61</td>
+<td>ca. 82%</td>
+<td>2</td>
+<td>1500.0</td>
+<td>100</td>
+<td>100</td>
+<td>Nein</td>
+<td>20</td>
 <td>Männlich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">20</td>
-<td>2023/10/17 4:39:18 PM OESZ</td>
+<td>2024/04/16 10:52:15 AM OEZ</td>
+<td>trifft eher zu</td>
 <td>trifft eher nicht zu</td>
-<td>trifft eher zu</td>
 <td>4</td>
-<td>trifft eher zu</td>
-<td>65</td>
+<td>trifft überhaupt nicht zu</td>
+<td>62</td>
 <td>ca. 82%</td>
 <td>3</td>
-<td>2000</td>
-<td>75</td>
-<td>120</td>
-<td>Ja</td>
-<td>22</td>
+<td>2024.0</td>
+<td>60</td>
+<td>90</td>
+<td>Nein</td>
+<td>21</td>
 <td>Weiblich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">21</td>
-<td>2023/10/17 4:39:22 PM OESZ</td>
+<td>2024/04/16 10:52:23 AM OEZ</td>
 <td>trifft völlig zu</td>
-<td>teils teils</td>
+<td>trifft völlig zu</td>
 <td>3</td>
-<td>trifft eher nicht zu</td>
-<td>75</td>
-<td>ca. 82%</td>
-<td>2</td>
-<td>2135</td>
-<td>360</td>
+<td>teils teils</td>
 <td>30</td>
-<td>Nein</td>
-<td>19</td>
+<td>ca. 82%</td>
+<td>4</td>
+<td>1000.0</td>
+<td>90</td>
+<td>90</td>
+<td>Ja</td>
+<td>21</td>
 <td>Weiblich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">22</td>
-<td>2023/10/17 4:39:50 PM OESZ</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>3</td>
-<td>teils teils</td>
-<td>60</td>
+<td>2024/04/16 10:52:27 AM OEZ</td>
+<td>trifft eher zu</td>
+<td>trifft völlig zu</td>
+<td>2</td>
+<td>trifft eher nicht zu</td>
+<td>65</td>
 <td>ca. 62%</td>
-<td>3</td>
-<td>1436</td>
-<td>200</td>
-<td>30</td>
+<td>4</td>
+<td>350.0</td>
+<td>90</td>
+<td>120</td>
 <td>Ja</td>
 <td>22</td>
 <td>Weiblich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">23</td>
-<td>2023/10/17 4:39:51 PM OESZ</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>4</td>
+<td>2024/04/16 10:52:32 AM OEZ</td>
+<td>trifft völlig zu</td>
 <td>trifft eher nicht zu</td>
-<td>45</td>
-<td>ca. 82%</td>
-<td>4</td>
-<td>5000</td>
-<td>150</td>
-<td>30</td>
+<td>3</td>
+<td>trifft eher nicht zu</td>
+<td>60</td>
+<td>ca. 62%</td>
+<td>3</td>
+<td>1000.0</td>
+<td>60</td>
+<td>60</td>
 <td>Ja</td>
-<td>20</td>
+<td>21</td>
 <td>Weiblich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">24</td>
-<td>2023/10/17 4:39:52 PM OESZ</td>
-<td>teils teils</td>
-<td>teils teils</td>
+<td>2024/04/16 10:52:44 AM OEZ</td>
+<td>trifft völlig zu</td>
+<td>trifft eher zu</td>
 <td>3</td>
 <td>trifft eher nicht zu</td>
-<td>63</td>
+<td>75</td>
 <td>ca. 62%</td>
-<td>3</td>
-<td>864</td>
-<td>180</td>
-<td>40</td>
+<td>2</td>
+<td>50.0</td>
+<td>90</td>
+<td>2</td>
 <td>Nein</td>
-<td>20</td>
-<td>Weiblich</td>
+<td>22</td>
+<td>Männlich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">25</td>
-<td>2023/10/17 4:39:54 PM OESZ</td>
+<td>2024/04/16 10:52:45 AM OEZ</td>
+<td>trifft völlig zu</td>
 <td>trifft eher zu</td>
-<td>teils teils</td>
 <td>4</td>
-<td>trifft eher nicht zu</td>
-<td>75</td>
-<td>ca. 82%</td>
+<td>teils teils</td>
+<td>55</td>
+<td>ca. 62%</td>
 <td>3</td>
-<td>20000</td>
+<td>87.0</td>
 <td>120</td>
-<td>60</td>
-<td>Ja</td>
-<td>20</td>
+<td>120</td>
+<td>Nein</td>
+<td>22</td>
 <td>Weiblich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">26</td>
-<td>2023/10/17 4:40:02 PM OESZ</td>
-<td>trifft völlig zu</td>
+<td>2024/04/16 10:53:16 AM OEZ</td>
 <td>teils teils</td>
-<td>3</td>
+<td>teils teils</td>
+<td>4</td>
 <td>trifft eher nicht zu</td>
-<td>53</td>
-<td>ca. 62%</td>
+<td>9</td>
+<td>ca. 82%</td>
 <td>3</td>
-<td>900</td>
-<td>150</td>
-<td>100</td>
-<td>Ja</td>
-<td>20</td>
+<td>1000.0</td>
+<td>180</td>
+<td>180</td>
+<td>Nein</td>
+<td>21</td>
 <td>Weiblich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">27</td>
-<td>2023/10/17 4:40:03 PM OESZ</td>
-<td>trifft völlig zu</td>
-<td>teils teils</td>
-<td>3</td>
+<td>2024/04/16 10:53:35 AM OEZ</td>
+<td>trifft eher zu</td>
+<td>trifft eher zu</td>
+<td>4</td>
 <td>trifft eher nicht zu</td>
-<td>50</td>
-<td>ca. 82%</td>
+<td>48%</td>
+<td>ca. 42%</td>
 <td>3</td>
-<td>500</td>
-<td>160</td>
-<td>100</td>
-<td>Ja</td>
-<td>19</td>
+<td>108.0</td>
+<td>240</td>
+<td>120</td>
+<td>Nein</td>
+<td>20</td>
 <td>Weiblich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">28</td>
-<td>2023/10/17 4:40:16 PM OESZ</td>
-<td>teils teils</td>
+<td>2024/04/16 10:53:38 AM OEZ</td>
+<td>trifft völlig zu</td>
 <td>teils teils</td>
 <td>4</td>
 <td>trifft eher nicht zu</td>
-<td>80</td>
-<td>ca. 62%</td>
+<td>65</td>
+<td>ca. 82%</td>
 <td>3</td>
-<td>550</td>
+<td>600.0</td>
+<td>120</td>
 <td>240</td>
-<td>60</td>
 <td>Nein</td>
-<td>29</td>
+<td>27</td>
 <td>Männlich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">29</td>
-<td>2023/10/17 4:40:21 PM OESZ</td>
-<td>trifft völlig zu</td>
+<td>2024/04/16 10:53:40 AM OEZ</td>
 <td>trifft eher zu</td>
-<td>3</td>
 <td>teils teils</td>
-<td>50</td>
-<td>ca. 82%</td>
-<td>2</td>
-<td>2000</td>
-<td>200</td>
-<td>100</td>
+<td>3</td>
+<td>trifft eher nicht zu</td>
+<td>48</td>
+<td>ca. 62%</td>
+<td>3</td>
+<td>2000.0</td>
+<td>600</td>
+<td>120</td>
 <td>Nein</td>
-<td>20</td>
+<td>22</td>
 <td>Weiblich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">30</td>
-<td>2023/10/17 4:40:32 PM OESZ</td>
-<td>trifft eher nicht zu</td>
+<td>2024/04/16 3:55:54 PM OEZ</td>
 <td>teils teils</td>
-<td>4</td>
-<td>trifft eher nicht zu</td>
-<td>46</td>
-<td>ca. 62%</td>
-<td>2</td>
-<td>187</td>
-<td>100</td>
-<td>60</td>
-<td>Nein</td>
-<td>21</td>
-<td>Weiblich</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">31</td>
-<td>2023/10/17 4:40:50 PM OESZ</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>2</td>
-<td>trifft eher zu</td>
-<td>37</td>
-<td>ca. 62%</td>
-<td>3</td>
-<td>1200</td>
-<td>180</td>
-<td>60</td>
-<td>Nein</td>
-<td>21</td>
-<td>Weiblich</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">32</td>
-<td>2023/10/17 4:40:50 PM OESZ</td>
-<td>trifft völlig zu</td>
 <td>trifft eher zu</td>
 <td>3</td>
 <td>teils teils</td>
-<td>28</td>
-<td>ca. 82%</td>
-<td>3</td>
-<td>650</td>
+<td>50</td>
+<td>ca. 62%</td>
+<td>2</td>
+<td>1000.0</td>
 <td>90</td>
-<td>100</td>
-<td>Nein</td>
-<td>20</td>
-<td>Männlich</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">33</td>
-<td>2023/10/17 4:40:53 PM OESZ</td>
-<td>trifft eher zu</td>
-<td>teils teils</td>
-<td>3</td>
-<td>trifft eher nicht zu</td>
-<td>24</td>
-<td>ca. 62%</td>
-<td>4</td>
-<td>1010</td>
-<td>30</td>
-<td>1</td>
+<td>90</td>
 <td>Ja</td>
-<td>21</td>
-<td>Männlich</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">34</td>
-<td>2023/10/17 4:40:55 PM OESZ</td>
-<td>teils teils</td>
-<td>trifft eher zu</td>
-<td>4</td>
-<td>trifft eher nicht zu</td>
-<td>82</td>
-<td>ca. 42%</td>
-<td>3</td>
-<td>1243</td>
-<td>200</td>
-<td>120</td>
-<td>Ja</td>
-<td>22</td>
-<td>Weiblich</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">35</td>
-<td>2023/10/17 4:42:06 PM OESZ</td>
-<td>trifft völlig zu</td>
-<td>trifft eher zu</td>
-<td>2</td>
-<td>trifft eher nicht zu</td>
-<td>60</td>
-<td>ca. 62%</td>
-<td>2</td>
-<td>448</td>
-<td>400</td>
-<td>180</td>
-<td>Nein</td>
-<td>19</td>
-<td>Männlich</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">36</td>
-<td>2023/10/17 4:42:31 PM OESZ</td>
-<td>teils teils</td>
-<td>trifft eher zu</td>
-<td>2</td>
-<td>trifft überhaupt nicht zu</td>
-<td>42</td>
-<td>ca. 82%</td>
-<td>3</td>
-<td>3537</td>
-<td>1123</td>
-<td>180</td>
-<td>Ja</td>
-<td>26</td>
+<td>23</td>
 <td>Weiblich</td>
 </tr>
 </tbody>
@@ -1129,60 +1029,61 @@ Jan Kirenz
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="datentypen-anzeigen" class="slide level2">
 <h2>Datentypen anzeigen</h2>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df.dtypes</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d363b44a" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>df.dtypes</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>Zeitstempel                                                                                                                                              object
-Ich bin sportlich                                                                                                                                        object
-Ich bin fleißig.                                                                                                                                         object
-Von Rückschlägen lasse ich mich nicht entmutigen.                                                                                                         int64
-Meine Fähigkeiten und Talente sind vorgegeben und ich kann daran nicht viel ändern.                                                                      object
-1990 lebten 58 % der Weltbevölkerung in Ländern mit niedrigem Einkommen. Wie hoch ist der Anteil heute? Geben Sie eine Zahl ein (z. B. 9, 37 oder 61)    object
-Wie viel der weltweit verbrauchten Energie stammt aus Erdgas, Kohle und Öl?                                                                              object
-Welcher Anteil der Weltbevölkerung lebt in Megacitys (Städte mit mindestens 10 Millionen Einwohnern)?                                                     int64
-Wie viele Geleebohnen befinden sich in diesem sechseckigen Glas?                                                                                          int64
-Wie viele Minuten verbringen Sie an einem typischen Tag in sozialen Medien (Facebook, Instagram, Snapchat, etc.)?                                         int64
-Wie viele Minuten investieren Sie ca. pro Tag in Ihr Studium (abgesehen von Lehrveranstaltungen)?                                                         int64
-Lesen Sie zur Zeit ein Buch?                                                                                                                             object
-Wie alt sind Sie?                                                                                                                                         int64
-Sie sind ...                                                                                                                                             object
+<pre><code>Zeitstempel                                                                                                                                               object
+Ich bin sportlich                                                                                                                                         object
+Ich bin fleißig.                                                                                                                                          object
+Von Rückschlägen lasse ich mich nicht entmutigen.                                                                                                          int64
+Meine Fähigkeiten und Talente sind vorgegeben und ich kann daran nicht viel ändern.                                                                       object
+1990 lebten 58 % der Weltbevölkerung in Ländern mit niedrigem Einkommen. Wie hoch ist der Anteil heute? Geben Sie eine Zahl ein (z. B. 9, 37 oder 61)     object
+Wie viel der weltweit verbrauchten Energie stammt aus Erdgas, Kohle und Öl?                                                                               object
+Welcher Anteil der Weltbevölkerung lebt in Megacitys (Städte mit mindestens 10 Millionen Einwohnern)?                                                      int64
+Wie viele Geleebohnen befinden sich in diesem sechseckigen Glas?                                                                                         float64
+Wie viele Minuten verbringen Sie an einem typischen Tag in sozialen Medien (Facebook, Instagram, Snapchat, etc.)?                                          int64
+Wie viele Minuten investieren Sie ca. pro Tag in Ihr Studium (abgesehen von Lehrveranstaltungen)?                                                          int64
+Lesen Sie zur Zeit ein Buch?                                                                                                                              object
+Wie alt sind Sie?                                                                                                                                          int64
+Sie sind ...                                                                                                                                              object
 dtype: object</code></pre>
 </div>
 </div>
 </section>
 <section id="info" class="slide level2">
 <h2>Info</h2>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3f055541" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 37 entries, 0 to 36
+RangeIndex: 31 entries, 0 to 30
 Data columns (total 14 columns):
- #   Column                                                                                                                                                 Non-Null Count  Dtype 
----  ------                                                                                                                                                 --------------  ----- 
- 0   Zeitstempel                                                                                                                                            37 non-null     object
- 1   Ich bin sportlich                                                                                                                                      37 non-null     object
- 2   Ich bin fleißig.                                                                                                                                       37 non-null     object
- 3   Von Rückschlägen lasse ich mich nicht entmutigen.                                                                                                      37 non-null     int64 
- 4   Meine Fähigkeiten und Talente sind vorgegeben und ich kann daran nicht viel ändern.                                                                    37 non-null     object
- 5   1990 lebten 58 % der Weltbevölkerung in Ländern mit niedrigem Einkommen. Wie hoch ist der Anteil heute? Geben Sie eine Zahl ein (z. B. 9, 37 oder 61)  37 non-null     object
- 6   Wie viel der weltweit verbrauchten Energie stammt aus Erdgas, Kohle und Öl?                                                                            37 non-null     object
- 7   Welcher Anteil der Weltbevölkerung lebt in Megacitys (Städte mit mindestens 10 Millionen Einwohnern)?                                                  37 non-null     int64 
- 8   Wie viele Geleebohnen befinden sich in diesem sechseckigen Glas?                                                                                       37 non-null     int64 
- 9   Wie viele Minuten verbringen Sie an einem typischen Tag in sozialen Medien (Facebook, Instagram, Snapchat, etc.)?                                      37 non-null     int64 
- 10  Wie viele Minuten investieren Sie ca. pro Tag in Ihr Studium (abgesehen von Lehrveranstaltungen)?                                                      37 non-null     int64 
- 11  Lesen Sie zur Zeit ein Buch?                                                                                                                           37 non-null     object
- 12  Wie alt sind Sie?                                                                                                                                      37 non-null     int64 
- 13  Sie sind ...                                                                                                                                           37 non-null     object
-dtypes: int64(6), object(8)
-memory usage: 4.2+ KB</code></pre>
+ #   Column                                                                                                                                                 Non-Null Count  Dtype  
+---  ------                                                                                                                                                 --------------  -----  
+ 0   Zeitstempel                                                                                                                                            31 non-null     object 
+ 1   Ich bin sportlich                                                                                                                                      31 non-null     object 
+ 2   Ich bin fleißig.                                                                                                                                       31 non-null     object 
+ 3   Von Rückschlägen lasse ich mich nicht entmutigen.                                                                                                      31 non-null     int64  
+ 4   Meine Fähigkeiten und Talente sind vorgegeben und ich kann daran nicht viel ändern.                                                                    31 non-null     object 
+ 5   1990 lebten 58 % der Weltbevölkerung in Ländern mit niedrigem Einkommen. Wie hoch ist der Anteil heute? Geben Sie eine Zahl ein (z. B. 9, 37 oder 61)  31 non-null     object 
+ 6   Wie viel der weltweit verbrauchten Energie stammt aus Erdgas, Kohle und Öl?                                                                            31 non-null     object 
+ 7   Welcher Anteil der Weltbevölkerung lebt in Megacitys (Städte mit mindestens 10 Millionen Einwohnern)?                                                  31 non-null     int64  
+ 8   Wie viele Geleebohnen befinden sich in diesem sechseckigen Glas?                                                                                       31 non-null     float64
+ 9   Wie viele Minuten verbringen Sie an einem typischen Tag in sozialen Medien (Facebook, Instagram, Snapchat, etc.)?                                      31 non-null     int64  
+ 10  Wie viele Minuten investieren Sie ca. pro Tag in Ihr Studium (abgesehen von Lehrveranstaltungen)?                                                      31 non-null     int64  
+ 11  Lesen Sie zur Zeit ein Buch?                                                                                                                           31 non-null     object 
+ 12  Wie alt sind Sie?                                                                                                                                      31 non-null     int64  
+ 13  Sie sind ...                                                                                                                                           31 non-null     object 
+dtypes: float64(1), int64(5), object(8)
+memory usage: 3.5+ KB</code></pre>
 </div>
 </div>
 </section></section>
@@ -1193,24 +1094,24 @@ memory usage: 4.2+ KB</code></pre>
 </section>
 <section id="spaltennamen" class="slide level2">
 <h2>Spaltennamen</h2>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Spaltennamen umbenennen</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{</span>
-<span id="cb8-3"><a href="#cb8-3"></a>    <span class="st">"Zeitstempel"</span>: <span class="st">"zeit"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4"></a>    <span class="st">"Ich bin sportlich"</span>: <span class="st">"sport"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="st">"Ich bin fleißig."</span>: <span class="st">"fleissig"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6"></a>    <span class="st">"Von Rückschlägen lasse ich mich nicht entmutigen."</span>: <span class="st">"entmutigen"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7"></a>    <span class="st">"Meine Fähigkeiten und Talente sind vorgegeben und ich kann daran nicht viel ändern."</span>: <span class="st">'talente'</span>,</span>
-<span id="cb8-8"><a href="#cb8-8"></a>    <span class="st">"1990 lebten 58 </span><span class="sc">% d</span><span class="st">er Weltbevölkerung in Ländern mit niedrigem Einkommen. Wie hoch ist der Anteil heute? Geben Sie eine Zahl ein (z. B. 9, 37 oder 61)"</span>: <span class="st">"einkommen"</span>,</span>
-<span id="cb8-9"><a href="#cb8-9"></a>    <span class="st">"Wie viel der weltweit verbrauchten Energie stammt aus Erdgas, Kohle und Öl?"</span>: <span class="st">"energie"</span>,</span>
-<span id="cb8-10"><a href="#cb8-10"></a>    <span class="st">"Welcher Anteil der Weltbevölkerung lebt in Megacitys (Städte mit mindestens 10 Millionen Einwohnern)?"</span>: <span class="st">"megacity"</span>,</span>
-<span id="cb8-11"><a href="#cb8-11"></a>    <span class="st">"Wie viele Geleebohnen befinden sich in diesem sechseckigen Glas?"</span>: <span class="st">"geleebohnen"</span>,</span>
-<span id="cb8-12"><a href="#cb8-12"></a>    <span class="st">"Wie viele Minuten verbringen Sie an einem typischen Tag in sozialen Medien (Facebook, Instagram, Snapchat, etc.)?"</span>: <span class="st">"soziale_medien"</span>,</span>
-<span id="cb8-13"><a href="#cb8-13"></a>    <span class="st">"Wie viele Minuten investieren Sie ca. pro Tag in Ihr Studium (abgesehen von Lehrveranstaltungen)?"</span>: <span class="st">"studium"</span>,</span>
-<span id="cb8-14"><a href="#cb8-14"></a>    <span class="st">"Lesen Sie zur Zeit ein Buch?"</span>: <span class="st">"buch"</span>,</span>
-<span id="cb8-15"><a href="#cb8-15"></a>    <span class="st">"Wie alt sind Sie?"</span>: <span class="st">"alter"</span>,</span>
-<span id="cb8-16"><a href="#cb8-16"></a>    <span class="st">"Sie sind ..."</span>: <span class="st">"geschlecht"</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a>}, errors<span class="op">=</span><span class="st">"raise"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="dcc9673e" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Spaltennamen umbenennen</span></span>
+<span id="cb8-2"><a></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{</span>
+<span id="cb8-3"><a></a>    <span class="st">"Zeitstempel"</span>: <span class="st">"zeit"</span>,</span>
+<span id="cb8-4"><a></a>    <span class="st">"Ich bin sportlich"</span>: <span class="st">"sport"</span>,</span>
+<span id="cb8-5"><a></a>    <span class="st">"Ich bin fleißig."</span>: <span class="st">"fleissig"</span>,</span>
+<span id="cb8-6"><a></a>    <span class="st">"Von Rückschlägen lasse ich mich nicht entmutigen."</span>: <span class="st">"entmutigen"</span>,</span>
+<span id="cb8-7"><a></a>    <span class="st">"Meine Fähigkeiten und Talente sind vorgegeben und ich kann daran nicht viel ändern."</span>: <span class="st">'talente'</span>,</span>
+<span id="cb8-8"><a></a>    <span class="st">"1990 lebten 58 </span><span class="sc">% d</span><span class="st">er Weltbevölkerung in Ländern mit niedrigem Einkommen. Wie hoch ist der Anteil heute? Geben Sie eine Zahl ein (z. B. 9, 37 oder 61)"</span>: <span class="st">"einkommen"</span>,</span>
+<span id="cb8-9"><a></a>    <span class="st">"Wie viel der weltweit verbrauchten Energie stammt aus Erdgas, Kohle und Öl?"</span>: <span class="st">"energie"</span>,</span>
+<span id="cb8-10"><a></a>    <span class="st">"Welcher Anteil der Weltbevölkerung lebt in Megacitys (Städte mit mindestens 10 Millionen Einwohnern)?"</span>: <span class="st">"megacity"</span>,</span>
+<span id="cb8-11"><a></a>    <span class="st">"Wie viele Geleebohnen befinden sich in diesem sechseckigen Glas?"</span>: <span class="st">"geleebohnen"</span>,</span>
+<span id="cb8-12"><a></a>    <span class="st">"Wie viele Minuten verbringen Sie an einem typischen Tag in sozialen Medien (Facebook, Instagram, Snapchat, etc.)?"</span>: <span class="st">"soziale_medien"</span>,</span>
+<span id="cb8-13"><a></a>    <span class="st">"Wie viele Minuten investieren Sie ca. pro Tag in Ihr Studium (abgesehen von Lehrveranstaltungen)?"</span>: <span class="st">"studium"</span>,</span>
+<span id="cb8-14"><a></a>    <span class="st">"Lesen Sie zur Zeit ein Buch?"</span>: <span class="st">"buch"</span>,</span>
+<span id="cb8-15"><a></a>    <span class="st">"Wie alt sind Sie?"</span>: <span class="st">"alter"</span>,</span>
+<span id="cb8-16"><a></a>    <span class="st">"Sie sind ..."</span>: <span class="st">"geschlecht"</span></span>
+<span id="cb8-17"><a></a>}, errors<span class="op">=</span><span class="st">"raise"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
 
@@ -1218,32 +1119,32 @@ memory usage: 4.2+ KB</code></pre>
 </section>
 <section id="info-1" class="slide level2">
 <h2>Info</h2>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="83c0238a" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 37 entries, 0 to 36
+RangeIndex: 31 entries, 0 to 30
 Data columns (total 14 columns):
- #   Column          Non-Null Count  Dtype 
----  ------          --------------  ----- 
- 0   zeit            37 non-null     object
- 1   sport           37 non-null     object
- 2   fleissig        37 non-null     object
- 3   entmutigen      37 non-null     int64 
- 4   talente         37 non-null     object
- 5   einkommen       37 non-null     object
- 6   energie         37 non-null     object
- 7   megacity        37 non-null     int64 
- 8   geleebohnen     37 non-null     int64 
- 9   soziale_medien  37 non-null     int64 
- 10  studium         37 non-null     int64 
- 11  buch            37 non-null     object
- 12  alter           37 non-null     int64 
- 13  geschlecht      37 non-null     object
-dtypes: int64(6), object(8)
-memory usage: 4.2+ KB</code></pre>
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   zeit            31 non-null     object 
+ 1   sport           31 non-null     object 
+ 2   fleissig        31 non-null     object 
+ 3   entmutigen      31 non-null     int64  
+ 4   talente         31 non-null     object 
+ 5   einkommen       31 non-null     object 
+ 6   energie         31 non-null     object 
+ 7   megacity        31 non-null     int64  
+ 8   geleebohnen     31 non-null     float64
+ 9   soziale_medien  31 non-null     int64  
+ 10  studium         31 non-null     int64  
+ 11  buch            31 non-null     object 
+ 12  alter           31 non-null     int64  
+ 13  geschlecht      31 non-null     object 
+dtypes: float64(1), int64(5), object(8)
+memory usage: 3.5+ KB</code></pre>
 </div>
 </div>
 </section></section>
@@ -1254,9 +1155,9 @@ memory usage: 4.2+ KB</code></pre>
 </section>
 <section id="liste-erstellen" class="slide level2">
 <h2>Liste erstellen</h2>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Liste mit nominalen Variablen erstellen</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>list_nominal <span class="op">=</span> [<span class="st">"buch"</span>, <span class="st">"geschlecht"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5b9a0fda" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Liste mit nominalen Variablen erstellen</span></span>
+<span id="cb11-2"><a></a>list_nominal <span class="op">=</span> [<span class="st">"buch"</span>, <span class="st">"geschlecht"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
 
@@ -1264,34 +1165,35 @@ memory usage: 4.2+ KB</code></pre>
 </section>
 <section id="variablen-anpassen" class="slide level2">
 <h2>Variablen anpassen</h2>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Nominale Variablen als kategorial formatieren (category)</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_nominal:</span>
-<span id="cb12-3"><a href="#cb12-3"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"category"</span>)</span>
-<span id="cb12-4"><a href="#cb12-4"></a></span>
-<span id="cb12-5"><a href="#cb12-5"></a>df[list_nominal].info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1fbe1d3e" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Nominale Variablen als kategorial formatieren (category)</span></span>
+<span id="cb12-2"><a></a><span class="cf">for</span> i <span class="kw">in</span> list_nominal:</span>
+<span id="cb12-3"><a></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"category"</span>)</span>
+<span id="cb12-4"><a></a></span>
+<span id="cb12-5"><a></a>df[list_nominal].info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 37 entries, 0 to 36
+RangeIndex: 31 entries, 0 to 30
 Data columns (total 2 columns):
  #   Column      Non-Null Count  Dtype   
 ---  ------      --------------  -----   
- 0   buch        37 non-null     category
- 1   geschlecht  37 non-null     category
+ 0   buch        31 non-null     category
+ 1   geschlecht  31 non-null     category
 dtypes: category(2)
-memory usage: 454.0 bytes</code></pre>
+memory usage: 442.0 bytes</code></pre>
 </div>
 </div>
 </section>
 <section id="variablen-anzeigen" class="slide level2">
 <h2>Variablen anzeigen</h2>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df[list_nominal].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8bc4e48a" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>df[list_nominal].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-display" data-execution_count="10">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1318,17 +1220,17 @@ memory usage: 454.0 bytes</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>Nein</td>
-<td>Weiblich</td>
+<td>Ja</td>
+<td>Männlich</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>Nein</td>
-<td>Männlich</td>
+<td>Ja</td>
+<td>Weiblich</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>Nein</td>
+<td>Ja</td>
 <td>Weiblich</td>
 </tr>
 <tr class="even">
@@ -1338,12 +1240,13 @@ memory usage: 454.0 bytes</code></pre>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>Nein</td>
-<td>Männlich</td>
+<td>Ja</td>
+<td>Weiblich</td>
 </tr>
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
@@ -1354,14 +1257,15 @@ memory usage: 454.0 bytes</code></pre>
 </section>
 <section id="dummy-variablen-erstellen" class="slide level2">
 <h2>Dummy Variablen erstellen</h2>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>dummy_nominal <span class="op">=</span> pd.get_dummies(</span>
-<span id="cb15-2"><a href="#cb15-2"></a>    df[list_nominal],  prefix_sep<span class="op">=</span><span class="st">'__'</span>).astype(<span class="st">'category'</span>)</span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a>dummy_nominal</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="72ce91a0" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>dummy_nominal <span class="op">=</span> pd.get_dummies(</span>
+<span id="cb15-2"><a></a>    df[list_nominal],  prefix_sep<span class="op">=</span><span class="st">'__'</span>).astype(<span class="st">'category'</span>)</span>
+<span id="cb15-3"><a></a></span>
+<span id="cb15-4"><a></a>dummy_nominal</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
 <div class="cell-output cell-output-display" data-execution_count="11">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1390,262 +1294,220 @@ memory usage: 454.0 bytes</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">13</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">15</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">16</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">17</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">18</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">19</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">20</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">21</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">22</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">23</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">24</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">25</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">26</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">27</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">28</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">29</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">30</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">31</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">32</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">33</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">34</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">35</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">36</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 </tbody>
 </table>
@@ -1653,17 +1515,19 @@ memory usage: 454.0 bytes</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="dummy-variablen-zu-daten-hinzufügen" class="slide level2">
 <h2>Dummy Variablen zu Daten hinzufügen</h2>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Dummy-Variablen hinzufügen</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>df <span class="op">=</span> df.join(dummy_nominal)</span>
-<span id="cb16-3"><a href="#cb16-3"></a></span>
-<span id="cb16-4"><a href="#cb16-4"></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f91c6f74" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># Dummy-Variablen hinzufügen</span></span>
+<span id="cb16-2"><a></a>df <span class="op">=</span> df.join(dummy_nominal)</span>
+<span id="cb16-3"><a></a></span>
+<span id="cb16-4"><a></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="12">
 <div class="cell-output cell-output-display" data-execution_count="12">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1706,108 +1570,108 @@ memory usage: 454.0 bytes</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>2023/10/17 4:37:01 PM OESZ</td>
-<td>trifft eher zu</td>
+<td>2024/04/16 10:49:54 AM OEZ</td>
 <td>trifft völlig zu</td>
-<td>4</td>
-<td>teils teils</td>
-<td>40</td>
+<td>trifft eher zu</td>
+<td>2</td>
+<td>trifft eher zu</td>
+<td>80</td>
 <td>ca. 82%</td>
-<td>4</td>
-<td>800</td>
-<td>5</td>
 <td>3</td>
-<td>Nein</td>
-<td>20</td>
-<td>Weiblich</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<td>2000.0</td>
+<td>40</td>
+<td>3</td>
+<td>Ja</td>
+<td>21</td>
+<td>Männlich</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>2023/10/17 4:37:16 PM OESZ</td>
-<td>trifft eher zu</td>
+<td>2024/04/16 10:50:21 AM OEZ</td>
 <td>trifft eher nicht zu</td>
-<td>4</td>
-<td>trifft überhaupt nicht zu</td>
-<td>50</td>
-<td>ca. 62%</td>
+<td>trifft eher zu</td>
 <td>2</td>
-<td>375</td>
-<td>200</td>
-<td>15</td>
-<td>Nein</td>
-<td>21</td>
-<td>Männlich</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
+<td>trifft überhaupt nicht zu</td>
+<td>23</td>
+<td>ca. 82%</td>
+<td>3</td>
+<td>500.0</td>
+<td>240</td>
+<td>120</td>
+<td>Ja</td>
+<td>24</td>
+<td>Weiblich</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>2023/10/17 4:37:44 PM OESZ</td>
-<td>trifft überhaupt nicht zu</td>
+<td>2024/04/16 10:50:22 AM OEZ</td>
 <td>teils teils</td>
-<td>4</td>
 <td>trifft eher zu</td>
-<td>23</td>
-<td>ca. 62%</td>
 <td>4</td>
-<td>500</td>
-<td>300</td>
-<td>60</td>
-<td>Nein</td>
-<td>20</td>
+<td>trifft eher nicht zu</td>
+<td>37</td>
+<td>ca. 62%</td>
+<td>2</td>
+<td>756.0</td>
+<td>240</td>
+<td>30</td>
+<td>Ja</td>
+<td>19</td>
 <td>Weiblich</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>2023/10/17 4:37:51 PM OESZ</td>
+<td>2024/04/16 10:50:24 AM OEZ</td>
+<td>teils teils</td>
 <td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>2</td>
-<td>trifft überhaupt nicht zu</td>
-<td>68</td>
-<td>ca. 82%</td>
 <td>3</td>
-<td>568</td>
-<td>240</td>
-<td>15</td>
+<td>teils teils</td>
+<td>37</td>
+<td>ca. 62%</td>
+<td>3</td>
+<td>1.0</td>
+<td>1000</td>
+<td>60</td>
 <td>Nein</td>
-<td>23</td>
+<td>20</td>
 <td>Männlich</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>2023/10/17 4:37:57 PM OESZ</td>
-<td>teils teils</td>
+<td>2024/04/16 10:50:29 AM OEZ</td>
+<td>trifft eher zu</td>
+<td>trifft völlig zu</td>
+<td>2</td>
 <td>trifft eher nicht zu</td>
-<td>4</td>
-<td>trifft überhaupt nicht zu</td>
-<td>14</td>
+<td>65</td>
 <td>ca. 82%</td>
 <td>3</td>
-<td>600</td>
-<td>30</td>
-<td>60</td>
-<td>Nein</td>
-<td>24</td>
-<td>Männlich</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
+<td>350.0</td>
+<td>90</td>
+<td>2</td>
+<td>Ja</td>
+<td>22</td>
+<td>Weiblich</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 </tbody>
 </table>
@@ -1815,18 +1679,19 @@ memory usage: 454.0 bytes</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="liste-um-dummy-variablen-ergänzen" class="slide level2">
 <h2>Liste um Dummy Variablen ergänzen</h2>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Liste um die neuen Variablen erweitern</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>dummy_nominal_name <span class="op">=</span> dummy_nominal.columns.tolist()</span>
-<span id="cb17-3"><a href="#cb17-3"></a></span>
-<span id="cb17-4"><a href="#cb17-4"></a>list_nominal.extend(dummy_nominal_name)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fdc621fa" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Liste um die neuen Variablen erweitern</span></span>
+<span id="cb17-2"><a></a>dummy_nominal_name <span class="op">=</span> dummy_nominal.columns.tolist()</span>
+<span id="cb17-3"><a></a></span>
+<span id="cb17-4"><a></a>list_nominal.extend(dummy_nominal_name)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>list_nominal</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8ce58a39" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>list_nominal</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="14">
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -1897,8 +1762,8 @@ memory usage: 454.0 bytes</code></pre>
 <ul>
 <li class="fragment">Da wir die Variable <code>entmutigen</code> nicht versehentlich durch Datentransformationen fehlerhaft verändern möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als <code>entmutigen_orig</code>).</li>
 </ul>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df[<span class="st">'entmutigen_orig'</span>] <span class="op">=</span> df[<span class="st">'entmutigen'</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8572fa84" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>df[<span class="st">'entmutigen_orig'</span>] <span class="op">=</span> df[<span class="st">'entmutigen'</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="15">
 
@@ -1909,14 +1774,14 @@ memory usage: 454.0 bytes</code></pre>
 <ul>
 <li class="fragment">Erzeugung der Listen für die Veränderung der Variable (in der korrekten Reihenfolge):</li>
 </ul>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>werte <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb21-2"><a href="#cb21-2"></a></span>
-<span id="cb21-3"><a href="#cb21-3"></a>likert <span class="op">=</span> [<span class="st">"trifft überhaupt nicht zu"</span>,</span>
-<span id="cb21-4"><a href="#cb21-4"></a>          <span class="st">"trifft eher nicht zu"</span>,</span>
-<span id="cb21-5"><a href="#cb21-5"></a>          <span class="st">"teils teils"</span>,</span>
-<span id="cb21-6"><a href="#cb21-6"></a>          <span class="st">"trifft eher zu"</span>,</span>
-<span id="cb21-7"><a href="#cb21-7"></a>          <span class="st">"trifft völlig zu"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a1a0b5bb" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>werte <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb21-2"><a></a></span>
+<span id="cb21-3"><a></a>likert <span class="op">=</span> [<span class="st">"trifft überhaupt nicht zu"</span>,</span>
+<span id="cb21-4"><a></a>          <span class="st">"trifft eher nicht zu"</span>,</span>
+<span id="cb21-5"><a></a>          <span class="st">"teils teils"</span>,</span>
+<span id="cb21-6"><a></a>          <span class="st">"trifft eher zu"</span>,</span>
+<span id="cb21-7"><a></a>          <span class="st">"trifft völlig zu"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="16">
 
@@ -1924,32 +1789,32 @@ memory usage: 454.0 bytes</code></pre>
 </section>
 <section id="variable-anpassen" class="slide level2">
 <h2>Variable anpassen</h2>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df[<span class="st">'entmutigen'</span>].replace(werte, likert, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb22-2"><a href="#cb22-2"></a></span>
-<span id="cb22-3"><a href="#cb22-3"></a>df[<span class="st">'entmutigen'</span>].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b69d8f2a" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>df[<span class="st">'entmutigen'</span>].replace(werte, likert, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-2"><a></a></span>
+<span id="cb22-3"><a></a>df[<span class="st">'entmutigen'</span>].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="17">
 <div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>0          trifft eher zu
-1          trifft eher zu
+<pre><code>0    trifft eher nicht zu
+1    trifft eher nicht zu
 2          trifft eher zu
-3    trifft eher nicht zu
-4          trifft eher zu
+3             teils teils
+4    trifft eher nicht zu
 Name: entmutigen, dtype: object</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df[<span class="st">'entmutigen_orig'</span>].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2019f3ce" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>df[<span class="st">'entmutigen_orig'</span>].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="18">
 <div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>0    4
-1    4
+<pre><code>0    2
+1    2
 2    4
-3    2
-4    4
+3    3
+4    2
 Name: entmutigen_orig, dtype: int64</code></pre>
 </div>
 </div>
@@ -1965,8 +1830,8 @@ Name: entmutigen_orig, dtype: int64</code></pre>
 <ul>
 <li class="fragment">Erstellung einer Liste:</li>
 </ul>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>list_ordinal <span class="op">=</span> [<span class="st">"sport"</span>, <span class="st">"fleissig"</span>, <span class="st">"talente"</span>, <span class="st">"entmutigen"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8f0da911" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>list_ordinal <span class="op">=</span> [<span class="st">"sport"</span>, <span class="st">"fleissig"</span>, <span class="st">"talente"</span>, <span class="st">"entmutigen"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="19">
 
@@ -1974,76 +1839,70 @@ Name: entmutigen_orig, dtype: int64</code></pre>
 </section>
 <section id="verwendung-von-pandas-categoricaldtype" class="slide level2">
 <h2>Verwendung von pandas CategoricalDtype</h2>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>cat_type <span class="op">=</span> CategoricalDtype(categories<span class="op">=</span>likert, ordered<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb27-2"><a href="#cb27-2"></a></span>
-<span id="cb27-3"><a href="#cb27-3"></a>cat_type</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7f9a35d1" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>cat_type <span class="op">=</span> CategoricalDtype(categories<span class="op">=</span>likert, ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb27-2"><a></a></span>
+<span id="cb27-3"><a></a>cat_type</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="20">
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>CategoricalDtype(categories=['trifft überhaupt nicht zu', 'trifft eher nicht zu',
                   'teils teils', 'trifft eher zu', 'trifft völlig zu'],
-, ordered=True)</code></pre>
+, ordered=True, categories_dtype=object)</code></pre>
 </div>
 </div>
 </section>
 <section id="ordinale-variablen-anpassen" class="slide level2">
 <h2>Ordinale Variablen anpassen</h2>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>df[list_ordinal] <span class="op">=</span> df[list_ordinal].astype(cat_type)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6b13e67e" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>df[list_ordinal] <span class="op">=</span> df[list_ordinal].astype(cat_type)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>df[<span class="st">"sport"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e1f03e7e" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>df[<span class="st">"sport"</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="22">
 <div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>0                trifft eher zu
-1                trifft eher zu
-2     trifft überhaupt nicht zu
-3          trifft eher nicht zu
-4                   teils teils
-5     trifft überhaupt nicht zu
-6                trifft eher zu
-7                trifft eher zu
-8              trifft völlig zu
-9          trifft eher nicht zu
-10               trifft eher zu
-11               trifft eher zu
-12                  teils teils
-13         trifft eher nicht zu
-14                  teils teils
-15               trifft eher zu
-16               trifft eher zu
-17             trifft völlig zu
-18                  teils teils
-19         trifft eher nicht zu
-20         trifft eher nicht zu
-21             trifft völlig zu
-22                  teils teils
-23                  teils teils
-24                  teils teils
-25               trifft eher zu
-26             trifft völlig zu
-27             trifft völlig zu
-28                  teils teils
-29             trifft völlig zu
-30         trifft eher nicht zu
-31                  teils teils
-32             trifft völlig zu
-33               trifft eher zu
-34                  teils teils
-35             trifft völlig zu
-36                  teils teils
+<pre><code>0         trifft völlig zu
+1     trifft eher nicht zu
+2              teils teils
+3              teils teils
+4           trifft eher zu
+5     trifft eher nicht zu
+6           trifft eher zu
+7           trifft eher zu
+8              teils teils
+9         trifft völlig zu
+10          trifft eher zu
+11    trifft eher nicht zu
+12    trifft eher nicht zu
+13    trifft eher nicht zu
+14        trifft völlig zu
+15          trifft eher zu
+16          trifft eher zu
+17        trifft völlig zu
+18          trifft eher zu
+19        trifft völlig zu
+20          trifft eher zu
+21        trifft völlig zu
+22          trifft eher zu
+23        trifft völlig zu
+24        trifft völlig zu
+25        trifft völlig zu
+26             teils teils
+27          trifft eher zu
+28        trifft völlig zu
+29          trifft eher zu
+30             teils teils
 Name: sport, dtype: category
 Categories (5, object): ['trifft überhaupt nicht zu' &lt; 'trifft eher nicht zu' &lt; 'teils teils' &lt; 'trifft eher zu' &lt; 'trifft völlig zu']</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Anzeige der Ausprägungen</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a>df[<span class="st">'sport'</span>].cat.categories</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d2561f4f" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># Anzeige der Ausprägungen</span></span>
+<span id="cb32-2"><a></a>df[<span class="st">'sport'</span>].cat.categories</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="23">
 <div class="cell-output cell-output-display" data-execution_count="23">
@@ -2056,8 +1915,8 @@ Categories (5, object): ['trifft überhaupt nicht zu' &lt; 'trifft eher nicht zu
 </section>
 <section id="liste-der-kategorialen-variablen-erstellen" class="slide level2">
 <h2>Liste der kategorialen Variablen erstellen</h2>
-<div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>list_cat <span class="op">=</span> list_nominal <span class="op">+</span> list_ordinal</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4e7732cb" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a>list_cat <span class="op">=</span> list_nominal <span class="op">+</span> list_ordinal</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="24">
 
@@ -2083,28 +1942,28 @@ Categories (5, object): ['trifft überhaupt nicht zu' &lt; 'trifft eher nicht zu
 </section>
 <section id="liste-erstellen-2" class="slide level2">
 <h2>Liste erstellen</h2>
-<div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>list_num <span class="op">=</span> [<span class="st">'einkommen'</span>, <span class="st">'energie'</span>, <span class="st">'megacity'</span>, <span class="st">'geleebohnen'</span>,</span>
-<span id="cb35-2"><a href="#cb35-2"></a>            <span class="st">'soziale_medien'</span>, <span class="st">'studium'</span>, <span class="st">'alter'</span>]</span>
-<span id="cb35-3"><a href="#cb35-3"></a></span>
-<span id="cb35-4"><a href="#cb35-4"></a>df[list_num].info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="467a0d96" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>list_num <span class="op">=</span> [<span class="st">'einkommen'</span>, <span class="st">'energie'</span>, <span class="st">'megacity'</span>, <span class="st">'geleebohnen'</span>,</span>
+<span id="cb35-2"><a></a>            <span class="st">'soziale_medien'</span>, <span class="st">'studium'</span>, <span class="st">'alter'</span>]</span>
+<span id="cb35-3"><a></a></span>
+<span id="cb35-4"><a></a>df[list_num].info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="25">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 37 entries, 0 to 36
+RangeIndex: 31 entries, 0 to 30
 Data columns (total 7 columns):
- #   Column          Non-Null Count  Dtype 
----  ------          --------------  ----- 
- 0   einkommen       37 non-null     object
- 1   energie         37 non-null     object
- 2   megacity        37 non-null     int64 
- 3   geleebohnen     37 non-null     int64 
- 4   soziale_medien  37 non-null     int64 
- 5   studium         37 non-null     int64 
- 6   alter           37 non-null     int64 
-dtypes: int64(5), object(2)
-memory usage: 2.2+ KB</code></pre>
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   einkommen       31 non-null     object 
+ 1   energie         31 non-null     object 
+ 2   megacity        31 non-null     int64  
+ 3   geleebohnen     31 non-null     float64
+ 4   soziale_medien  31 non-null     int64  
+ 5   studium         31 non-null     int64  
+ 6   alter           31 non-null     int64  
+dtypes: float64(1), int64(4), object(2)
+memory usage: 1.8+ KB</code></pre>
 </div>
 </div>
 </section>
@@ -2117,15 +1976,15 @@ memory usage: 2.2+ KB</code></pre>
 </section>
 <section id="untersuchung-von-problemen" class="slide level2">
 <h2>Untersuchung von Problemen</h2>
-<div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>df[<span class="st">'energie'</span>].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bad19d3f" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>df[<span class="st">'energie'</span>].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="26">
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>0    ca. 82%
-1    ca. 62%
+1    ca. 82%
 2    ca. 62%
-3    ca. 82%
+3    ca. 62%
 4    ca. 82%
 Name: energie, dtype: object</code></pre>
 </div>
@@ -2141,8 +2000,8 @@ Name: energie, dtype: object</code></pre>
 <li class="fragment"><p>Da wir die Variable nicht versehentlich durch Datentransformationen korrumpieren möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als <code>energie_orig</code>).</p></li>
 <li class="fragment"><p>Um die numerischen Werte leichter extrahieren zu können, nutzen wir das Format “String”.</p></li>
 </ul>
-<div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>df[<span class="st">'energie_orig'</span>] <span class="op">=</span> df[<span class="st">'energie'</span>].astype(<span class="st">"string"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4db59c8a" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a>df[<span class="st">'energie_orig'</span>] <span class="op">=</span> df[<span class="st">'energie'</span>].astype(<span class="st">"string"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="27">
 
@@ -2211,16 +2070,17 @@ Name: energie, dtype: object</code></pre>
 <section id="anpassung-der-variable-1" class="slide level2">
 <h2>Anpassung der Variable</h2>
 <div class="fragment">
-<div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>df[<span class="st">'energie'</span>] <span class="op">=</span> df[<span class="st">'energie_orig'</span>].<span class="bu">str</span>.extract(<span class="st">'(\d+)'</span>).astype(<span class="bu">int</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="49b0f1e8" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a>df[<span class="st">'energie'</span>] <span class="op">=</span> df[<span class="st">'energie_orig'</span>].<span class="bu">str</span>.extract(<span class="st">'(\d+)'</span>).astype(<span class="bu">int</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>df[[<span class="st">'energie_orig'</span>, <span class="st">'energie'</span>]].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="df6f39d4" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a>df[[<span class="st">'energie_orig'</span>, <span class="st">'energie'</span>]].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="29">
 <div class="cell-output cell-output-display" data-execution_count="29">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2252,8 +2112,8 @@ Name: energie, dtype: object</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>ca. 62%</td>
-<td>62</td>
+<td>ca. 82%</td>
+<td>82</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -2262,8 +2122,8 @@ Name: energie, dtype: object</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>ca. 82%</td>
-<td>82</td>
+<td>ca. 62%</td>
+<td>62</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -2273,6 +2133,7 @@ Name: energie, dtype: object</code></pre>
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
@@ -2297,18 +2158,18 @@ Name: energie, dtype: object</code></pre>
 <li class="fragment"><p>Dafür kopieren wir die Daten und fügen diesen die Endung “qm” (für quasimetrisch) hinzu.</p></li>
 </ul>
 <div class="fragment">
-<div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_ordinal:</span>
-<span id="cb42-2"><a href="#cb42-2"></a>    df[i <span class="op">+</span> <span class="st">"_qm"</span>] <span class="op">=</span> df[i]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8ad819b8" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> list_ordinal:</span>
+<span id="cb42-2"><a></a>    df[i <span class="op">+</span> <span class="st">"_qm"</span>] <span class="op">=</span> df[i]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="liste-erzeugen" class="slide level2">
 <h2>Liste erzeugen</h2>
-<div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Erstellung der Liste mit Hilfe von filter und regular expressions</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a>list_qm <span class="op">=</span> df.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">'_qm'</span>).columns.to_list()</span>
-<span id="cb43-3"><a href="#cb43-3"></a>list_qm</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6155baaf" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a><span class="co"># Erstellung der Liste mit Hilfe von filter und regular expressions</span></span>
+<span id="cb43-2"><a></a>list_qm <span class="op">=</span> df.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">'_qm'</span>).columns.to_list()</span>
+<span id="cb43-3"><a></a>list_qm</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="31">
 <div class="cell-output cell-output-display" data-execution_count="31">
@@ -2318,20 +2179,20 @@ Name: energie, dtype: object</code></pre>
 </section>
 <section id="info-2" class="slide level2">
 <h2>Info</h2>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>df[list_qm].info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="db5761f7" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a>df[list_qm].info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="32">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 37 entries, 0 to 36
+RangeIndex: 31 entries, 0 to 30
 Data columns (total 4 columns):
  #   Column         Non-Null Count  Dtype   
 ---  ------         --------------  -----   
- 0   sport_qm       37 non-null     category
- 1   fleissig_qm    37 non-null     category
- 2   talente_qm     37 non-null     category
- 3   entmutigen_qm  37 non-null     category
+ 0   sport_qm       31 non-null     category
+ 1   fleissig_qm    31 non-null     category
+ 2   talente_qm     31 non-null     category
+ 3   entmutigen_qm  31 non-null     category
 dtypes: category(4)
 memory usage: 1.1 KB</code></pre>
 </div>
@@ -2343,10 +2204,10 @@ memory usage: 1.1 KB</code></pre>
 <li class="fragment">Wir nutzen nun ein ähnliches Vorgehen wie bei der Anpassung der Variable “entmutigen”</li>
 </ul>
 <div class="fragment">
-<div class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_qm:</span>
-<span id="cb47-2"><a href="#cb47-2"></a>    df[i].replace(likert, werte, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb47-3"><a href="#cb47-3"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"int"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a423403e" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> list_qm:</span>
+<span id="cb47-2"><a></a>    df[i].replace(likert, werte, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb47-3"><a></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"int"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="33">
 
@@ -2355,11 +2216,12 @@ memory usage: 1.1 KB</code></pre>
 </section>
 <section id="daten-anzeigen" class="slide level2">
 <h2>Daten anzeigen</h2>
-<div class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>df[list_qm].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b33000c4" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a>df[list_qm].head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="34">
 <div class="cell-output cell-output-display" data-execution_count="34">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2388,38 +2250,38 @@ memory usage: 1.1 KB</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>4</td>
 <td>5</td>
-<td>3</td>
 <td>4</td>
+<td>4</td>
+<td>2</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>4</td>
 <td>2</td>
-<td>1</td>
 <td>4</td>
+<td>1</td>
+<td>2</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>1</td>
 <td>3</td>
 <td>4</td>
+<td>2</td>
 <td>4</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
 <td>2</td>
-<td>2</td>
-<td>1</td>
-<td>2</td>
+<td>3</td>
+<td>3</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
 <td>4</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
 </tr>
 </tbody>
 </table>
@@ -2427,31 +2289,32 @@ memory usage: 1.1 KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div class="fragment">
-<div class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>df[list_qm].info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f3d50fbe" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a></a>df[list_qm].info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="35">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 37 entries, 0 to 36
+RangeIndex: 31 entries, 0 to 30
 Data columns (total 4 columns):
  #   Column         Non-Null Count  Dtype
 ---  ------         --------------  -----
- 0   sport_qm       37 non-null     int64
- 1   fleissig_qm    37 non-null     int64
- 2   talente_qm     37 non-null     int64
- 3   entmutigen_qm  37 non-null     int64
+ 0   sport_qm       31 non-null     int64
+ 1   fleissig_qm    31 non-null     int64
+ 2   talente_qm     31 non-null     int64
+ 3   entmutigen_qm  31 non-null     int64
 dtypes: int64(4)
-memory usage: 1.3 KB</code></pre>
+memory usage: 1.1 KB</code></pre>
 </div>
 </div>
 </div>
 </section>
 <section id="liste-für-metrische-variablen" class="slide level2">
 <h2>Liste für metrische Variablen</h2>
-<div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>list_metric <span class="op">=</span> list_num <span class="op">+</span> list_qm</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4fa9f41d" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a></a>list_metric <span class="op">=</span> list_num <span class="op">+</span> list_qm</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="36">
 
@@ -2465,16 +2328,16 @@ memory usage: 1.3 KB</code></pre>
 <section id="daten-als-csv-speichern" class="slide level2">
 <h2>Daten als CSV speichern</h2>
 <p>Speichern als CSV:</p>
-<div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb52-2"><a href="#cb52-2"></a>FILE <span class="op">=</span> <span class="st">"clean_ws2324"</span></span>
-<span id="cb52-3"><a href="#cb52-3"></a>FORMAT_CSV <span class="op">=</span> <span class="st">".csv"</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8ba6a147" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
+<span id="cb52-2"><a></a>FILE <span class="op">=</span> <span class="st">"clean_data"</span></span>
+<span id="cb52-3"><a></a>FORMAT_CSV <span class="op">=</span> <span class="st">".csv"</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="37">
 
 </div>
-<div class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>df.to_csv(PATH <span class="op">+</span> FILE <span class="op">+</span> FORMAT_CSV, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="736484f9" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a></a>df.to_csv(PATH <span class="op">+</span> FILE <span class="op">+</span> FORMAT_CSV, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="38">
 
@@ -2483,17 +2346,19 @@ memory usage: 1.3 KB</code></pre>
 <section id="daten-als-excel-speichern" class="slide level2">
 <h2>Daten als Excel speichern</h2>
 <p>Speichern als Excel-Datei:</p>
-<div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>FORMAT_EXCEL <span class="op">=</span> <span class="st">".xlsx"</span></span>
-<span id="cb54-2"><a href="#cb54-2"></a></span>
-<span id="cb54-3"><a href="#cb54-3"></a>df.to_excel(PATH <span class="op">+</span> FILE <span class="op">+</span> FORMAT_EXCEL, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bcd2c945" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a></a><span class="co">#FORMAT_EXCEL = ".xlsx"</span></span>
+<span id="cb54-2"><a></a></span>
+<span id="cb54-3"><a></a><span class="co">#df.to_excel(PATH + FILE + FORMAT_EXCEL, index=False)</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="39">
 
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Jan Kirenz</p>
+</div>
 </div>
 </section></section>
     </div>
@@ -2523,7 +2388,6 @@ memory usage: 1.3 KB</code></pre>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': true,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -2785,10 +2649,27 @@ memory usage: 1.3 KB</code></pre>
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/kirenz\.github\.io\/lab-survey\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2798,8 +2679,17 @@ memory usage: 1.3 KB</code></pre>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2813,7 +2703,11 @@ memory usage: 1.3 KB</code></pre>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

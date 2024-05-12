@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.554">
 
   <meta name="author" content="Jan Kirenz">
   <title>Survey - Umfragedaten analysieren</title>
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -224,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -421,8 +422,8 @@ Jan Kirenz
 <section id="setup" class="title-slide slide level1 center">
 <h1>Setup</h1>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -434,15 +435,16 @@ Jan Kirenz
 <section id="daten-importieren" class="slide level2">
 <h2>Daten importieren</h2>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>DATA <span class="op">=</span> <span class="st">"clean_ws2324.csv"</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a>df <span class="op">=</span> pd.read_csv(PATH <span class="op">+</span> DATA)</span>
-<span id="cb2-5"><a href="#cb2-5"></a></span>
-<span id="cb2-6"><a href="#cb2-6"></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
+<span id="cb2-2"><a></a>DATA <span class="op">=</span> <span class="st">"clean_data.csv"</span></span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a>df <span class="op">=</span> pd.read_csv(PATH <span class="op">+</span> DATA)</span>
+<span id="cb2-5"><a></a></span>
+<span id="cb2-6"><a></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -488,123 +490,123 @@ Jan Kirenz
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>2023/10/17 4:37:01 PM OESZ</td>
-<td>trifft eher zu</td>
+<td>2024/04/16 10:49:54 AM OEZ</td>
 <td>trifft völlig zu</td>
-<td>trifft eher zu</td>
-<td>teils teils</td>
-<td>40</td>
-<td>82</td>
-<td>4</td>
-<td>800</td>
-<td>5</td>
-<td>...</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>4</td>
-<td>ca. 82%</td>
-<td>4</td>
-<td>5</td>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>2023/10/17 4:37:16 PM OESZ</td>
 <td>trifft eher zu</td>
 <td>trifft eher nicht zu</td>
 <td>trifft eher zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>50</td>
-<td>62</td>
-<td>2</td>
-<td>375</td>
-<td>200</td>
+<td>80</td>
+<td>82</td>
+<td>3</td>
+<td>2000.0</td>
+<td>40</td>
 <td>...</td>
-<td>False</td>
-<td>True</td>
 <td>True</td>
 <td>False</td>
+<td>True</td>
+<td>False</td>
+<td>2</td>
+<td>ca. 82%</td>
+<td>5</td>
 <td>4</td>
-<td>ca. 62%</td>
 <td>4</td>
 <td>2</td>
-<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2024/04/16 10:50:21 AM OEZ</td>
+<td>trifft eher nicht zu</td>
+<td>trifft eher zu</td>
+<td>trifft eher nicht zu</td>
+<td>trifft überhaupt nicht zu</td>
+<td>23</td>
+<td>82</td>
+<td>3</td>
+<td>500.0</td>
+<td>240</td>
+<td>...</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>2</td>
+<td>ca. 82%</td>
+<td>2</td>
 <td>4</td>
+<td>1</td>
+<td>2</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>2023/10/17 4:37:44 PM OESZ</td>
-<td>trifft überhaupt nicht zu</td>
+<td>2024/04/16 10:50:22 AM OEZ</td>
 <td>teils teils</td>
 <td>trifft eher zu</td>
 <td>trifft eher zu</td>
-<td>23</td>
+<td>trifft eher nicht zu</td>
+<td>37</td>
 <td>62</td>
-<td>4</td>
-<td>500</td>
-<td>300</td>
+<td>2</td>
+<td>756.0</td>
+<td>240</td>
 <td>...</td>
-<td>False</td>
 <td>True</td>
+<td>False</td>
 <td>False</td>
 <td>True</td>
 <td>4</td>
 <td>ca. 62%</td>
-<td>1</td>
 <td>3</td>
 <td>4</td>
+<td>2</td>
 <td>4</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>2023/10/17 4:37:51 PM OESZ</td>
+<td>2024/04/16 10:50:24 AM OEZ</td>
+<td>teils teils</td>
 <td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>68</td>
-<td>82</td>
+<td>teils teils</td>
+<td>teils teils</td>
+<td>37</td>
+<td>62</td>
 <td>3</td>
-<td>568</td>
-<td>240</td>
+<td>1.0</td>
+<td>1000</td>
 <td>...</td>
 <td>False</td>
 <td>True</td>
 <td>True</td>
 <td>False</td>
+<td>3</td>
+<td>ca. 62%</td>
+<td>3</td>
 <td>2</td>
-<td>ca. 82%</td>
-<td>2</td>
-<td>2</td>
-<td>1</td>
-<td>2</td>
+<td>3</td>
+<td>3</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>2023/10/17 4:37:57 PM OESZ</td>
-<td>teils teils</td>
-<td>trifft eher nicht zu</td>
+<td>2024/04/16 10:50:29 AM OEZ</td>
 <td>trifft eher zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>14</td>
+<td>trifft völlig zu</td>
+<td>trifft eher nicht zu</td>
+<td>trifft eher nicht zu</td>
+<td>65</td>
 <td>82</td>
 <td>3</td>
-<td>600</td>
-<td>30</td>
+<td>350.0</td>
+<td>90</td>
 <td>...</td>
-<td>False</td>
-<td>True</td>
 <td>True</td>
 <td>False</td>
-<td>4</td>
-<td>ca. 82%</td>
-<td>3</td>
+<td>False</td>
+<td>True</td>
 <td>2</td>
-<td>1</td>
+<td>ca. 82%</td>
 <td>4</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
 </tr>
 </tbody>
 </table>
@@ -613,14 +615,15 @@ Jan Kirenz
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="variablen-liste-für-bereinigung" class="slide level2">
 <h2>Variablen-Liste für Bereinigung</h2>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Liste mit den noch enthaltenen Original-Spalten erstellen</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>list_drop <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'_orig'</span>, axis<span class="op">=</span><span class="dv">1</span>).columns.tolist()</span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a>list_drop</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Liste mit den noch enthaltenen Original-Spalten erstellen</span></span>
+<span id="cb3-2"><a></a>list_drop <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'_orig'</span>, axis<span class="op">=</span><span class="dv">1</span>).columns.tolist()</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a>list_drop</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -629,9 +632,9 @@ Jan Kirenz
 </div>
 <div class="fragment">
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>list_drop.append(<span class="st">'zeit'</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a>list_drop</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>list_drop.append(<span class="st">'zeit'</span>)</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a>list_drop</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -643,13 +646,14 @@ Jan Kirenz
 <section id="variablen-löschen" class="slide level2">
 <h2>Variablen löschen</h2>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Wir entfernen die Original-Spalten und die Variable zeit</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>list_drop)</span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Wir entfernen die Original-Spalten und die Variable zeit</span></span>
+<span id="cb7-2"><a></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>list_drop)</span>
+<span id="cb7-3"><a></a></span>
+<span id="cb7-4"><a></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
 <div class="cell-output cell-output-display" data-execution_count="5">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -695,123 +699,123 @@ Jan Kirenz
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>trifft eher zu</td>
 <td>trifft völlig zu</td>
-<td>trifft eher zu</td>
-<td>teils teils</td>
-<td>40</td>
-<td>82</td>
-<td>4</td>
-<td>800</td>
-<td>5</td>
-<td>3</td>
-<td>...</td>
-<td>20</td>
-<td>Weiblich</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>4</td>
-<td>5</td>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
 <td>trifft eher zu</td>
 <td>trifft eher nicht zu</td>
 <td>trifft eher zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>50</td>
-<td>62</td>
-<td>2</td>
-<td>375</td>
-<td>200</td>
-<td>15</td>
+<td>80</td>
+<td>82</td>
+<td>3</td>
+<td>2000.0</td>
+<td>40</td>
+<td>3</td>
 <td>...</td>
 <td>21</td>
 <td>Männlich</td>
-<td>False</td>
-<td>True</td>
 <td>True</td>
 <td>False</td>
+<td>True</td>
+<td>False</td>
+<td>5</td>
+<td>4</td>
 <td>4</td>
 <td>2</td>
-<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>trifft eher nicht zu</td>
+<td>trifft eher zu</td>
+<td>trifft eher nicht zu</td>
+<td>trifft überhaupt nicht zu</td>
+<td>23</td>
+<td>82</td>
+<td>3</td>
+<td>500.0</td>
+<td>240</td>
+<td>120</td>
+<td>...</td>
+<td>24</td>
+<td>Weiblich</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>2</td>
 <td>4</td>
+<td>1</td>
+<td>2</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>trifft überhaupt nicht zu</td>
 <td>teils teils</td>
 <td>trifft eher zu</td>
 <td>trifft eher zu</td>
-<td>23</td>
+<td>trifft eher nicht zu</td>
+<td>37</td>
 <td>62</td>
-<td>4</td>
-<td>500</td>
-<td>300</td>
-<td>60</td>
+<td>2</td>
+<td>756.0</td>
+<td>240</td>
+<td>30</td>
 <td>...</td>
-<td>20</td>
+<td>19</td>
 <td>Weiblich</td>
-<td>False</td>
 <td>True</td>
 <td>False</td>
+<td>False</td>
 <td>True</td>
-<td>1</td>
 <td>3</td>
 <td>4</td>
+<td>2</td>
 <td>4</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
+<td>teils teils</td>
 <td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>68</td>
-<td>82</td>
+<td>teils teils</td>
+<td>teils teils</td>
+<td>37</td>
+<td>62</td>
 <td>3</td>
-<td>568</td>
-<td>240</td>
-<td>15</td>
+<td>1.0</td>
+<td>1000</td>
+<td>60</td>
 <td>...</td>
-<td>23</td>
+<td>20</td>
 <td>Männlich</td>
 <td>False</td>
 <td>True</td>
 <td>True</td>
 <td>False</td>
+<td>3</td>
 <td>2</td>
-<td>2</td>
-<td>1</td>
-<td>2</td>
+<td>3</td>
+<td>3</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>teils teils</td>
-<td>trifft eher nicht zu</td>
 <td>trifft eher zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>14</td>
+<td>trifft völlig zu</td>
+<td>trifft eher nicht zu</td>
+<td>trifft eher nicht zu</td>
+<td>65</td>
 <td>82</td>
 <td>3</td>
-<td>600</td>
-<td>30</td>
-<td>60</td>
-<td>...</td>
-<td>24</td>
-<td>Männlich</td>
-<td>False</td>
-<td>True</td>
-<td>True</td>
-<td>False</td>
-<td>3</td>
+<td>350.0</td>
+<td>90</td>
 <td>2</td>
-<td>1</td>
+<td>...</td>
+<td>22</td>
+<td>Weiblich</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 <td>4</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
 </tr>
 </tbody>
 </table>
@@ -820,14 +824,15 @@ Jan Kirenz
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="liste-mit-dummy-variablen" class="slide level2">
 <h2>Liste mit Dummy-Variablen</h2>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Liste mit Dummy-Variablen erstellen</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>list_dummy <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'__'</span>, axis<span class="op">=</span><span class="dv">1</span>).columns</span>
-<span id="cb8-3"><a href="#cb8-3"></a></span>
-<span id="cb8-4"><a href="#cb8-4"></a>list_dummy</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Liste mit Dummy-Variablen erstellen</span></span>
+<span id="cb8-2"><a></a>list_dummy <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'__'</span>, axis<span class="op">=</span><span class="dv">1</span>).columns</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a>list_dummy</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -840,9 +845,9 @@ Jan Kirenz
 <section id="dummy-variablen-anpassen" class="slide level2">
 <h2>Dummy-Variablen anpassen</h2>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Dummy-Variablen als Objekt-Daten speichern</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_dummy:</span>
-<span id="cb10-3"><a href="#cb10-3"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"object"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Dummy-Variablen als Objekt-Daten speichern</span></span>
+<span id="cb10-2"><a></a><span class="cf">for</span> i <span class="kw">in</span> list_dummy:</span>
+<span id="cb10-3"><a></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"object"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
 
@@ -851,10 +856,10 @@ Jan Kirenz
 <section id="liste-mit-numerischen-variablen" class="slide level2">
 <h2>Liste mit numerischen Variablen</h2>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Liste für metrische Daten</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>list_metric <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[np.number]).columns.tolist()</span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a>list_metric</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Liste für metrische Daten</span></span>
+<span id="cb11-2"><a></a>list_metric <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[np.number]).columns.tolist()</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a>list_metric</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -874,10 +879,10 @@ Jan Kirenz
 <section id="liste-mit-kategorialen-variablen" class="slide level2">
 <h2>Liste mit kategorialen Variablen</h2>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Liste für kategoriale Daten</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>list_cat <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>]).columns.tolist()</span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a>list_cat</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Liste für kategoriale Daten</span></span>
+<span id="cb13-2"><a></a>list_cat <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>]).columns.tolist()</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a>list_cat</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -898,52 +903,53 @@ Jan Kirenz
 <section id="kategoriale-variablen-anpassen" class="slide level2">
 <h2>Kategoriale Variablen anpassen</h2>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Kategoriale Daten formatieren</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_cat:</span>
-<span id="cb15-3"><a href="#cb15-3"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"category"</span>)</span>
-<span id="cb15-4"><a href="#cb15-4"></a></span>
-<span id="cb15-5"><a href="#cb15-5"></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># Kategoriale Daten formatieren</span></span>
+<span id="cb15-2"><a></a><span class="cf">for</span> i <span class="kw">in</span> list_cat:</span>
+<span id="cb15-3"><a></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"category"</span>)</span>
+<span id="cb15-4"><a></a></span>
+<span id="cb15-5"><a></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 37 entries, 0 to 36
+RangeIndex: 31 entries, 0 to 30
 Data columns (total 21 columns):
  #   Column                Non-Null Count  Dtype   
 ---  ------                --------------  -----   
- 0   sport                 37 non-null     category
- 1   fleissig              37 non-null     category
- 2   entmutigen            37 non-null     category
- 3   talente               37 non-null     category
- 4   einkommen             37 non-null     category
- 5   energie               37 non-null     int64   
- 6   megacity              37 non-null     int64   
- 7   geleebohnen           37 non-null     int64   
- 8   soziale_medien        37 non-null     int64   
- 9   studium               37 non-null     int64   
- 10  buch                  37 non-null     category
- 11  alter                 37 non-null     int64   
- 12  geschlecht            37 non-null     category
- 13  buch__Ja              37 non-null     category
- 14  buch__Nein            37 non-null     category
- 15  geschlecht__Männlich  37 non-null     category
- 16  geschlecht__Weiblich  37 non-null     category
- 17  sport_qm              37 non-null     int64   
- 18  fleissig_qm           37 non-null     int64   
- 19  talente_qm            37 non-null     int64   
- 20  entmutigen_qm         37 non-null     int64   
-dtypes: category(11), int64(10)
-memory usage: 6.1 KB</code></pre>
+ 0   sport                 31 non-null     category
+ 1   fleissig              31 non-null     category
+ 2   entmutigen            31 non-null     category
+ 3   talente               31 non-null     category
+ 4   einkommen             31 non-null     category
+ 5   energie               31 non-null     int64   
+ 6   megacity              31 non-null     int64   
+ 7   geleebohnen           31 non-null     float64 
+ 8   soziale_medien        31 non-null     int64   
+ 9   studium               31 non-null     int64   
+ 10  buch                  31 non-null     category
+ 11  alter                 31 non-null     int64   
+ 12  geschlecht            31 non-null     category
+ 13  buch__Ja              31 non-null     category
+ 14  buch__Nein            31 non-null     category
+ 15  geschlecht__Männlich  31 non-null     category
+ 16  geschlecht__Weiblich  31 non-null     category
+ 17  sport_qm              31 non-null     int64   
+ 18  fleissig_qm           31 non-null     int64   
+ 19  talente_qm            31 non-null     int64   
+ 20  entmutigen_qm         31 non-null     int64   
+dtypes: category(11), float64(1), int64(9)
+memory usage: 4.9 KB</code></pre>
 </div>
 </div>
 </section>
 <section id="datenüberblick" class="slide level2">
 <h2>Datenüberblick</h2>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>df</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
 <div class="cell-output cell-output-display" data-execution_count="11">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -989,160 +995,112 @@ memory usage: 6.1 KB</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>trifft eher zu</td>
 <td>trifft völlig zu</td>
-<td>trifft eher zu</td>
-<td>teils teils</td>
-<td>40</td>
-<td>82</td>
-<td>4</td>
-<td>800</td>
-<td>5</td>
-<td>3</td>
-<td>...</td>
-<td>20</td>
-<td>Weiblich</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>4</td>
-<td>5</td>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
 <td>trifft eher zu</td>
 <td>trifft eher nicht zu</td>
 <td>trifft eher zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>50</td>
-<td>62</td>
-<td>2</td>
-<td>375</td>
-<td>200</td>
-<td>15</td>
+<td>80</td>
+<td>82</td>
+<td>3</td>
+<td>2000.0</td>
+<td>40</td>
+<td>3</td>
 <td>...</td>
 <td>21</td>
 <td>Männlich</td>
-<td>False</td>
-<td>True</td>
 <td>True</td>
 <td>False</td>
+<td>True</td>
+<td>False</td>
+<td>5</td>
+<td>4</td>
 <td>4</td>
 <td>2</td>
-<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>trifft eher nicht zu</td>
+<td>trifft eher zu</td>
+<td>trifft eher nicht zu</td>
+<td>trifft überhaupt nicht zu</td>
+<td>23</td>
+<td>82</td>
+<td>3</td>
+<td>500.0</td>
+<td>240</td>
+<td>120</td>
+<td>...</td>
+<td>24</td>
+<td>Weiblich</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>2</td>
 <td>4</td>
+<td>1</td>
+<td>2</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>trifft überhaupt nicht zu</td>
 <td>teils teils</td>
 <td>trifft eher zu</td>
 <td>trifft eher zu</td>
-<td>23</td>
+<td>trifft eher nicht zu</td>
+<td>37</td>
 <td>62</td>
-<td>4</td>
-<td>500</td>
-<td>300</td>
-<td>60</td>
+<td>2</td>
+<td>756.0</td>
+<td>240</td>
+<td>30</td>
 <td>...</td>
-<td>20</td>
+<td>19</td>
 <td>Weiblich</td>
-<td>False</td>
 <td>True</td>
 <td>False</td>
+<td>False</td>
 <td>True</td>
-<td>1</td>
 <td>3</td>
 <td>4</td>
+<td>2</td>
 <td>4</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
+<td>teils teils</td>
 <td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>68</td>
-<td>82</td>
+<td>teils teils</td>
+<td>teils teils</td>
+<td>37</td>
+<td>62</td>
 <td>3</td>
-<td>568</td>
-<td>240</td>
-<td>15</td>
+<td>1.0</td>
+<td>1000</td>
+<td>60</td>
 <td>...</td>
-<td>23</td>
+<td>20</td>
 <td>Männlich</td>
 <td>False</td>
 <td>True</td>
 <td>True</td>
 <td>False</td>
+<td>3</td>
 <td>2</td>
-<td>2</td>
-<td>1</td>
-<td>2</td>
+<td>3</td>
+<td>3</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>teils teils</td>
-<td>trifft eher nicht zu</td>
 <td>trifft eher zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>14</td>
+<td>trifft völlig zu</td>
+<td>trifft eher nicht zu</td>
+<td>trifft eher nicht zu</td>
+<td>65</td>
 <td>82</td>
 <td>3</td>
-<td>600</td>
-<td>30</td>
-<td>60</td>
-<td>...</td>
-<td>24</td>
-<td>Männlich</td>
-<td>False</td>
-<td>True</td>
-<td>True</td>
-<td>False</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>trifft überhaupt nicht zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>trifft eher nicht zu</td>
+<td>350.0</td>
 <td>90</td>
-<td>82</td>
-<td>5</td>
-<td>10000000000</td>
-<td>7</td>
 <td>2</td>
-<td>...</td>
-<td>23</td>
-<td>Männlich</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>1</td>
-<td>1</td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>trifft eher zu</td>
-<td>trifft eher zu</td>
-<td>trifft eher zu</td>
-<td>trifft eher nicht zu</td>
-<td>100</td>
-<td>62</td>
-<td>2</td>
-<td>23400</td>
-<td>200</td>
-<td>120</td>
 <td>...</td>
 <td>22</td>
 <td>Weiblich</td>
@@ -1151,9 +1109,57 @@ memory usage: 6.1 KB</code></pre>
 <td>False</td>
 <td>True</td>
 <td>4</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>trifft eher nicht zu</td>
+<td>trifft völlig zu</td>
+<td>trifft eher zu</td>
+<td>teils teils</td>
+<td>61</td>
+<td>62</td>
+<td>4</td>
+<td>7832.0</td>
+<td>180</td>
+<td>40</td>
+<td>...</td>
+<td>20</td>
+<td>Weiblich</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>2</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>trifft eher zu</td>
+<td>trifft eher zu</td>
+<td>trifft völlig zu</td>
+<td>trifft eher nicht zu</td>
+<td>65</td>
+<td>62</td>
+<td>2</td>
+<td>800.0</td>
+<td>130</td>
+<td>30</td>
+<td>...</td>
+<td>27</td>
+<td>Männlich</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>4</td>
 <td>4</td>
 <td>2</td>
-<td>4</td>
+<td>5</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
@@ -1161,14 +1167,14 @@ memory usage: 6.1 KB</code></pre>
 <td>trifft eher zu</td>
 <td>teils teils</td>
 <td>trifft eher nicht zu</td>
-<td>20</td>
-<td>62</td>
-<td>3</td>
-<td>1000</td>
+<td>50</td>
+<td>82</td>
+<td>4</td>
+<td>1000.0</td>
 <td>60</td>
-<td>180</td>
+<td>120</td>
 <td>...</td>
-<td>24</td>
+<td>19</td>
 <td>Weiblich</td>
 <td>True</td>
 <td>False</td>
@@ -1181,49 +1187,49 @@ memory usage: 6.1 KB</code></pre>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
-<td>trifft völlig zu</td>
-<td>trifft eher zu</td>
 <td>teils teils</td>
+<td>trifft eher zu</td>
+<td>trifft eher nicht zu</td>
 <td>trifft überhaupt nicht zu</td>
-<td>65</td>
-<td>82</td>
-<td>2</td>
-<td>670</td>
-<td>180</td>
-<td>80</td>
+<td>70</td>
+<td>62</td>
+<td>3</td>
+<td>20000.0</td>
+<td>120</td>
+<td>60</td>
 <td>...</td>
-<td>20</td>
-<td>Männlich</td>
+<td>21</td>
+<td>Weiblich</td>
 <td>True</td>
 <td>False</td>
-<td>True</td>
 <td>False</td>
-<td>5</td>
+<td>True</td>
+<td>3</td>
 <td>4</td>
 <td>1</td>
-<td>3</td>
+<td>2</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
+<td>trifft völlig zu</td>
+<td>teils teils</td>
 <td>trifft eher zu</td>
 <td>trifft eher nicht zu</td>
-<td>61</td>
-<td>62</td>
-<td>4</td>
-<td>231</td>
-<td>300</td>
-<td>30</td>
+<td>70</td>
+<td>82</td>
+<td>3</td>
+<td>254.0</td>
+<td>60</td>
+<td>100</td>
 <td>...</td>
-<td>25</td>
+<td>20</td>
 <td>Männlich</td>
-<td>True</td>
 <td>False</td>
 <td>True</td>
+<td>True</td>
 <td>False</td>
-<td>2</td>
-<td>2</td>
+<td>5</td>
+<td>3</td>
 <td>2</td>
 <td>4</td>
 </tr>
@@ -1232,301 +1238,301 @@ memory usage: 6.1 KB</code></pre>
 <td>trifft eher zu</td>
 <td>trifft eher zu</td>
 <td>teils teils</td>
-<td>trifft eher nicht zu</td>
-<td>45</td>
+<td>trifft überhaupt nicht zu</td>
+<td>40</td>
 <td>82</td>
 <td>3</td>
-<td>400</td>
-<td>140</td>
-<td>60</td>
+<td>900.0</td>
+<td>100</td>
+<td>40</td>
 <td>...</td>
-<td>20</td>
-<td>Weiblich</td>
-<td>True</td>
-<td>False</td>
+<td>21</td>
+<td>Männlich</td>
 <td>False</td>
 <td>True</td>
+<td>True</td>
+<td>False</td>
 <td>4</td>
 <td>4</td>
-<td>2</td>
+<td>1</td>
 <td>3</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
-<td>trifft eher zu</td>
-<td>trifft eher zu</td>
 <td>trifft eher nicht zu</td>
 <td>teils teils</td>
-<td>85</td>
-<td>62</td>
+<td>trifft eher zu</td>
+<td>trifft überhaupt nicht zu</td>
+<td>31</td>
+<td>82</td>
 <td>2</td>
-<td>1450</td>
-<td>200</td>
+<td>5843.0</td>
+<td>187</td>
 <td>60</td>
 <td>...</td>
-<td>20</td>
+<td>21</td>
 <td>Männlich</td>
-<td>True</td>
 <td>False</td>
 <td>True</td>
+<td>True</td>
 <td>False</td>
-<td>4</td>
-<td>4</td>
-<td>3</td>
 <td>2</td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
-<td>teils teils</td>
-<td>trifft eher zu</td>
 <td>trifft eher nicht zu</td>
+<td>trifft völlig zu</td>
 <td>teils teils</td>
-<td>70</td>
+<td>teils teils</td>
+<td>65</td>
 <td>62</td>
 <td>2</td>
-<td>1400</td>
-<td>230</td>
-<td>120</td>
+<td>1152.0</td>
+<td>240</td>
+<td>30</td>
 <td>...</td>
 <td>20</td>
 <td>Weiblich</td>
-<td>True</td>
-<td>False</td>
 <td>False</td>
 <td>True</td>
-<td>3</td>
-<td>4</td>
-<td>3</td>
+<td>False</td>
+<td>True</td>
 <td>2</td>
+<td>5</td>
+<td>3</td>
+<td>3</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">13</td>
 <td>trifft eher nicht zu</td>
-<td>trifft völlig zu</td>
-<td>trifft völlig zu</td>
+<td>trifft eher zu</td>
+<td>teils teils</td>
 <td>trifft eher nicht zu</td>
-<td>70</td>
-<td>62</td>
-<td>3</td>
-<td>777</td>
-<td>240</td>
-<td>120</td>
+<td>9</td>
+<td>82</td>
+<td>4</td>
+<td>500.0</td>
+<td>250</td>
+<td>100</td>
 <td>...</td>
-<td>21</td>
+<td>20</td>
 <td>Weiblich</td>
-<td>False</td>
 <td>True</td>
+<td>False</td>
 <td>False</td>
 <td>True</td>
 <td>2</td>
-<td>5</td>
+<td>4</td>
 <td>2</td>
-<td>5</td>
+<td>3</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
-<td>teils teils</td>
+<td>trifft völlig zu</td>
+<td>trifft völlig zu</td>
 <td>trifft eher zu</td>
 <td>trifft eher zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>48</td>
-<td>82</td>
+<td>61</td>
+<td>62</td>
 <td>3</td>
-<td>2000</td>
-<td>120</td>
-<td>60</td>
+<td>400.0</td>
+<td>3</td>
+<td>2</td>
 <td>...</td>
-<td>21</td>
-<td>Weiblich</td>
-<td>True</td>
-<td>False</td>
+<td>26</td>
+<td>Männlich</td>
 <td>False</td>
 <td>True</td>
-<td>3</td>
+<td>True</td>
+<td>False</td>
+<td>5</td>
+<td>5</td>
 <td>4</td>
-<td>1</td>
 <td>4</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">15</td>
 <td>trifft eher zu</td>
-<td>trifft eher zu</td>
+<td>trifft völlig zu</td>
+<td>trifft völlig zu</td>
 <td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>15</td>
-<td>82</td>
-<td>2</td>
-<td>5000</td>
-<td>100</td>
-<td>150</td>
-<td>...</td>
-<td>21</td>
-<td>Männlich</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>4</td>
-<td>4</td>
-<td>2</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
-<td>trifft eher zu</td>
-<td>trifft eher zu</td>
-<td>trifft eher zu</td>
-<td>trifft eher nicht zu</td>
-<td>75%</td>
+<td>37</td>
 <td>62</td>
 <td>3</td>
-<td>873</td>
-<td>80</td>
-<td>30</td>
+<td>1120.0</td>
+<td>120</td>
+<td>100</td>
 <td>...</td>
-<td>23</td>
+<td>24</td>
 <td>Weiblich</td>
 <td>True</td>
 <td>False</td>
 <td>False</td>
 <td>True</td>
 <td>4</td>
-<td>4</td>
+<td>5</td>
 <td>2</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>trifft eher zu</td>
+<td>teils teils</td>
+<td>trifft eher zu</td>
+<td>trifft überhaupt nicht zu</td>
+<td>64</td>
+<td>62</td>
+<td>3</td>
+<td>850.0</td>
+<td>280</td>
+<td>30</td>
+<td>...</td>
+<td>22</td>
+<td>Männlich</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
 <td>4</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">17</td>
 <td>trifft völlig zu</td>
+<td>trifft völlig zu</td>
 <td>trifft eher zu</td>
-<td>teils teils</td>
 <td>trifft eher nicht zu</td>
-<td>65</td>
+<td>48</td>
 <td>62</td>
-<td>3</td>
-<td>750</td>
-<td>120</td>
-<td>30</td>
-<td>...</td>
-<td>22</td>
-<td>Weiblich</td>
-<td>True</td>
-<td>False</td>
-<td>False</td>
-<td>True</td>
+<td>1</td>
+<td>260.0</td>
 <td>5</td>
-<td>4</td>
-<td>2</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>teils teils</td>
-<td>trifft eher zu</td>
-<td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>65</td>
-<td>42</td>
-<td>4</td>
-<td>350</td>
-<td>170</td>
 <td>20</td>
 <td>...</td>
-<td>21</td>
-<td>Weiblich</td>
-<td>True</td>
-<td>False</td>
-<td>False</td>
-<td>True</td>
-<td>3</td>
-<td>4</td>
-<td>2</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
-<td>trifft eher nicht zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>trifft eher zu</td>
-<td>43</td>
-<td>62</td>
-<td>2</td>
-<td>629</td>
-<td>4</td>
-<td>23</td>
-<td>...</td>
-<td>21</td>
+<td>20</td>
 <td>Männlich</td>
 <td>True</td>
 <td>False</td>
 <td>True</td>
 <td>False</td>
+<td>5</td>
+<td>5</td>
 <td>2</td>
-<td>1</td>
 <td>4</td>
-<td>2</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
+<td data-quarto-table-cell-role="th">18</td>
+<td>trifft eher zu</td>
+<td>trifft eher zu</td>
+<td>trifft eher zu</td>
 <td>trifft eher nicht zu</td>
-<td>trifft eher zu</td>
-<td>trifft eher zu</td>
-<td>trifft eher zu</td>
 <td>65</td>
 <td>82</td>
 <td>3</td>
-<td>2000</td>
-<td>75</td>
+<td>500.0</td>
 <td>120</td>
+<td>100</td>
 <td>...</td>
-<td>22</td>
+<td>19</td>
 <td>Weiblich</td>
 <td>True</td>
 <td>False</td>
 <td>False</td>
 <td>True</td>
+<td>4</td>
+<td>4</td>
 <td>2</td>
 <td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>trifft völlig zu</td>
+<td>teils teils</td>
+<td>trifft eher zu</td>
+<td>teils teils</td>
+<td>61</td>
+<td>82</td>
+<td>2</td>
+<td>1500.0</td>
+<td>100</td>
+<td>100</td>
+<td>...</td>
+<td>20</td>
+<td>Männlich</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>5</td>
+<td>3</td>
+<td>3</td>
 <td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>trifft eher zu</td>
+<td>trifft eher nicht zu</td>
+<td>trifft eher zu</td>
+<td>trifft überhaupt nicht zu</td>
+<td>62</td>
+<td>82</td>
+<td>3</td>
+<td>2024.0</td>
+<td>60</td>
+<td>90</td>
+<td>...</td>
+<td>21</td>
+<td>Weiblich</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
 <td>4</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">21</td>
 <td>trifft völlig zu</td>
+<td>trifft völlig zu</td>
 <td>teils teils</td>
 <td>teils teils</td>
-<td>trifft eher nicht zu</td>
-<td>75</td>
-<td>82</td>
-<td>2</td>
-<td>2135</td>
-<td>360</td>
 <td>30</td>
+<td>82</td>
+<td>4</td>
+<td>1000.0</td>
+<td>90</td>
+<td>90</td>
 <td>...</td>
-<td>19</td>
+<td>21</td>
 <td>Weiblich</td>
-<td>False</td>
 <td>True</td>
+<td>False</td>
 <td>False</td>
 <td>True</td>
 <td>5</td>
+<td>5</td>
 <td>3</td>
-<td>2</td>
 <td>3</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">22</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>60</td>
+<td>trifft eher zu</td>
+<td>trifft völlig zu</td>
+<td>trifft eher nicht zu</td>
+<td>trifft eher nicht zu</td>
+<td>65</td>
 <td>62</td>
-<td>3</td>
-<td>1436</td>
-<td>200</td>
-<td>30</td>
+<td>4</td>
+<td>350.0</td>
+<td>90</td>
+<td>120</td>
 <td>...</td>
 <td>22</td>
 <td>Weiblich</td>
@@ -1534,337 +1540,193 @@ memory usage: 6.1 KB</code></pre>
 <td>False</td>
 <td>False</td>
 <td>True</td>
-<td>3</td>
-<td>3</td>
-<td>3</td>
-<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">23</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>trifft eher zu</td>
+<td>trifft völlig zu</td>
 <td>trifft eher nicht zu</td>
-<td>45</td>
-<td>82</td>
-<td>4</td>
-<td>5000</td>
-<td>150</td>
-<td>30</td>
+<td>teils teils</td>
+<td>trifft eher nicht zu</td>
+<td>60</td>
+<td>62</td>
+<td>3</td>
+<td>1000.0</td>
+<td>60</td>
+<td>60</td>
 <td>...</td>
-<td>20</td>
+<td>21</td>
 <td>Weiblich</td>
 <td>True</td>
 <td>False</td>
 <td>False</td>
 <td>True</td>
-<td>3</td>
-<td>3</td>
+<td>5</td>
 <td>2</td>
-<td>4</td>
+<td>2</td>
+<td>3</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">24</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>trifft eher nicht zu</td>
-<td>63</td>
-<td>62</td>
-<td>3</td>
-<td>864</td>
-<td>180</td>
-<td>40</td>
-<td>...</td>
-<td>20</td>
-<td>Weiblich</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>3</td>
-<td>3</td>
-<td>2</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">25</td>
+<td>trifft völlig zu</td>
 <td>trifft eher zu</td>
 <td>teils teils</td>
-<td>trifft eher zu</td>
 <td>trifft eher nicht zu</td>
 <td>75</td>
-<td>82</td>
-<td>3</td>
-<td>20000</td>
-<td>120</td>
-<td>60</td>
-<td>...</td>
-<td>20</td>
-<td>Weiblich</td>
-<td>True</td>
-<td>False</td>
-<td>False</td>
-<td>True</td>
-<td>4</td>
-<td>3</td>
-<td>2</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">26</td>
-<td>trifft völlig zu</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>trifft eher nicht zu</td>
-<td>53</td>
 <td>62</td>
-<td>3</td>
-<td>900</td>
-<td>150</td>
-<td>100</td>
-<td>...</td>
-<td>20</td>
-<td>Weiblich</td>
-<td>True</td>
-<td>False</td>
-<td>False</td>
-<td>True</td>
-<td>5</td>
-<td>3</td>
 <td>2</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">27</td>
-<td>trifft völlig zu</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>trifft eher nicht zu</td>
-<td>50</td>
-<td>82</td>
-<td>3</td>
-<td>500</td>
-<td>160</td>
-<td>100</td>
-<td>...</td>
-<td>19</td>
-<td>Weiblich</td>
-<td>True</td>
-<td>False</td>
-<td>False</td>
-<td>True</td>
-<td>5</td>
-<td>3</td>
+<td>50.0</td>
+<td>90</td>
 <td>2</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">28</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>trifft eher zu</td>
-<td>trifft eher nicht zu</td>
-<td>80</td>
-<td>62</td>
-<td>3</td>
-<td>550</td>
-<td>240</td>
-<td>60</td>
 <td>...</td>
-<td>29</td>
+<td>22</td>
 <td>Männlich</td>
 <td>False</td>
 <td>True</td>
 <td>True</td>
 <td>False</td>
+<td>5</td>
+<td>4</td>
+<td>2</td>
 <td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>trifft völlig zu</td>
+<td>trifft eher zu</td>
+<td>trifft eher zu</td>
+<td>teils teils</td>
+<td>55</td>
+<td>62</td>
+<td>3</td>
+<td>87.0</td>
+<td>120</td>
+<td>120</td>
+<td>...</td>
+<td>22</td>
+<td>Weiblich</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>teils teils</td>
+<td>teils teils</td>
+<td>trifft eher zu</td>
+<td>trifft eher nicht zu</td>
+<td>9</td>
+<td>82</td>
+<td>3</td>
+<td>1000.0</td>
+<td>180</td>
+<td>180</td>
+<td>...</td>
+<td>21</td>
+<td>Weiblich</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>trifft eher zu</td>
+<td>trifft eher zu</td>
+<td>trifft eher zu</td>
+<td>trifft eher nicht zu</td>
+<td>48%</td>
+<td>42</td>
+<td>3</td>
+<td>108.0</td>
+<td>240</td>
+<td>120</td>
+<td>...</td>
+<td>20</td>
+<td>Weiblich</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>trifft völlig zu</td>
+<td>teils teils</td>
+<td>trifft eher zu</td>
+<td>trifft eher nicht zu</td>
+<td>65</td>
+<td>82</td>
+<td>3</td>
+<td>600.0</td>
+<td>120</td>
+<td>240</td>
+<td>...</td>
+<td>27</td>
+<td>Männlich</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>5</td>
 <td>3</td>
 <td>2</td>
 <td>4</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">29</td>
-<td>trifft völlig zu</td>
 <td>trifft eher zu</td>
 <td>teils teils</td>
 <td>teils teils</td>
-<td>50</td>
-<td>82</td>
-<td>2</td>
-<td>2000</td>
-<td>200</td>
-<td>100</td>
-<td>...</td>
-<td>20</td>
-<td>Weiblich</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>5</td>
-<td>4</td>
-<td>3</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">30</td>
 <td>trifft eher nicht zu</td>
-<td>teils teils</td>
-<td>trifft eher zu</td>
-<td>trifft eher nicht zu</td>
-<td>46</td>
-<td>62</td>
-<td>2</td>
-<td>187</td>
-<td>100</td>
-<td>60</td>
-<td>...</td>
-<td>21</td>
-<td>Weiblich</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>2</td>
-<td>3</td>
-<td>2</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">31</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>trifft eher nicht zu</td>
-<td>trifft eher zu</td>
-<td>37</td>
+<td>48</td>
 <td>62</td>
 <td>3</td>
-<td>1200</td>
-<td>180</td>
-<td>60</td>
-<td>...</td>
-<td>21</td>
-<td>Weiblich</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>3</td>
-<td>3</td>
-<td>4</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">32</td>
-<td>trifft völlig zu</td>
-<td>trifft eher zu</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>28</td>
-<td>82</td>
-<td>3</td>
-<td>650</td>
-<td>90</td>
-<td>100</td>
-<td>...</td>
-<td>20</td>
-<td>Männlich</td>
-<td>False</td>
-<td>True</td>
-<td>True</td>
-<td>False</td>
-<td>5</td>
-<td>4</td>
-<td>3</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">33</td>
-<td>trifft eher zu</td>
-<td>teils teils</td>
-<td>teils teils</td>
-<td>trifft eher nicht zu</td>
-<td>24</td>
-<td>62</td>
-<td>4</td>
-<td>1010</td>
-<td>30</td>
-<td>1</td>
-<td>...</td>
-<td>21</td>
-<td>Männlich</td>
-<td>True</td>
-<td>False</td>
-<td>True</td>
-<td>False</td>
-<td>4</td>
-<td>3</td>
-<td>2</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">34</td>
-<td>teils teils</td>
-<td>trifft eher zu</td>
-<td>trifft eher zu</td>
-<td>trifft eher nicht zu</td>
-<td>82</td>
-<td>42</td>
-<td>3</td>
-<td>1243</td>
-<td>200</td>
+<td>2000.0</td>
+<td>600</td>
 <td>120</td>
 <td>...</td>
 <td>22</td>
 <td>Weiblich</td>
-<td>True</td>
-<td>False</td>
 <td>False</td>
 <td>True</td>
+<td>False</td>
+<td>True</td>
+<td>4</td>
 <td>3</td>
-<td>4</td>
 <td>2</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">35</td>
-<td>trifft völlig zu</td>
-<td>trifft eher zu</td>
-<td>trifft eher nicht zu</td>
-<td>trifft eher nicht zu</td>
-<td>60</td>
-<td>62</td>
-<td>2</td>
-<td>448</td>
-<td>400</td>
-<td>180</td>
-<td>...</td>
-<td>19</td>
-<td>Männlich</td>
-<td>False</td>
-<td>True</td>
-<td>True</td>
-<td>False</td>
-<td>5</td>
-<td>4</td>
-<td>2</td>
-<td>2</td>
+<td>3</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">36</td>
+<td data-quarto-table-cell-role="th">30</td>
 <td>teils teils</td>
 <td>trifft eher zu</td>
-<td>trifft eher nicht zu</td>
-<td>trifft überhaupt nicht zu</td>
-<td>42</td>
-<td>82</td>
-<td>3</td>
-<td>3537</td>
-<td>1123</td>
-<td>180</td>
+<td>teils teils</td>
+<td>teils teils</td>
+<td>50</td>
+<td>62</td>
+<td>2</td>
+<td>1000.0</td>
+<td>90</td>
+<td>90</td>
 <td>...</td>
-<td>26</td>
+<td>23</td>
 <td>Weiblich</td>
 <td>True</td>
 <td>False</td>
@@ -1872,50 +1734,51 @@ memory usage: 6.1 KB</code></pre>
 <td>True</td>
 <td>3</td>
 <td>4</td>
-<td>1</td>
-<td>2</td>
+<td>3</td>
+<td>3</td>
 </tr>
 </tbody>
 </table>
 
-<p>37 rows × 21 columns</p>
+<p>31 rows × 21 columns</p>
+</div>
 </div>
 </div>
 </div>
 <div class="fragment">
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>df.info()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 37 entries, 0 to 36
+RangeIndex: 31 entries, 0 to 30
 Data columns (total 21 columns):
  #   Column                Non-Null Count  Dtype   
 ---  ------                --------------  -----   
- 0   sport                 37 non-null     category
- 1   fleissig              37 non-null     category
- 2   entmutigen            37 non-null     category
- 3   talente               37 non-null     category
- 4   einkommen             37 non-null     category
- 5   energie               37 non-null     int64   
- 6   megacity              37 non-null     int64   
- 7   geleebohnen           37 non-null     int64   
- 8   soziale_medien        37 non-null     int64   
- 9   studium               37 non-null     int64   
- 10  buch                  37 non-null     category
- 11  alter                 37 non-null     int64   
- 12  geschlecht            37 non-null     category
- 13  buch__Ja              37 non-null     category
- 14  buch__Nein            37 non-null     category
- 15  geschlecht__Männlich  37 non-null     category
- 16  geschlecht__Weiblich  37 non-null     category
- 17  sport_qm              37 non-null     int64   
- 18  fleissig_qm           37 non-null     int64   
- 19  talente_qm            37 non-null     int64   
- 20  entmutigen_qm         37 non-null     int64   
-dtypes: category(11), int64(10)
-memory usage: 6.1 KB</code></pre>
+ 0   sport                 31 non-null     category
+ 1   fleissig              31 non-null     category
+ 2   entmutigen            31 non-null     category
+ 3   talente               31 non-null     category
+ 4   einkommen             31 non-null     category
+ 5   energie               31 non-null     int64   
+ 6   megacity              31 non-null     int64   
+ 7   geleebohnen           31 non-null     float64 
+ 8   soziale_medien        31 non-null     int64   
+ 9   studium               31 non-null     int64   
+ 10  buch                  31 non-null     category
+ 11  alter                 31 non-null     int64   
+ 12  geschlecht            31 non-null     category
+ 13  buch__Ja              31 non-null     category
+ 14  buch__Nein            31 non-null     category
+ 15  geschlecht__Männlich  31 non-null     category
+ 16  geschlecht__Weiblich  31 non-null     category
+ 17  sport_qm              31 non-null     int64   
+ 18  fleissig_qm           31 non-null     int64   
+ 19  talente_qm            31 non-null     int64   
+ 20  entmutigen_qm         31 non-null     int64   
+dtypes: category(11), float64(1), int64(9)
+memory usage: 4.9 KB</code></pre>
 </div>
 </div>
 </div>
@@ -1928,10 +1791,11 @@ memory usage: 6.1 KB</code></pre>
 <section id="statistische-daten-für-kategoriale-variablen" class="slide level2">
 <h2>Statistische Daten für kategoriale Variablen</h2>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df[list_cat].describe().T</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>df[list_cat].describe().T</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="13">
 <div class="cell-output cell-output-display" data-execution_count="13">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1960,80 +1824,80 @@ memory usage: 6.1 KB</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">sport</td>
-<td>37</td>
-<td>5</td>
-<td>teils teils</td>
+<td>31</td>
+<td>4</td>
+<td>trifft eher zu</td>
 <td>11</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">fleissig</td>
-<td>37</td>
-<td>5</td>
+<td>31</td>
+<td>4</td>
 <td>trifft eher zu</td>
-<td>17</td>
+<td>13</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">entmutigen</td>
-<td>37</td>
-<td>5</td>
+<td>31</td>
+<td>4</td>
 <td>trifft eher zu</td>
 <td>14</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">talente</td>
-<td>37</td>
+<td>31</td>
 <td>4</td>
 <td>trifft eher nicht zu</td>
-<td>21</td>
+<td>16</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">einkommen</td>
-<td>37</td>
-<td>28</td>
+<td>31</td>
+<td>18</td>
 <td>65</td>
-<td>4</td>
+<td>6</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">buch</td>
-<td>37</td>
+<td>31</td>
 <td>2</td>
-<td>Ja</td>
-<td>23</td>
+<td>Nein</td>
+<td>16</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">geschlecht</td>
-<td>37</td>
+<td>31</td>
 <td>2</td>
 <td>Weiblich</td>
-<td>24</td>
+<td>19</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">buch__Ja</td>
-<td>37</td>
+<td>31</td>
 <td>2</td>
-<td>True</td>
-<td>23</td>
+<td>False</td>
+<td>16</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">buch__Nein</td>
-<td>37</td>
+<td>31</td>
 <td>2</td>
-<td>False</td>
-<td>23</td>
+<td>True</td>
+<td>16</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">geschlecht__Männlich</td>
-<td>37</td>
+<td>31</td>
 <td>2</td>
 <td>False</td>
-<td>24</td>
+<td>19</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">geschlecht__Weiblich</td>
-<td>37</td>
+<td>31</td>
 <td>2</td>
 <td>True</td>
-<td>24</td>
+<td>19</td>
 </tr>
 </tbody>
 </table>
@@ -2041,118 +1905,118 @@ memory usage: 6.1 KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="anzahl-der-ausprägungen" class="slide level2">
 <h2>Anzahl der Ausprägungen</h2>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_cat:</span>
-<span id="cb21-2"><a href="#cb21-2"></a>    <span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">30</span>)</span>
-<span id="cb21-3"><a href="#cb21-3"></a>    <span class="bu">print</span>(i, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, df[i].value_counts())</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> list_cat:</span>
+<span id="cb21-2"><a></a>    <span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">30</span>)</span>
+<span id="cb21-3"><a></a>    <span class="bu">print</span>(i, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, df[i].value_counts())</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
 <pre><code>------------------------------
 sport 
- teils teils                  11
-trifft eher zu               10
-trifft völlig zu              8
-trifft eher nicht zu          6
-trifft überhaupt nicht zu     2
-Name: sport, dtype: int64
+ sport
+trifft eher zu          11
+trifft völlig zu        10
+teils teils              5
+trifft eher nicht zu     5
+Name: count, dtype: int64
 ------------------------------
 fleissig 
- trifft eher zu               17
-teils teils                  12
-trifft eher nicht zu          4
-trifft völlig zu              2
-trifft überhaupt nicht zu     2
-Name: fleissig, dtype: int64
+ fleissig
+trifft eher zu          13
+trifft völlig zu         8
+teils teils              7
+trifft eher nicht zu     3
+Name: count, dtype: int64
 ------------------------------
 entmutigen 
- trifft eher zu               14
-teils teils                  12
-trifft eher nicht zu          9
-trifft völlig zu              1
-trifft überhaupt nicht zu     1
-Name: entmutigen, dtype: int64
+ entmutigen
+trifft eher zu          14
+teils teils             10
+trifft eher nicht zu     5
+trifft völlig zu         2
+Name: count, dtype: int64
 ------------------------------
 talente 
- trifft eher nicht zu         21
-teils teils                   6
+ talente
+trifft eher nicht zu         16
+teils teils                   7
 trifft überhaupt nicht zu     6
-trifft eher zu                4
-Name: talente, dtype: int64
+trifft eher zu                2
+Name: count, dtype: int64
 ------------------------------
 einkommen 
- 65     4
-50     3
-75     2
+ einkommen
+65     6
+37     3
+61     3
+9      2
+48     2
 70     2
-45     2
-60     2
-53     1
-85     1
-82     1
+50     2
+62     1
 80     1
-75%    1
-68     1
-63     1
-61     1
-100    1
-14     1
-48     1
-46     1
-43     1
-42     1
-40     1
-37     1
-28     1
-24     1
+75     1
+64     1
 23     1
-20     1
-15     1
-90     1
-Name: einkommen, dtype: int64
+30     1
+55     1
+48%    1
+40     1
+31     1
+60     1
+Name: count, dtype: int64
 ------------------------------
 buch 
- Ja      23
-Nein    14
-Name: buch, dtype: int64
+ buch
+Nein    16
+Ja      15
+Name: count, dtype: int64
 ------------------------------
 geschlecht 
- Weiblich    24
-Männlich    13
-Name: geschlecht, dtype: int64
+ geschlecht
+Weiblich    19
+Männlich    12
+Name: count, dtype: int64
 ------------------------------
 buch__Ja 
- True     23
-False    14
-Name: buch__Ja, dtype: int64
+ buch__Ja
+False    16
+True     15
+Name: count, dtype: int64
 ------------------------------
 buch__Nein 
- False    23
-True     14
-Name: buch__Nein, dtype: int64
+ buch__Nein
+True     16
+False    15
+Name: count, dtype: int64
 ------------------------------
 geschlecht__Männlich 
- False    24
-True     13
-Name: geschlecht__Männlich, dtype: int64
+ geschlecht__Männlich
+False    19
+True     12
+Name: count, dtype: int64
 ------------------------------
 geschlecht__Weiblich 
- True     24
-False    13
-Name: geschlecht__Weiblich, dtype: int64</code></pre>
+ geschlecht__Weiblich
+True     19
+False    12
+Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
 <section id="numerische-variablen" class="slide level2">
 <h2>Numerische Variablen</h2>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df[list_metric].describe().<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>df[list_metric].describe().<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="15">
 <div class="cell-output cell-output-display" data-execution_count="15">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2185,113 +2049,113 @@ Name: geschlecht__Weiblich, dtype: int64</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">energie</td>
-<td>37.0</td>
-<td>6.957000e+01</td>
-<td>1.188000e+01</td>
+<td>31.0</td>
+<td>70.39</td>
+<td>11.28</td>
 <td>42.0</td>
 <td>62.0</td>
 <td>62.0</td>
 <td>82.0</td>
-<td>8.200000e+01</td>
+<td>82.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">megacity</td>
-<td>37.0</td>
-<td>2.920000e+00</td>
-<td>7.600000e-01</td>
-<td>2.0</td>
-<td>2.0</td>
+<td>31.0</td>
+<td>2.87</td>
+<td>0.72</td>
+<td>1.0</td>
+<td>2.5</td>
 <td>3.0</td>
 <td>3.0</td>
-<td>5.000000e+00</td>
+<td>4.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">geleebohnen</td>
-<td>37.0</td>
-<td>2.702726e+08</td>
-<td>1.643989e+09</td>
-<td>187.0</td>
-<td>568.0</td>
-<td>873.0</td>
-<td>2000.0</td>
-<td>1.000000e+10</td>
+<td>31.0</td>
+<td>1797.97</td>
+<td>3748.82</td>
+<td>1.0</td>
+<td>375.0</td>
+<td>850.0</td>
+<td>1136.0</td>
+<td>20000.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">soziale_medien</td>
-<td>37.0</td>
-<td>1.860500e+02</td>
-<td>1.841500e+02</td>
-<td>4.0</td>
-<td>100.0</td>
-<td>170.0</td>
-<td>200.0</td>
-<td>1.123000e+03</td>
+<td>31.0</td>
+<td>171.13</td>
+<td>190.50</td>
+<td>3.0</td>
+<td>90.0</td>
+<td>120.0</td>
+<td>213.5</td>
+<td>1000.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">studium</td>
-<td>37.0</td>
-<td>7.051000e+01</td>
-<td>5.135000e+01</td>
-<td>1.0</td>
+<td>31.0</td>
+<td>76.74</td>
+<td>54.70</td>
+<td>2.0</td>
 <td>30.0</td>
-<td>60.0</td>
-<td>100.0</td>
-<td>1.800000e+02</td>
+<td>90.0</td>
+<td>110.0</td>
+<td>240.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">alter</td>
-<td>37.0</td>
-<td>2.143000e+01</td>
-<td>2.090000e+00</td>
+<td>31.0</td>
+<td>21.55</td>
+<td>2.13</td>
 <td>19.0</td>
 <td>20.0</td>
 <td>21.0</td>
 <td>22.0</td>
-<td>2.900000e+01</td>
+<td>27.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">sport_qm</td>
-<td>37.0</td>
-<td>3.430000e+00</td>
-<td>1.170000e+00</td>
-<td>1.0</td>
-<td>3.0</td>
+<td>31.0</td>
+<td>3.84</td>
+<td>1.07</td>
+<td>2.0</td>
 <td>3.0</td>
 <td>4.0</td>
-<td>5.000000e+00</td>
+<td>5.0</td>
+<td>5.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">fleissig_qm</td>
-<td>37.0</td>
-<td>3.350000e+00</td>
-<td>9.500000e-01</td>
-<td>1.0</td>
+<td>31.0</td>
+<td>3.84</td>
+<td>0.93</td>
+<td>2.0</td>
 <td>3.0</td>
 <td>4.0</td>
-<td>4.0</td>
-<td>5.000000e+00</td>
+<td>4.5</td>
+<td>5.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">talente_qm</td>
-<td>37.0</td>
-<td>2.220000e+00</td>
-<td>8.500000e-01</td>
+<td>31.0</td>
+<td>2.16</td>
+<td>0.82</td>
 <td>1.0</td>
 <td>2.0</td>
-<td>2.0</td>
-<td>3.0</td>
-<td>4.000000e+00</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">entmutigen_qm</td>
-<td>37.0</td>
-<td>3.140000e+00</td>
-<td>9.200000e-01</td>
-<td>1.0</td>
 <td>2.0</td>
 <td>3.0</td>
 <td>4.0</td>
-<td>5.000000e+00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">entmutigen_qm</td>
+<td>31.0</td>
+<td>3.42</td>
+<td>0.85</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>5.0</td>
 </tr>
 </tbody>
 </table>
@@ -2299,9 +2163,12 @@ Name: geschlecht__Weiblich, dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Jan Kirenz</p>
+</div>
 </div>
 </section></section>
     </div>
@@ -2331,7 +2198,6 @@ Name: geschlecht__Weiblich, dtype: int64</code></pre>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': true,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -2593,10 +2459,27 @@ Name: geschlecht__Weiblich, dtype: int64</code></pre>
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/kirenz\.github\.io\/lab-survey\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2606,8 +2489,17 @@ Name: geschlecht__Weiblich, dtype: int64</code></pre>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2621,7 +2513,11 @@ Name: geschlecht__Weiblich, dtype: int64</code></pre>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

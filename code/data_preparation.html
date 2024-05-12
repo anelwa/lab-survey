@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -80,7 +80,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,6 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -103,9 +109,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Survey</span>
     </a>
@@ -117,25 +123,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../slide.html" rel="" target="">
- <span class="menu-text">Slides</span></a>
+    <a class="nav-link" href="../slide.html"> 
+<span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../requirements.html" rel="" target="">
- <span class="menu-text">Requirements</span></a>
+    <a class="nav-link" href="../requirements.html"> 
+<span class="menu-text">Requirements</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html" rel="" target="">
- <span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../assignments.html"> 
+<span class="menu-text">Assignments</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -232,9 +238,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+
+<div id="cell-2" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas.api.types <span class="im">import</span> CategoricalDtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -243,28 +251,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Daten</h1>
 <section id="daten-importieren" class="level2">
 <h2 class="anchored" data-anchor-id="daten-importieren">Daten importieren</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-4" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>DATA <span class="op">=</span> <span class="st">"raw_mr_ss23.csv"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>DATA <span class="op">=</span> <span class="st">"raw_mr_ss24.csv"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(PATH <span class="op">+</span> DATA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="dataframe-anzeigen" class="level2">
 <h2 class="anchored" data-anchor-id="dataframe-anzeigen">DataFrame anzeigen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-6" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="datentypen-anzeigen" class="level2">
 <h2 class="anchored" data-anchor-id="datentypen-anzeigen">Datentypen anzeigen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-8" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="info" class="level2">
 <h2 class="anchored" data-anchor-id="info">Info</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-10" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -273,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Daten anpassen</h1>
 <section id="spaltennamen" class="level2">
 <h2 class="anchored" data-anchor-id="spaltennamen">Spaltennamen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-12" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Spaltennamen umbenennen</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Zeitstempel"</span>: <span class="st">"zeit"</span>,</span>
@@ -295,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="info-1" class="level2">
 <h2 class="anchored" data-anchor-id="info-1">Info</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-14" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -304,14 +312,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Nominale Variablen</h1>
 <section id="liste-erstellen" class="level2">
 <h2 class="anchored" data-anchor-id="liste-erstellen">Liste erstellen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-16" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Liste mit nominalen Variablen erstellen</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>list_nominal <span class="op">=</span> [<span class="st">"buch"</span>, <span class="st">"geschlecht"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="variablen-anpassen" class="level2">
 <h2 class="anchored" data-anchor-id="variablen-anpassen">Variablen anpassen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-18" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nominale Variablen als kategorial formatieren (category)</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_nominal:</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"category"</span>)</span>
@@ -321,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="variablen-anzeigen" class="level2">
 <h2 class="anchored" data-anchor-id="variablen-anzeigen">Variablen anzeigen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-20" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df[list_nominal].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -331,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="dummy-variablen-erstellen" class="level2">
 <h2 class="anchored" data-anchor-id="dummy-variablen-erstellen">Dummy Variablen erstellen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-22" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dummy_nominal <span class="op">=</span> pd.get_dummies(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    df[list_nominal],  prefix_sep<span class="op">=</span><span class="st">'__'</span>).astype(<span class="st">'category'</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -340,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="dummy-variablen-zu-daten-hinzufügen" class="level2">
 <h2 class="anchored" data-anchor-id="dummy-variablen-zu-daten-hinzufügen">Dummy Variablen zu Daten hinzufügen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-24" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dummy-Variablen hinzufügen</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.join(dummy_nominal)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -349,13 +357,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="liste-um-dummy-variablen-ergänzen" class="level2">
 <h2 class="anchored" data-anchor-id="liste-um-dummy-variablen-ergänzen">Liste um Dummy Variablen ergänzen</h2>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-26" class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Liste um die neuen Variablen erweitern</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dummy_nominal_name <span class="op">=</span> dummy_nominal.columns.tolist()</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>list_nominal.extend(dummy_nominal_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-28" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>list_nominal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -412,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Da wir die Variable <code>entmutigen</code> nicht versehentlich durch Datentransformationen fehlerhaft verändern möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als <code>entmutigen_orig</code>).</li>
 </ul>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-30" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'entmutigen_orig'</span>] <span class="op">=</span> df[<span class="st">'entmutigen'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -421,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Erzeugung der Listen für die Veränderung der Variable (in der korrekten Reihenfolge):</li>
 </ul>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-32" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>werte <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>likert <span class="op">=</span> [<span class="st">"trifft überhaupt nicht zu"</span>,</span>
@@ -433,12 +441,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="variable-anpassen" class="level2">
 <h2 class="anchored" data-anchor-id="variable-anpassen">Variable anpassen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-34" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'entmutigen'</span>].replace(werte, likert, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'entmutigen'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-36" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'entmutigen_orig'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -450,13 +458,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Erstellung einer Liste:</li>
 </ul>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-38" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>list_ordinal <span class="op">=</span> [<span class="st">"sport"</span>, <span class="st">"fleissig"</span>, <span class="st">"talente"</span>, <span class="st">"entmutigen"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="verwendung-von-pandas-categoricaldtype" class="level2">
 <h2 class="anchored" data-anchor-id="verwendung-von-pandas-categoricaldtype">Verwendung von pandas CategoricalDtype</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-40" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cat_type <span class="op">=</span> CategoricalDtype(categories<span class="op">=</span>likert, ordered<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>cat_type</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -464,20 +472,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ordinale-variablen-anpassen" class="level2">
 <h2 class="anchored" data-anchor-id="ordinale-variablen-anpassen">Ordinale Variablen anpassen</h2>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-42" class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df[list_ordinal] <span class="op">=</span> df[list_ordinal].astype(cat_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-44" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"sport"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-46" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anzeige der Ausprägungen</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'sport'</span>].cat.categories</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="liste-der-kategorialen-variablen-erstellen" class="level2">
 <h2 class="anchored" data-anchor-id="liste-der-kategorialen-variablen-erstellen">Liste der kategorialen Variablen erstellen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-48" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>list_cat <span class="op">=</span> list_nominal <span class="op">+</span> list_ordinal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -499,7 +507,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="liste-erstellen-2" class="level2">
 <h2 class="anchored" data-anchor-id="liste-erstellen-2">Liste erstellen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-50" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>list_num <span class="op">=</span> [<span class="st">'einkommen'</span>, <span class="st">'energie'</span>, <span class="st">'megacity'</span>, <span class="st">'geleebohnen'</span>,</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">'soziale_medien'</span>, <span class="st">'studium'</span>, <span class="st">'alter'</span>]</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -515,7 +523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="untersuchung-von-problemen" class="level2">
 <h2 class="anchored" data-anchor-id="untersuchung-von-problemen">Untersuchung von Problemen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-52" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'energie'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -529,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Da wir die Variable nicht versehentlich durch Datentransformationen korrumpieren möchten, speichern wir sie zunächst nochmals in der originalen Version ab (als <code>energie_orig</code>).</p></li>
 <li><p>Um die numerischen Werte leichter extrahieren zu können, nutzen wir das Format “String”.</p></li>
 </ul>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-54" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'energie_orig'</span>] <span class="op">=</span> df[<span class="st">'energie'</span>].astype(<span class="st">"string"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -595,10 +603,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="anpassung-der-variable-1" class="level2">
 <h2 class="anchored" data-anchor-id="anpassung-der-variable-1">Anpassung der Variable</h2>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-56" class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'energie'</span>] <span class="op">=</span> df[<span class="st">'energie_orig'</span>].<span class="bu">str</span>.extract(<span class="st">'(\d+)'</span>).astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-58" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'energie_orig'</span>, <span class="st">'energie'</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -618,14 +626,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Damit wir die Originaldaten nicht “verlieren”, erzeugen wir neue Variablen.</p></li>
 <li><p>Dafür kopieren wir die Daten und fügen diesen die Endung “qm” (für quasimetrisch) hinzu.</p></li>
 </ul>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-60" class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_ordinal:</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    df[i <span class="op">+</span> <span class="st">"_qm"</span>] <span class="op">=</span> df[i]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="liste-erzeugen" class="level2">
 <h2 class="anchored" data-anchor-id="liste-erzeugen">Liste erzeugen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-62" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellung der Liste mit Hilfe von filter und regular expressions</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>list_qm <span class="op">=</span> df.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">'_qm'</span>).columns.to_list()</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>list_qm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -633,7 +641,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="info-2" class="level2">
 <h2 class="anchored" data-anchor-id="info-2">Info</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-64" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df[list_qm].info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -642,7 +650,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Wir nutzen nun ein ähnliches Vorgehen wie bei der Anpassung der Variable “entmutigen”</li>
 </ul>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-66" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_qm:</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    df[i].replace(likert, werte, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    df[i] <span class="op">=</span> df[i].astype(<span class="st">"int"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -650,30 +658,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="daten-anzeigen" class="level2">
 <h2 class="anchored" data-anchor-id="daten-anzeigen">Daten anzeigen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-68" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df[list_qm].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-70" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df[list_qm].info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="liste-für-metrische-variablen" class="level2">
 <h2 class="anchored" data-anchor-id="liste-für-metrische-variablen">Liste für metrische Variablen</h2>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-72" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>list_metric <span class="op">=</span> list_num <span class="op">+</span> list_qm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-73" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>PATH <span class="op">=</span> <span class="st">"../data/"</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>FILE <span class="op">=</span> <span class="st">"clean_ws22"</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>FILE <span class="op">=</span> <span class="st">"clean_data"</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>FORMAT_CSV <span class="op">=</span> <span class="st">".csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
+<div id="cell-74" class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(PATH <span class="op">+</span> FILE <span class="op">+</span> FORMAT_CSV, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-output-location="fragment" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>FORMAT_EXCEL <span class="op">=</span> <span class="st">".xlsx"</span></span>
+<div id="cell-75" class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#FORMAT_EXCEL = ".xlsx"</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>df.to_excel(PATH <span class="op">+</span> FILE <span class="op">+</span> FORMAT_EXCEL, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">#df.to_excel(PATH + FILE + FORMAT_EXCEL, index=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -760,10 +768,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/kirenz\.github\.io\/lab-survey\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -773,8 +798,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -786,7 +820,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -830,6 +987,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -855,6 +1013,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -917,17 +1101,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">© <a href="https://www.kirenz.com/">Jan Kirenz</a>, 2023</div>   
+    <div class="nav-footer-left">
+<p>© <a href="https://www.kirenz.com/">Jan Kirenz</a>, 2023</p>
+</div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../slide.html">Slides</a>
+    <a class="nav-link" href="../slide.html">
+<p>Slides</p>
+</a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="../requirements.html">Requirements</a>
+    <a class="nav-link" href="../requirements.html">
+<p>Requirements</p>
+</a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="../assignments.html">Assignments</a>
+    <a class="nav-link" href="../assignments.html">
+<p>Assignments</p>
+</a>
   </li>  
 </ul>
     </div>
@@ -943,6 +1135,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

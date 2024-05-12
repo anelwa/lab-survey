@@ -1,1 +1,1 @@
-Sitemap: https://github.com/kirenz/lab-survey/sitemap.xml
+Sitemap: https://kirenz.github.io/lab-survey/sitemap.xml
